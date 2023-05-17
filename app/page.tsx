@@ -1,12 +1,12 @@
 export default function Home() {
   return (
     <div>
-      <h1 className="text-6xl bg-secondary">Main</h1><br/>
-      <button className="btn-primary">Submit</button><br/>
-      <button className="btn-secondary">Register Now</button><br/>
-      <button className="bg-secondary">Submit</button><br/>
-      <button className="bg-secondary-button">Submit</button>
+      <h1 className="text-6xl bg-secondary text-primary">Main</h1>
+      <div className="flex">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+      </div>
     </div>
   );
 }
- 
