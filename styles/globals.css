@@ -8,10 +8,17 @@
   --subtitle: 24px;
   --p: 18px;
   --sub: 16px;
+  --primary: #fefefd;
+  --secondary: #15151b;
+  --secondary-light: #303036;
+  --primary-button: #fefe00;
+  --secondary-button: #242327;
+  --accent: #fdfe00;
 }
 
 body {
   background-color: #15151b;
+  font-family: "Inter", sans-serif;
   color: #fefefd;
 }
 
@@ -38,4 +45,59 @@ h3 {
 
 h4 {
   font-size: var(--sub);
+}
+
+/* TODO: */
+/* Provide a better solution for handling custom class names */
+
+/* @layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded;
+  }
+} */
+
+.btn-primary {
+  background-color: var(--primary-button);
+  color: var(--secondary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: primary-dark;
+  box-shadow: 0 0 2.5em var(--accent);
+  outline: none;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-button);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background: var(--secondary-light);
+}
+
+.btn-secondary:focus {
+  outline: solid 1px var(--accent);
+}
+
+.btn-primary,
+.btn-secondary {
+  transition: all 0.2s ease;
+  font-size: var(--p);
+  padding: 0.7em 2em;
+  border-radius: 5px;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  transform: translate(0, -0.15em);
+}
+
+.btn-secondary:active {
+  background: var(--secondary);
 }
