@@ -1,11 +1,22 @@
-import React from 'react'
+import React from "react";
 
 const MainMenu = () => {
   return (
-    <div>
-      <h1>MainMenu</h1>
-    </div>
-  )
-}
+    <nav className="flex gap-8 uppercase">
+      <a href="#" className="active">
+        Home
+      </a>
+      <a href="#" className=" ">
+        Genre
+      </a>
+      <a href="#" className=" ">
+        About
+      </a>
+      <a href="#" className=" ">
+        Contact
+      </a>
+    </nav>
+  );
+};
 
-export default MainMenu
+export default MainMenu;

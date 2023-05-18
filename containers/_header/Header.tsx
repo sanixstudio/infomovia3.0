@@ -1,26 +1,19 @@
-import { UserMenu } from "@/components";
+import { MainMenu, UserMenu } from "@/components";
+import { RxHamburgerMenu } from "react-icons/rx";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Header = () => {
   return (
-    <div className="w-full flex border border-primary p-4">
-      <Link href={"/"} className="flex border items-center gap-5">
-        <Image
-          src="https://picsum.photos/id/237/200/200"
-          alt="logo"
-          width={100}
-          height={100}
-          className="h-12 w-12 rounded-full"
-        />
-        <h2>Logo</h2>
+    <div className="w-full flex items-center justify-between px-4 py-3 border-b border-secondary-button">
+      <Link href={"/"} className="flex items-center gap-5">
+        <Image src="/images/logo.png" alt="logo" width={200} height={100} />
+        {/* <h2 className="">Logo</h2> */}
       </Link>
-      <div className="flex gap-3">
-        <a href="#">Home</a>
-        <a href="#">Gallery</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+      <div>
+        <RxHamburgerMenu />
+        <MainMenu />
       </div>
       <UserMenu />
     </div>
