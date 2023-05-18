@@ -16,12 +16,7 @@
   --accent: #fdfe00;
 }
 
-body {
-  background-color: #15151b;
-  font-family: "Inter", sans-serif;
-  color: #fefefd;
-}
-
+/* 
 body p {
   font-size: var(--p);
 }
@@ -45,7 +40,7 @@ h3 {
 
 h4 {
   font-size: var(--sub);
-}
+} */
 
 /* TODO: */
 /* Provide a better solution for handling custom class names */
@@ -56,14 +51,14 @@ h4 {
   }
 } */
 
-.btn-primary {
+/* .btn-primary {
   background-color: var(--primary-button);
   color: var(--secondary);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: primary-dark;
+  background-color: var(--accent);
   box-shadow: 0 0 2.5em var(--accent);
   outline: none;
 }
@@ -114,4 +109,4 @@ h4 {
   height: 2px;
   bottom: 0;
   left: 0;
-}
+} */
