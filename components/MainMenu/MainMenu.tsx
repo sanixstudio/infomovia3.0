@@ -4,9 +4,6 @@ const MainMenu = () => {
   return (
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1">
-        <li>
-          <a>Home</a>
-        </li>
         <li tabIndex={0}>
           <a>
             Genre
@@ -20,7 +17,7 @@ const MainMenu = () => {
               <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
             </svg>
           </a>
-          <ul className="p-2 bg-slate-800">
+          <ul className="p-2 bg-slate-800 z-10">
             <li>
               <a>Action</a>
             </li>
@@ -42,7 +39,7 @@ const MainMenu = () => {
           </ul>
         </li>
         <li>
-          <a>Item 3</a>
+          <a>Explore</a>
         </li>
       </ul>
     </div>

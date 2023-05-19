@@ -19,7 +19,7 @@ const UserMenu = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-slate-800"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-slate-700 border-2 border-accent"
           >
             <li>
               <a className="justify-between">
