@@ -3,29 +3,41 @@ import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { BACKDROP_1280 } from "@/utils/constants/media-constants";
-import data from "../../utils/data.json";
 
-export default function CarouselSlider(): JSX.Element {
+type CarouselSliderProps = {
+  data: {
+    id: number;
+    title: string;
+    backdrop_path: string;
+    release_date: string;
+    overview: string;
+  }[];
+  play?: boolean;
+};
+
+export default function CarouselSlider({
+  data,
+  play,
+}: CarouselSliderProps): JSX.Element {
   return (
-    <div className="width-[1440px] overflow-hidden">
-      <Carousel autoPlay infiniteLoop emulateTouch showIndicators={false}>
-        {data.map((el) => (
-          <div key={el.id}>
-            <Image
-              width={1280}
-              height={720}
-              alt={el.title}
-              src={BACKDROP_1280 + el.backdrop_path}
-            />
-            <div className="legend h-1/3 absolute flex flex-col gap-5">
-              <h2 className="text-6xl text-left font-bold">
-                {el.title} - {new Date(el.release_date).getFullYear()}
-              </h2>
-              <p className="text-left text-lg">{el.overview}</p>
-            </div>
+    <Carousel autoPlay={play} infiniteLoop emulateTouch showIndicators={false}>
+      {data?.map((el) => (
+        <div key={el.id}>
+          <Image
+            width={1280}
+            height={720}
+            alt={el.title}
+            src={BACKDROP_1280 + el.backdrop_path}
+          />
+          <div className="legend h-1/2 absolute flex flex-col gap-5">
+            <h2 className="text-4xl px-4 pt-4 text-left font-bold">
+              {el.title} - {new Date(el.release_date).getFullYear()}
+            </h2>
+            <p className="text-xl text-left">{el.release_date}</p>
+            <p className="text-left text-lg px-4">{el.overview}</p>
           </div>
-        ))}
-      </Carousel>
-    </div>
+        </div>
+      ))}
+    </Carousel>
   );
 }
