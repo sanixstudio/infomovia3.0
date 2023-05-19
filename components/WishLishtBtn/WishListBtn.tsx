@@ -7,7 +7,7 @@ const WishListBtn = () => {
       <label tabIndex={0} className="btn btn-ghost btn-circle">
         <div className="indicator">
           <BiMessageSquareAdd size={24} />
-          <span className="badge badge-sm indicator-item">8</span>
+          <span className="badge badge-sm indicator-item bg-accent text-neutral">8</span>
         </div>
       </label>
     </div>

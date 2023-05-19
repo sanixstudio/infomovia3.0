@@ -14,7 +14,7 @@ const Header = () => {
       <div className="navbar max-w-[1440px] mx-auto my-0">
         <div className="navbar-start">
           <HiddenNavbar />
-          <a className="btn btn-ghost normal-case text-xl">InfoMovia 3.0</a>
+          <a className="btn btn-ghost normal-case text-4xl text-accent">InfoMovia</a>
         </div>
         <MainMenu />
         <Search />
