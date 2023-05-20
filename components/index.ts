@@ -6,3 +6,4 @@ export { default as UserMenu } from "./UserMenu/UserMenu";
 export { default as WishLishtBtn } from "./WishLishtBtn/WishListBtn";
 export { default as HiddenNavbar } from "./HiddenNavbar/HiddenNavbar";
 export { default as ToggleDarkMode } from "./ToggleDarkMode/ToggleDarkMode";
+export { default as CarouselMultiPlex } from "./CarouselMultiPlex/CarouselMultiPlex";
