@@ -3,7 +3,11 @@ import { useState, useRef, useEffect } from "react";
 import data from "../../utils/sample-data/data.json";
 import Image from "next/image";
 
-const Carousel = () => {
+type CarouselProps = {
+  title: string;
+};
+
+const Carousel = ({ title }: CarouselProps) => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
@@ -50,12 +54,13 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="carousel my-12 mx-auto">
+    <div className="carousel my-12 max-w-[1440px] bg-slate-900 p-4 mx-auto">
       <div className="relative overflow-hidden">
+        <h1 className="text-4xl mb-4">{title}</h1>
         <div className="flex justify-between absolute top left w-full h-full">
           <button
             onClick={movePrev}
-            className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
+            className="hover:bg-accent text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
             disabled={isDisabled("prev")}
           >
             <svg
@@ -76,7 +81,7 @@ const Carousel = () => {
           </button>
           <button
             onClick={moveNext}
-            className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
+            className="hover:bg-accent text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
             disabled={isDisabled("next")}
           >
             <svg
@@ -98,13 +103,13 @@ const Carousel = () => {
         </div>
         <div
           ref={carousel}
-          className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
+          className="carousel-container relative flex gap-5 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
           {data.map((resource, index) => {
             return (
               <div
                 key={index}
-                className="carousel-item text-center relative w-64 h-64 snap-start"
+                className="carousel-item text-center w-72 snap-start flex flex-col"
               >
                 <a
                   href={resource.link}
@@ -114,14 +119,14 @@ const Carousel = () => {
                   <Image
                     width={300}
                     height={300}
-                    src={'https://picsum.photos/id/237/200/300'}
+                    src={"https://picsum.photos/id/237/200/300"}
                     alt={resource.title}
                     className="w-full aspect-square hidden"
                   />
                 </a>
                 <a
                   href={resource.link}
-                  className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
+                  className="h-full w-full aspect-square block top-[100px] left-0 transition-opacity duration-300 hover:opacity-100 bg-slate-800 bg-opacity-50 z-10"
                 >
                   <h3 className="text-white py-6 px-3 mx-auto text-xl">
                     {resource.title}

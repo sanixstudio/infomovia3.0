@@ -1,9 +1,12 @@
 import { CarouselMultiPlex } from "@/components";
 import { Hero } from "@/containers";
 import dynamic from "next/dynamic";
-const Carousel = dynamic(() => import("../components/CarouselMultiPlex/CarouselMultiPlex"), {
-  ssr: false,
-});
+const Carousel = dynamic(
+  () => import("../components/CarouselMultiPlex/CarouselMultiPlex"),
+  {
+    ssr: false,
+  }
+);
 
 export default function Home() {
   const images = [
@@ -15,7 +18,8 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <Carousel images={images} />
+      <Carousel title={"Top Picks"} images={images} />
+      <Carousel title={"Trending Now"} images={images} />
     </div>
   );
 }
