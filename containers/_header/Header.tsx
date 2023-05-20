@@ -14,7 +14,7 @@ const Header = () => {
       <div className="navbar max-w-[1440px] mx-auto my-0">
         <div className="navbar-start">
           <HiddenNavbar />
-          <a href="/" className="text-3xl text-accent font-bold uppercase">
+          <a href="/" className="text-2xl lg:text-3xl text-white bg-accent p-2 rounded font-bold uppercase">
             InfoMovia
           </a>
         </div>

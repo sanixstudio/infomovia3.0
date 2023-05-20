@@ -8,6 +8,8 @@ type Props = {
 
 }
 
+//TODO: Fix Carousel Responsiveness
+
 const Carousel = () => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);

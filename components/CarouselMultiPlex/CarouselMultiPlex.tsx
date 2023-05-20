@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { AiFillStar } from "react-icons/ai";
 import data from "../../utils/sample-data/data.json";
 import Image from "next/image";
 
@@ -109,7 +110,7 @@ const Carousel = ({ title }: CarouselProps) => {
             return (
               <div
                 key={index}
-                className="carousel-item text-center w-72 snap-start flex flex-col"
+                className="carousel-item w-72 snap-start flex flex-col"
               >
                 <a
                   href={resource.link}
@@ -119,19 +120,29 @@ const Carousel = ({ title }: CarouselProps) => {
                   <Image
                     width={300}
                     height={300}
-                    src={"https://picsum.photos/id/237/200/300"}
+                    src={`https://picsum.photos/id/${index * 17}/200/300`}
                     alt={resource.title}
                     className="w-full aspect-square hidden"
                   />
                 </a>
-                <a
-                  href={resource.link}
-                  className="h-full w-full aspect-square block top-[100px] left-0 transition-opacity duration-300 hover:opacity-100 bg-slate-800 bg-opacity-50 z-10"
-                >
-                  <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                    {resource.title}
-                  </h3>
-                </a>
+                <div className="h-full flex flex-col items-left p-3 w-full block top-[100px] left-0 transition-opacity duration-300 hover:opacity-100 bg-slate-800 bg-opacity-50 z-10">
+                  <h3 className="text-xl font-bold mb-3">{resource.title}</h3>
+                  <div className="flex gap-5">
+                    <p className="text-sm w-24">Year Released: </p>
+                    <div className="text-sm flex justify-end w-12 gap-2 items-center">
+                      <span>
+                        {new Date(resource.release_date).getFullYear()}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex gap-5">
+                    <p className="text-sm w-24">Ratings: </p>
+                    <div className="text-sm flex justify-end w-12 gap-1 items-center">
+                      <AiFillStar color="yellow" />
+                      <p>5.8</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })}
