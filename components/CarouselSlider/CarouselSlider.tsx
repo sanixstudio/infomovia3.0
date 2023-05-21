@@ -20,14 +20,21 @@ export default function CarouselSlider({
   play,
 }: CarouselSliderProps): JSX.Element {
   return (
-    <Carousel autoPlay={play} infiniteLoop emulateTouch showIndicators={false}>
+    <Carousel
+      autoPlay={play}
+      infiniteLoop
+      emulateTouch
+      showIndicators={false}
+      className="h-full"
+    >
       {data?.map((el) => (
-        <div key={el.id}>
+        <div key={el.id} className="main-carousel-img">
           <Image
             width={1280}
             height={720}
             alt={el.title}
             src={BACKDROP_1280 + el.backdrop_path}
+            className="contain"
           />
           <div className="legend h-1/2 absolute flex flex-col gap-5">
             <h2 className="text-4xl px-4 pt-4 text-left font-bold">

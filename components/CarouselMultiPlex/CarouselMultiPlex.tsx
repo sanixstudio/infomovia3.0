@@ -110,7 +110,7 @@ const Carousel = ({ title }: CarouselProps) => {
             return (
               <div
                 key={index}
-                className="carousel-item w-72 snap-start flex flex-col"
+                className="carousel-item w-72 snap-start flex flex-col rounded-md"
               >
                 <a
                   href={resource.link}
@@ -122,10 +122,10 @@ const Carousel = ({ title }: CarouselProps) => {
                     height={300}
                     src={`https://picsum.photos/id/${index * 17}/200/300`}
                     alt={resource.title}
-                    className="w-full aspect-square hidden"
+                    className="w-full aspect-square hidden rounded-t-md"
                   />
                 </a>
-                <div className="h-full flex flex-col items-left p-3 w-full block top-[100px] left-0 transition-opacity duration-300 hover:opacity-100 bg-slate-800 bg-opacity-50 z-10">
+                <div className="h-full rounded-b-md flex flex-col items-left p-3 w-full block top-[100px] left-0 transition-opacity duration-300 hover:opacity-100 bg-slate-800 bg-opacity-50 z-10">
                   <h3 className="text-xl font-bold mb-3">{resource.title}</h3>
                   <div className="flex gap-5">
                     <p className="text-sm w-24">Year Released: </p>

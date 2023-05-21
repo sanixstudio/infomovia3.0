@@ -5,10 +5,10 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="bg-slate-900">
+    <div className="bg-gradient-to-t(red, bg-green-500)">
       <div className="max-w-[1440px] mx-auto relative">
         <div className="flex gap-5">
-          <div className="border-8 border-slate-700">
+          <div className="main-carousel">
             <CarouselSlider play data={data} />
           </div>
           <div className="flex flex-col gap-6 min-w-[300px]">

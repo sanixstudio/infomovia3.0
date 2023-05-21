@@ -19,7 +19,6 @@ export default function Home() {
     <div>
       <Hero />
       <Carousel title={"Top Picks"} images={images} />
-      <Carousel title={"Trending Now"} images={images} />
     </div>
   );
 }
