@@ -55,7 +55,7 @@ const Carousel = ({ title }: CarouselProps) => {
   }, []);
 
   return (
-    <div className="carousel my-12 max-w-[1440px] rounded-xl bg-slate-900 p-4 mx-auto">
+    <div className="carousel my-24 max-w-[1440px] rounded-xl bg-slate-900 p-4 mx-auto">
       <div className="relative overflow-hidden">
         <h1 className="text-4xl mb-10">{title}</h1>
         <div className="flex justify-between absolute top left w-full h-full">

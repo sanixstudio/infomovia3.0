@@ -10,7 +10,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="bg-slate-800 dark:bg-slate-600">
+    <div className="bg-slate-950 dark:bg-slate-600">
       <div className="navbar max-w-[1440px] mx-auto my-0">
         <div className="navbar-start">
           <HiddenNavbar />

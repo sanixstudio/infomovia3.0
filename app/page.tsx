@@ -1,3 +1,4 @@
+import { Stats, TvShowCarousel } from "@/components";
 import { Celebrities, Hero } from "@/containers";
 import dynamic from "next/dynamic";
 const Carousel = dynamic(
@@ -15,10 +16,13 @@ export default function Home() {
   ];
 
   return (
-    <div>
+    <div className="bg-slate-900">
       <Hero />
       <Carousel title={"Top Picks"} />
       <Celebrities />
+      <Carousel title={"Upcoming Movies"} />
+      <TvShowCarousel />
+      <Stats />
     </div>
   );
 }

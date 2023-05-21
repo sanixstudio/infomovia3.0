@@ -7,3 +7,6 @@ export { default as WishLishtBtn } from "./WishLishtBtn/WishListBtn";
 export { default as HiddenNavbar } from "./HiddenNavbar/HiddenNavbar";
 export { default as ToggleDarkMode } from "./ToggleDarkMode/ToggleDarkMode";
 export { default as CarouselMultiPlex } from "./CarouselMultiPlex/CarouselMultiPlex";
+export { default as Stats } from "./Stats/Stats";
+export { default as TvShowCarousel } from "./TvShowCarousel/TvShowCarousel";
+export { default as Footer } from "./Footer/Footer";
