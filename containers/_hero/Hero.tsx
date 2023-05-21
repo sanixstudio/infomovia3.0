@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="bg-gradient-to-t(red, bg-green-500)">
+    <div className="bg-gradient-to-t from-slate-950">
       <div className="max-w-[1440px] mx-auto relative">
         <div className="flex gap-5">
           <div className="main-carousel">
