@@ -1,5 +1,5 @@
 export { default as MainMenu } from "./MainMenu/MainMenu";
-export { default as Poster } from "./Poster/Poster";
+export { default as FullPosterCard } from "./FullPosterCard/FullPosterCard";
 export { default as Search } from "./Search/Search";
 export { default as CarouselSlider } from "./CarouselSlider/CarouselSlider";
 export { default as UserMenu } from "./UserMenu/UserMenu";

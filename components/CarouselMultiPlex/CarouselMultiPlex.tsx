@@ -3,12 +3,9 @@ import { useState, useRef, useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
 import data from "../../utils/sample-data/data.json";
 import Image from "next/image";
+import { SectionTitleProps } from "@/utils/typings";
 
-type CarouselProps = {
-  title: string;
-};
-
-const Carousel = ({ title }: CarouselProps) => {
+const Carousel = ({ title }: SectionTitleProps) => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);

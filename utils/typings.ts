@@ -10,3 +10,7 @@ export type MovieProps = {
   popularity?: number;
   overview?: string;
 };
+
+export type SectionTitleProps = {
+  title: string;
+};

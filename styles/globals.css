@@ -41,10 +41,5 @@
 }
 
 .carousel-slider {
-  /* border: 1px solid #fff; */
-  min-height: 100%;
-}
-
-.main-carousel-img {
-  min-height: 36em;
+  object-fit: cover ;
 }
