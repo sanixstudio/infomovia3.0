@@ -9,4 +9,6 @@ export { default as ToggleDarkMode } from "./ToggleDarkMode/ToggleDarkMode";
 export { default as CarouselMultiPlex } from "./CarouselMultiPlex/CarouselMultiPlex";
 export { default as Stats } from "./Stats/Stats";
 export { default as TvShowCarousel } from "./TvShowCarousel/TvShowCarousel";
+export { default as FullCelebCard } from "./FullCelebCard/FullCelebCard";
 export { default as Footer } from "./Footer/Footer";
+export { default as RegisterModal } from "./RegisterModal/RegisterModal";

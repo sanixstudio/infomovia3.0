@@ -1,43 +1,40 @@
-import React, { createContext, useEffect, useState } from "react";
+"use client";
 
-interface ThemeContextType {
-  darkMode: boolean;
-  toggleTheme: () => void;
+import {
+  createContext,
+  useContext,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from "react";
+
+type DataType = {
+  firstName: string;
+};
+
+interface ContextProps {
+  userId: string;
+  setUserId: Dispatch<SetStateAction<string>>;
+  data: DataType[];
+  setData: Dispatch<SetStateAction<DataType[]>>;
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const GlobalContext = createContext<ContextProps>({
+  userId: "",
+  setUserId: (): string => "",
+  data: [],
+  setData: (): DataType[] => [],
+});
 
-export const ThemeProvider: React.FC = ({ children }): JSX.Element => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setIsDarkMode(JSON.parse(savedTheme));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.getItem("darkMode", JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+export const GlobalContextProvider = ({ children }) => {
+  const [userId, setUserId] = useState("");
+  const [data, setData] = useState<[] | DataType[]>([]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <GlobalContext.Provider value={{ userId, setUserId, data, setData }}>
       {children}
-    </ThemeContext.Provider>
+    </GlobalContext.Provider>
   );
 };
 
-// export const useTheme = (): ThemeContextType => {
-//   const context = React.useContext(ThemeContext);
-
-//   if (!context) {
-//     throw new Error("useTheme must be used within a ThemeProvider");
-//   }
-
-//   return context;
-// };
+export const useGlobalContext = () => useContext(GlobalContext);
