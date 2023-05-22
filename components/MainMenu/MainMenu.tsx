@@ -38,7 +38,7 @@ const MainMenu = () => {
             </li>
           </ul>
         </li>
-        <li>
+        <li tabIndex={0.1}>
           <a>Explore</a>
         </li>
       </ul>

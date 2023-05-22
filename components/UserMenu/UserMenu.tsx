@@ -18,19 +18,19 @@ const UserMenu = () => {
             </div>
           </label>
           <ul
-            tabIndex={0}
+            tabIndex={7}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-slate-700 border-2 border-accent"
           >
-            <li>
+            <li tabIndex={0.1}>
               <a className="justify-between">
                 Profile
                 <span className="badge">New</span>
               </a>
             </li>
-            <li>
+            <li tabIndex={0.2}>
               <a>Settings</a>
             </li>
-            <li>
+            <li tabIndex={0.3}>
               <a>Logout</a>
             </li>
           </ul>
