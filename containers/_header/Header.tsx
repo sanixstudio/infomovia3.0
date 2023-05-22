@@ -1,5 +1,6 @@
 import {
   HiddenNavbar,
+  LoginModal,
   MainMenu,
   RegisterModal,
   Search,
@@ -13,6 +14,7 @@ const Header = () => {
   return (
     <>
       <RegisterModal />
+      <LoginModal />
       <div className="bg-slate-950 dark:bg-slate-600">
         <div className="navbar max-w-[1440px] mx-auto my-0">
           <div className="navbar-start">

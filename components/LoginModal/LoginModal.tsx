@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 
-const RegisterModal = () => {
+const LoginModal = () => {
   const [showModal, setShowModal] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -26,8 +26,8 @@ const RegisterModal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your register logic here
-    console.log("Registering user...");
+    // Add your Login logic here
+    console.log("Logging-in user...");
     console.log("Email:", email);
     console.log("Password:", password);
     handleModalClose();
@@ -36,7 +36,7 @@ const RegisterModal = () => {
   return (
     <div>
       <button className=" px-4 py-2 rounded-lg" onClick={handleModalOpen}>
-        Register
+        Login
       </button>
 
       {showModal && (
@@ -47,20 +47,7 @@ const RegisterModal = () => {
               className="absolute right-5 top-5 cursor-pointer hover:text-slate-500"
               onClick={() => setShowModal(false)}
             />
-            <h1 className="text-4xl">Register</h1>
-            <div className="flex flex-col">
-              <label htmlFor="">Username</label>
-              <input
-                type="text"
-                id=""
-                name="username"
-                value={username}
-                placeholder="Your Name"
-                onChange={(e) => setUsername(e.target.value)}
-                className="p-3 rounded-md"
-                tabIndex={1}
-              />
-            </div>
+            <h1 className="text-4xl">User Login</h1>
             <div className="flex flex-col">
               <label htmlFor="">Email</label>
               <input
@@ -87,19 +74,6 @@ const RegisterModal = () => {
                 tabIndex={3}
               />
             </div>
-            <div className="flex flex-col">
-              <label htmlFor="">Confirm Password</label>
-              <input
-                type="password"
-                id=""
-                name="confirm-password"
-                value={password}
-                placeholder="Your Password"
-                onChange={(e) => setPassword(e.target.value)}
-                className="p-3 rounded-md"
-                tabIndex={4}
-              />
-            </div>
             <div className="flex gap-3 justify-end">
               <button
                 className="btn btn-outline"
@@ -113,7 +87,7 @@ const RegisterModal = () => {
                 tabIndex={6}
                 onClick={() => setShowModal(false)}
               >
-                Register
+                Login
               </button>
             </div>
           </form>
@@ -123,4 +97,4 @@ const RegisterModal = () => {
   );
 };
 
-export default RegisterModal;
+export default LoginModal;

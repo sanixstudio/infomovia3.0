@@ -11,4 +11,5 @@ export { default as Stats } from "./Stats/Stats";
 export { default as TvShowCarousel } from "./TvShowCarousel/TvShowCarousel";
 export { default as FullCelebCard } from "./FullCelebCard/FullCelebCard";
 export { default as Footer } from "./Footer/Footer";
+export { default as LoginModal } from "./LoginModal/LoginModal";
 export { default as RegisterModal } from "./RegisterModal/RegisterModal";
