@@ -2,50 +2,37 @@
 import React, { useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 
-const RegisterModal = () => {
-  const [showModal, setShowModal] = useState(false);
+type RegisterProps = {
+  registerModalIsOpen: boolean;
+  closeRegisterModal: () => void;
+};
+
+const RegisterModal = ({
+  registerModalIsOpen,
+  closeRegisterModal,
+}: RegisterProps) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleModalOpen = () => {
-    setShowModal(true);
-  };
-
-  const handleModalClose = () => {
-    setShowModal(false);
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your register logic here
-    console.log("Registering user...");
-    console.log("Email:", email);
-    console.log("Password:", password);
-    handleModalClose();
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Add your register logic here
+  //   console.log("Registering user...");
+  //   console.log("Email:", email);
+  //   console.log("Password:", password);
+  //   closeRegisterModal();
+  // };
 
   return (
     <div>
-      <button className=" px-4 py-2 rounded-lg" onClick={handleModalOpen}>
-        Register
-      </button>
-
-      {showModal && (
+      {registerModalIsOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-20 bg-slate-900 bg-opacity-90 backdrop-blur-lg">
           <form className="bg-slate-800 border relative border-slate-700 form rounded-lg shadow-lg w-full max-w-md flex flex-col gap-10 p-8">
             <IoIosCloseCircle
               size={32}
               className="absolute right-5 top-5 cursor-pointer hover:text-slate-500"
-              onClick={() => setShowModal(false)}
+              onClick={() => closeRegisterModal()}
             />
             <h1 className="text-4xl">Register</h1>
             <div className="flex flex-col">
@@ -104,14 +91,14 @@ const RegisterModal = () => {
               <button
                 className="btn btn-outline"
                 tabIndex={5}
-                onClick={() => setShowModal(false)}
+                onClick={() => closeRegisterModal()}
               >
                 Cancel
               </button>
               <button
                 className="btn btn-accent"
                 tabIndex={6}
-                onClick={() => setShowModal(false)}
+                onClick={() => console.log("submitting...")}
               >
                 Register
               </button>

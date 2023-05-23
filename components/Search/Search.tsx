@@ -2,7 +2,7 @@ import React from "react";
 
 const Search = () => {
   return (
-    <div className="w-full flex text-center hidden md:block form-control">
+    <div className="w-full text-center hidden md:block form-control">
       <input
         type="text"
         placeholder="Search"

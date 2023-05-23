@@ -1,6 +1,8 @@
+"use client";
 import { Header } from "@/containers";
-import "../styles/globals.css";
 import { Footer } from "@/components";
+import AppContextProvider from "../context/appContext";
+import "../styles/globals.css";
 
 export const metadata = {
   title: "Create Next App",
@@ -15,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <AppContextProvider>
           <Header />
           {children}
           <Footer />
+        </AppContextProvider>
       </body>
     </html>
   );

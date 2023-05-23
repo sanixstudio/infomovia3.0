@@ -3,7 +3,7 @@ export { default as FullPosterCard } from "./FullPosterCard/FullPosterCard";
 export { default as Search } from "./Search/Search";
 export { default as CarouselSlider } from "./CarouselSlider/CarouselSlider";
 export { default as UserMenu } from "./UserMenu/UserMenu";
-export { default as WishLishtBtn } from "./WishLishtBtn/WishListBtn";
+export { default as WishListBtn } from "./WishListBtn/WishListBtn";
 export { default as HiddenNavbar } from "./HiddenNavbar/HiddenNavbar";
 export { default as ToggleDarkMode } from "./ToggleDarkMode/ToggleDarkMode";
 export { default as CarouselMultiPlex } from "./CarouselMultiPlex/CarouselMultiPlex";

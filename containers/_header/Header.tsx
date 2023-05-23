@@ -1,21 +1,17 @@
+"use client";
 import {
-  HiddenNavbar,
-  LoginModal,
-  MainMenu,
-  RegisterModal,
   Search,
-  ToggleDarkMode,
   UserMenu,
-  WishLishtBtn,
+  MainMenu,
+  WishListBtn,
+  HiddenNavbar,
+  ToggleDarkMode,
 } from "@/components";
-import React from "react";
 
 const Header = () => {
   return (
     <>
-      <RegisterModal />
-      <LoginModal />
-      <div className="bg-slate-950 dark:bg-slate-600">
+      <div className="bg-slate-950 dark:bg-slate-600 py-2">
         <div className="navbar max-w-[1440px] mx-auto my-0">
           <div className="navbar-start">
             <HiddenNavbar />
@@ -31,7 +27,7 @@ const Header = () => {
           <div className="w-[200px] flex justify-center ">
             <ToggleDarkMode />
           </div>
-          <WishLishtBtn />
+          <WishListBtn />
           <UserMenu />
         </div>
       </div>
