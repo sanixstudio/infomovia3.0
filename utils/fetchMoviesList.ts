@@ -1,4 +1,5 @@
-export const fetchMoviesList = async (apiLink: RequestInfo | URL) => {
+// utility function for api call with no params
+export const fetchMedia = async (apiLink: RequestInfo | URL) => {
   try {
     const res = await fetch(apiLink);
     const data = await res.json();

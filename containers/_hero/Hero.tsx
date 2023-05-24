@@ -1,6 +1,6 @@
 import { CarouselSlider } from "@/components";
 import React from "react";
-import data from "../../utils/sample-data/data.json";
+import data from "../../utils/sample_data/data.json";
 import Image from "next/image";
 
 const Hero = () => {

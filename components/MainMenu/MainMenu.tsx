@@ -1,8 +1,6 @@
-import { GET_PEOPLE_DETAILS_URL, PEOPLE_URL } from "@/utils/constants/api_constants";
 import React from "react";
 
 const MainMenu = () => {
-  console.log(PEOPLE_URL)
   return (
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1">

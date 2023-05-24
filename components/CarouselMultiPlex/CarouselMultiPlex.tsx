@@ -1,14 +1,22 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
-import data from "../../utils/sample-data/data.json";
 import Image from "next/image";
-import { SectionTitleProps } from "@/utils/typings/typings";
+import { MovieProps, SectionTitleProps } from "@/utils/typings/typings";
+import { useQuery } from "@tanstack/react-query";
+import { fetchMedia } from "@/utils/fetchMoviesList";
+import { IMG_URL } from "@/utils/constants/api_constants";
 
-const Carousel = ({ title }: SectionTitleProps) => {
+const Carousel = ({ title, queryName, fetchUrl }: SectionTitleProps) => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const carousel = useRef(null);
+  const carousel = useRef<HTMLDivElement>(null);
+
+  const { data, status, isLoading, error } = useQuery([queryName], () =>
+    fetchMedia(fetchUrl)
+  );
+
+  console.log(data, status, isLoading, error);
 
   const movePrev = () => {
     if (currentIndex > 0) {
@@ -25,7 +33,7 @@ const Carousel = ({ title }: SectionTitleProps) => {
     }
   };
 
-  const isDisabled = (direction) => {
+  const isDisabled = (direction: string) => {
     if (direction === "prev") {
       return currentIndex <= 0;
     }
@@ -50,6 +58,14 @@ const Carousel = ({ title }: SectionTitleProps) => {
       ? carousel.current.scrollWidth - carousel.current.offsetWidth
       : 0;
   }, []);
+
+  if (status === "loading" || isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (status === "error") {
+    return <div>{(error as Error).message}</div>;
+  }
 
   return (
     <div className="carousel my-24 max-w-[1440px] rounded-xl bg-slate-900 p-4 mx-auto">
@@ -103,33 +119,31 @@ const Carousel = ({ title }: SectionTitleProps) => {
           ref={carousel}
           className="carousel-container relative flex gap-5 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
-          {data.map((resource, index) => {
+          {data.map((media: MovieProps, index: number) => {
             return (
               <div
                 key={index}
                 className="carousel-item w-72 snap-start flex flex-col rounded-md"
               >
                 <a
-                  href={resource.link}
+                  href={media.link}
                   className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
-                  style={{ backgroundImage: `url(${resource.imageUrl || ""})` }}
+                  style={{ backgroundImage: `url(${media.imageUrl || ""})` }}
                 >
                   <Image
                     width={300}
                     height={300}
-                    src={`https://picsum.photos/id/${index * 17}/200/300`}
-                    alt={resource.title}
-                    className="w-full aspect-square hidden rounded-t-md"
+                    src={IMG_URL + media.poster_path}
+                    alt={media.title}
+                    className="w-full aspect-square hidden object-contain rounded-t-md"
                   />
                 </a>
                 <div className="h-full rounded-b-md flex flex-col items-left p-3 w-full block top-[100px] left-0 transition-opacity duration-300 hover:opacity-100 bg-slate-800 bg-opacity-50 z-10">
-                  <h3 className="text-xl font-bold mb-3">{resource.title}</h3>
+                  <h3 className="text-xl font-bold mb-3">{media.title}</h3>
                   <div className="flex gap-5">
                     <p className="text-sm w-24">Year Released: </p>
                     <div className="text-sm flex justify-end w-12 gap-2 items-center">
-                      <span>
-                        {new Date(resource.release_date).getFullYear()}
-                      </span>
+                      <span>{new Date(media.release_date).getFullYear()}</span>
                     </div>
                   </div>
                   <div className="flex gap-5">

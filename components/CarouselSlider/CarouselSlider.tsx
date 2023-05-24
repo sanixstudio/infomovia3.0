@@ -1,8 +1,8 @@
 "use client";
+import { BACKDROP_1280_URL } from "@/utils/constants/api_constants";
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { BACKDROP_1280 } from "@/utils/constants/media-constants";
 
 type CarouselSliderProps = {
   data: {
@@ -33,7 +33,7 @@ export default function CarouselSlider({
             width={1280}
             height={720}
             alt={el.title}
-            src={BACKDROP_1280 + el.backdrop_path}
+            src={BACKDROP_1280_URL + el.backdrop_path}
           />
           <div className="legend h-1/2 absolute flex flex-col gap-5">
             <h2 className="text-4xl px-4 pt-4 text-left font-bold">
