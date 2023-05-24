@@ -22,8 +22,7 @@
 - TanStack
 - redisDB
 # Other Features:
-- [ ] Enhancements 
-- [ ] Upcoming... 
+- [ ] Allow user to Add Movie/TV Shows Ratings
 
 ## Useful Packages 
 - Timeago.js

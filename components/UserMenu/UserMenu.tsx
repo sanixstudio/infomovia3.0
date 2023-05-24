@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import { useAppContext } from "@/context/appContext";
 
 const UserMenu = () => {
   const [loginModalIsOpen, setLoginModalIsOPen] = useState(false);
@@ -11,7 +12,7 @@ const UserMenu = () => {
   const closeLoginModal = () => setLoginModalIsOPen(true);
   const closeRegisterModal = () => setRegisterModalIsOpen(false);
 
-  const user = "";
+  const { user } = useAppContext();
 
   return (
     <>

@@ -13,4 +13,9 @@ export type MovieProps = {
 
 export type SectionTitleProps = {
   title: string;
-};
+}
+
+export type CommonModalProps = {
+  isOpen: boolean;
+  onClose: () => void
+}

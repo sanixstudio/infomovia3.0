@@ -4,7 +4,7 @@ const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 const AppContextProvider = ({ children }) => {
-  const [user, setUser] = useState("Adi");
+  const [user, setUser] = useState("");
   const [fakeData, setFakeData] = useState([]);
 
   useEffect(() => {

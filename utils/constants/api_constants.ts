@@ -1,0 +1,73 @@
+// @ts-ignore
+export const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+export const TMDB_ACCESS_TOKEN = process.env.NEXT_PUBLIC_TMDB_ACCESS_TOKEN;
+
+// Base URLs
+export const BASE_URL = "https://api.themoviedb.org/3/";
+export const IMG_URL = "https://image.tmdb.org/t/p/w185/";
+export const BACKDROP_1280_URL = "https://image.tmdb.org/t/p/w1280/";
+
+// General Categories
+export const PLAYING_NOW_URL = `${BASE_URL}movie/now_playing?language=en-US&api_key=${API_KEY}`;
+export const UP_COMING_URL = `${BASE_URL}movie/upcoming?language=en-US&api_key=${API_KEY}`;
+export const TOP_RATED_URL = `${BASE_URL}movie/top_rated?language=en-US&api_key=${API_KEY}`;
+
+// Genres
+export const GET_MOVIES_GENRE_LIST_URL = `${BASE_URL}genre/movie/list?language=en-US&api_key=${API_KEY}`;
+export const GET_TV_GENRE_LIST_URL = `${BASE_URL}genre/tv/list?language=en-US&api_key=${API_KEY}`;
+export const GET_MOVIES_BY_GENRE_URL = `${BASE_URL}discover/movie?api_key=${API_KEY}&genre/movie/list`;
+export const GET_TVs_BY_GENRE_URL = `${BASE_URL}discover/movie?api_key=${API_KEY}&with_genres=`;
+
+// People
+export const GET_POPULAR_PEOPLE_URL = `${BASE_URL}/person/popular?language=en-US?api_key=${API_KEY}`;
+export const GET_PEOPLE_DETAILS_URL = `${BASE_URL}/person?api_key=${API_KEY}&person_id=`;
+export const PEOPLE_URL = `${BASE_URL}search/person?api_key=${API_KEY}&query=`;
+
+// Movies
+export const SEARCH_MOVIES_URL = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
+
+// TV
+export const SEARCH_TV_URL = `${BASE_URL}search/tv?query=`;
+export const TRENDING_TV_URL = `${BASE_URL}trending/tv/day`;
+
+export const GENRES = {
+  moviesList: {
+    action: 28,
+    adventure: 12,
+    animation: 16,
+    comedy: 35,
+    crime: 80,
+    documentary: 99,
+    drama: 18,
+    family: 10751,
+    fantasy: 14,
+    history: 36,
+    horror: 27,
+    music: 10402,
+    mystery: 9648,
+    romance: 10749,
+    scienceFiction: 878,
+    tVMovie: 10770,
+    thriller: 53,
+    war: 10752,
+    western: 37,
+  },
+  tvList: {
+    actionAndAdventure: 10759,
+    animation: 16,
+    comedy: 35,
+    crime: 80,
+    documentary: 99,
+    drama: 18,
+    family: 10751,
+    kids: 10762,
+    mystery: 9648,
+    news: 10763,
+    reality: 10764,
+    sciFiAndFantasy: 10765,
+    soap: 10766,
+    talk: 10767,
+    warAndPolitics: 10768,
+    western: 37,
+  },
+};

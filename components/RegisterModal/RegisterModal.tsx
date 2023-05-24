@@ -28,7 +28,7 @@ const RegisterModal = ({
     <div>
       {registerModalIsOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-20 bg-slate-900 bg-opacity-90 backdrop-blur-lg">
-          <form className="bg-slate-800 border relative border-slate-700 form rounded-lg shadow-lg w-full max-w-md flex flex-col gap-10 p-8">
+          <form className="bg-slate-800 border relative border-slate-700 form rounded-lg shadow-lg w-full max-w-md flex flex-col gap-5 p-8">
             <IoIosCloseCircle
               size={32}
               className="absolute right-5 top-5 cursor-pointer hover:text-slate-500"
@@ -42,7 +42,7 @@ const RegisterModal = ({
                 id=""
                 name="username"
                 value={username}
-                placeholder="Your Name"
+                placeholder="Username"
                 onChange={(e) => setUsername(e.target.value)}
                 className="p-3 rounded-md"
                 tabIndex={1}
@@ -81,26 +81,26 @@ const RegisterModal = ({
                 id=""
                 name="confirm-password"
                 value={password}
-                placeholder="Your Password"
+                placeholder="Confirm Password"
                 onChange={(e) => setPassword(e.target.value)}
                 className="p-3 rounded-md"
                 tabIndex={4}
               />
             </div>
-            <div className="flex gap-3 justify-end">
-              <button
-                className="btn btn-outline"
-                tabIndex={5}
-                onClick={() => closeRegisterModal()}
-              >
-                Cancel
-              </button>
+            <div className="flex flex-col gap-3 justify-end">
               <button
                 className="btn btn-accent"
                 tabIndex={6}
                 onClick={() => console.log("submitting...")}
               >
                 Register
+              </button>
+              <button
+                className="btn btn-outline"
+                tabIndex={5}
+                onClick={() => closeRegisterModal()}
+              >
+                Cancel
               </button>
             </div>
           </form>
