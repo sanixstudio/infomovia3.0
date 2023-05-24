@@ -1,5 +1,5 @@
 import React from "react";
-import { SectionTitleProps } from "@/utils/typings";
+import { SectionTitleProps } from "@/utils/typings/typings";
 
 const Stats = ({ title }: SectionTitleProps) => {
   return (

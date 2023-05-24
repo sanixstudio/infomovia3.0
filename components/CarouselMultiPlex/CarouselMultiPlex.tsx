@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
 import data from "../../utils/sample-data/data.json";
 import Image from "next/image";
-import { SectionTitleProps } from "@/utils/typings";
+import { SectionTitleProps } from "@/utils/typings/typings";
 
 const Carousel = ({ title }: SectionTitleProps) => {
   const maxScrollWidth = useRef(0);
