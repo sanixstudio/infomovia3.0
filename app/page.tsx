@@ -20,7 +20,7 @@ export default function Home() {
     <div className="bg-slate-900">
       <Hero />
       <Carousel
-        title={"Top Picks"}
+        title={"Upcoming Movies"}
         fetchUrl={UP_COMING_URL}
         queryName={"upComingMovies"}
       />

@@ -1,4 +1,5 @@
 export type MovieProps = {
+  id: number;
   backdrop_path: string;
   imageUrl?: string;
   link: string;

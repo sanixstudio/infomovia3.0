@@ -1,20 +1,17 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
-import Image from "next/image";
 import { MovieProps, SectionTitleProps } from "@/utils/typings/typings";
-import { useQuery } from "@tanstack/react-query";
-import { fetchMedia } from "@/utils/fetchMoviesList";
-import { IMG_URL } from "@/utils/constants/api_constants";
+import { IMG_URL, PLAYING_NOW_URL } from "@/utils/constants/api_constants";
+import { useMovies } from "@/hooks/useFetchMovies";
+import Image from "next/image";
 
-const Carousel = ({ title, queryName, fetchUrl }: SectionTitleProps) => {
+const Carousel = ({ title }: SectionTitleProps) => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef<HTMLDivElement>(null);
 
-  const { data, status, isLoading, error } = useQuery([queryName], () =>
-    fetchMedia(fetchUrl)
-  );
+  const { data, status, isLoading, error } = useMovies(PLAYING_NOW_URL);
 
   console.log(data, status, isLoading, error);
 
@@ -119,11 +116,12 @@ const Carousel = ({ title, queryName, fetchUrl }: SectionTitleProps) => {
           ref={carousel}
           className="carousel-container relative flex gap-5 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
-          {data.map((media: MovieProps, index: number) => {
+          {data.results.map((media: MovieProps, index: number) => {
             return (
               <div
-                key={index}
-                className="carousel-item w-72 snap-start flex flex-col rounded-md"
+                key={media.id}
+                className="carousel-item w-[185px] snap-start flex flex-col rounded-md cursor-pointer border border-transparent hover:border-accent ease-in duration-150"
+                onClick={() => alert("hi")}
               >
                 <a
                   href={media.link}
@@ -131,15 +129,17 @@ const Carousel = ({ title, queryName, fetchUrl }: SectionTitleProps) => {
                   style={{ backgroundImage: `url(${media.imageUrl || ""})` }}
                 >
                   <Image
-                    width={300}
-                    height={300}
+                    width={185}
+                    height={185}
                     src={IMG_URL + media.poster_path}
                     alt={media.title}
-                    className="w-full aspect-square hidden object-contain rounded-t-md"
+                    className="w-full aspect-square object-cover hidden rounded-t-md bg-slate-800"
                   />
                 </a>
-                <div className="h-full rounded-b-md flex flex-col items-left p-3 w-full block top-[100px] left-0 transition-opacity duration-300 hover:opacity-100 bg-slate-800 bg-opacity-50 z-10">
-                  <h3 className="text-xl font-bold mb-3">{media.title}</h3>
+                <div className="h-full rounded-b-md items-left p-4 w-full top-[100px] left-0 transition-opacity duration-300 hover:opacity-100 bg-slate-800 bg-opacity-50 z-10">
+                  <h3 className="text-lg font-bold mb-3 line-clamp-2">
+                    {media.title}
+                  </h3>
                   <div className="flex gap-5">
                     <p className="text-sm w-24">Year Released: </p>
                     <div className="text-sm flex justify-end w-12 gap-2 items-center">
