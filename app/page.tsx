@@ -1,4 +1,6 @@
+'use client'
 import { Stats, TvShowCarousel } from "@/components";
+import FetchTest from "@/components/FetchTest";
 import { Celebrities, Hero } from "@/containers";
 import { UP_COMING_URL } from "@/utils/constants/api_constants";
 import dynamic from "next/dynamic";
@@ -19,11 +21,8 @@ export default function Home() {
   return (
     <div className="bg-slate-900">
       <Hero />
-      <Carousel
-        title={"Upcoming Movies"}
-        fetchUrl={UP_COMING_URL}
-        queryName={"upComingMovies"}
-      />
+      <FetchTest />
+      <Carousel title={"Upcoming Movies"} />
       <Celebrities />
       {/* <Carousel title={"Upcoming Movies"} /> */}
       <TvShowCarousel />

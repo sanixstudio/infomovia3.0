@@ -1,19 +1,22 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
-import { MovieProps, SectionTitleProps } from "@/utils/typings/typings";
-import { IMG_URL, PLAYING_NOW_URL } from "@/utils/constants/api_constants";
-import { useMovies } from "@/hooks/useFetchMovies";
 import Image from "next/image";
+import { MovieProps, SectionTitleProps } from "@/utils/typings/typings";
+import { useQuery } from "@tanstack/react-query";
+import { fetchMedia } from "@/utils/fetchMoviesList";
+import { IMG_URL, PLAYING_NOW_URL } from "@/utils/constants/api_constants";
+import useMediaData from "@/hooks/useFetchMovies";
 
 const Carousel = ({ title }: SectionTitleProps) => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef<HTMLDivElement>(null);
 
-  const { data, status, isLoading, error } = useMovies(PLAYING_NOW_URL);
+  const usePlayingNowMovies = useMediaData("playingNow", PLAYING_NOW_URL);
+  const { data, status, isLoading, error } = usePlayingNowMovies;
 
-  console.log(data, status, isLoading, error);
+  console.log(data);
 
   const movePrev = () => {
     if (currentIndex > 0) {
@@ -120,7 +123,7 @@ const Carousel = ({ title }: SectionTitleProps) => {
             return (
               <div
                 key={media.id}
-                className="carousel-item w-[185px] snap-start flex flex-col rounded-md cursor-pointer border border-transparent hover:border-accent ease-in duration-150"
+                className="carousel-item w-[185px] snap-start flex flex-col rounded-md cursor-pointer border border-transparent hover:outline-top ease-in duration-150"
                 onClick={() => alert("hi")}
               >
                 <a

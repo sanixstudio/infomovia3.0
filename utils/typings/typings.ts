@@ -17,8 +17,6 @@ export type MovieProps = {
 
 export type SectionTitleProps = {
   title: string;
-  queryName: string;
-  fetchUrl: RequestInfo | URL;
 };
 
 export type CommonModalProps = {
