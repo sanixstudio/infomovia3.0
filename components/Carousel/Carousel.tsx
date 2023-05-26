@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 
 // Data
-import data from "../../utils/sample-data/data.json";
+import data from "../../utils/sample_data/data.json";
 
 type Props = {
 
