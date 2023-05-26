@@ -1,10 +1,10 @@
-"use client";
+'use client'
 import { Header } from "@/containers";
 import { Footer } from "@/components";
 import AppContextProvider from "../context/appContext";
-import "../styles/globals.css";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { QueryClient } from "@tanstack/query-core";
+import "../styles/globals.css";
 
 export const metadata = {
   title: "Create Next App",
@@ -24,7 +24,7 @@ export default function RootLayout({
         <QueryClientProvider client={queryClient}>
           <AppContextProvider>
             <Header />
-            {children}
+            {children && <>{children}</>}
             <Footer />
           </AppContextProvider>
         </QueryClientProvider>

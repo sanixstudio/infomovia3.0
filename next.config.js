@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["image.tmdb.org"],
+    domains: ["image.tmdb.org", "https://image.tmdb.org/t/p/w185"],
     remotePatterns: [
       {
         protocol: "https",
@@ -17,6 +17,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    serverActions: true,
+  }
 };
 
 module.exports = nextConfig;

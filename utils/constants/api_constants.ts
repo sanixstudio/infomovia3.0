@@ -15,11 +15,11 @@ export const TOP_RATED_URL = `${BASE_URL}movie/top_rated?language=en-US&api_key=
 // Genres
 export const GET_MOVIES_GENRE_LIST_URL = `${BASE_URL}genre/movie/list?language=en-US&api_key=${API_KEY}`;
 export const GET_TV_GENRE_LIST_URL = `${BASE_URL}genre/tv/list?language=en-US&api_key=${API_KEY}`;
-export const GET_MOVIES_BY_GENRE_URL = `${BASE_URL}discover/movie?api_key=${API_KEY}&genre/movie/list`;
-export const GET_TVs_BY_GENRE_URL = `${BASE_URL}discover/movie?api_key=${API_KEY}&with_genres=`;
+export const GET_MOVIES_BY_GENRE_URL = `${BASE_URL}discover/movie&api_key=${API_KEY}&genre/movie/list`;
+export const GET_TVs_BY_GENRE_URL = `${BASE_URL}discover/movie&api_key=${API_KEY}&with_genres=`;
 
 // People
-export const GET_POPULAR_PEOPLE_URL = `${BASE_URL}/person/popular?language=en-US?api_key=${API_KEY}`;
+export const GET_POPULAR_PEOPLE_URL = `${BASE_URL}/person/popular?language=en-US&api_key=${API_KEY}`;
 export const GET_PEOPLE_DETAILS_URL = `${BASE_URL}/person?api_key=${API_KEY}&person_id=`;
 export const PEOPLE_URL = `${BASE_URL}search/person?api_key=${API_KEY}&query=`;
 
