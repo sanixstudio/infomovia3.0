@@ -1,19 +1,15 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, MutableRefObject } from "react";
 
 // Data
 import data from "../../utils/sample_data/data.json";
 
-type Props = {
+type CarouselProps = {};
 
-}
-
-//TODO: Fix Carousel Responsiveness
-
-const Carousel = () => {
-  const maxScrollWidth = useRef(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carousel = useRef(null);
+const Carousel: React.FC<CarouselProps> = () => {
+  const maxScrollWidth = useRef<number>(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const carousel = useRef<HTMLDivElement>(null);
 
   const movePrev = () => {
     if (currentIndex > 0) {
@@ -30,7 +26,7 @@ const Carousel = () => {
     }
   };
 
-  const isDisabled = (direction) => {
+  const isDisabled = (direction: string): boolean => {
     if (direction === "prev") {
       return currentIndex <= 0;
     }
@@ -45,15 +41,19 @@ const Carousel = () => {
   };
 
   useEffect(() => {
-    if (carousel !== null && carousel.current !== null) {
+    if (
+      carousel !== null &&
+      carousel.current !== null &&
+      carousel.current.offsetWidth
+    ) {
       carousel.current.scrollLeft = carousel.current.offsetWidth * currentIndex;
     }
   }, [currentIndex]);
 
   useEffect(() => {
-    maxScrollWidth.current = carousel.current
-      ? carousel.current.scrollWidth - carousel.current.offsetWidth
-      : 0;
+    maxScrollWidth.current =
+      //@ts-ignore
+      carousel?.current?.scrollWidth - carousel.current?.offsetWidth || 0;
   }, []);
 
   return (
@@ -107,7 +107,7 @@ const Carousel = () => {
           </button>
         </div>
         <div
-          ref={carousel}
+          ref={carousel as MutableRefObject<HTMLDivElement>}
           className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
           {data.resources.map((resource, index) => {
