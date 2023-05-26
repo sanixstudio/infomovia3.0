@@ -41,5 +41,20 @@
 }
 
 .carousel-slider {
-  object-fit: cover ;
+  object-fit: cover;
+}
+
+.flex-row-center {
+  flex-direction: row;
+}
+
+.flex-col-center {
+  flex-direction: column;
+}
+
+.flex-row-center,
+.flex-col-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

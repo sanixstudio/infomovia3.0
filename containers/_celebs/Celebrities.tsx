@@ -24,34 +24,31 @@ const Celebrities = () => {
     <div className="my-24 max-w-[1440px] rounded-xl bg-slate-900 p-4 mx-auto">
       <h1 className="text-4xl mb-10">Famous Celebrities</h1>
       <div className=" grid grid-cols-1 sm:grid-cols-2 place-items-center	lg:grid-cols-4 gap-4">
-        {data.results.slice(0, 8).map(
-          (celebrity: {
-            name: string;
-            profile_path: string;
-            id: React.Key;
-          }) => (
-            <div
-              key={celebrity.id}
-              className="flex flex-col items-center max-w-md"
-            >
-              <Image
-                width={200}
-                height={200}
-                src={IMG_URL + celebrity.profile_path}
-                alt=""
-                className="rounded-full"
-              />
-              <h3 className="text-xl font-bold my-6">{celebrity.name}</h3>
-              {/* <p className="px-4 line-clamp-2">
-                Benedict Timothy Carlton Cumberbatch CBE is an English actor.
-                Known for his work on screen and stage, he has received various
-                accolades, including a BAFTA TV Award, a Primetime Emmy Award
-                and a Laurence Olivier Award, in addition to nominations for two
-                Academy Awards, two BAFTA Film Awards and four Golden Globes.
-              </p> */}
-            </div>
-          )
-        )}
+        {data.results
+          .slice(0, 8)
+          .map(
+            (celebrity: {
+              name: string;
+              profile_path: string;
+              id: React.Key;
+            }) => (
+              <div
+                key={celebrity.id}
+                className="flex-col-center max-w-md relative ease-in duration-150 border-8 border-slate-800 rounded-full hover:border-accent cursor-pointer "
+              >
+                <Image
+                  width={200}
+                  height={200}
+                  src={IMG_URL + celebrity.profile_path}
+                  alt=""
+                  className="rounded-full w-[200px] h-[200px] object-cover"
+                />
+                <p className="text-xl font-semibold absolute bottom-0 bg-gradient-to-t from-black to-transparent bg-opacity-20 w-full rounded-b-full h-1/2 flex-row-center pt-4">
+                  {celebrity.name}
+                </p>
+              </div>
+            )
+          )}
       </div>
     </div>
   );
