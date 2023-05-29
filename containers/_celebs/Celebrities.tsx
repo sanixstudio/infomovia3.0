@@ -12,8 +12,6 @@ const Celebrities = () => {
   const celebrities = useMediaData("getFamousCelebs", GET_POPULAR_PEOPLE_URL);
   const { data, status, isLoading, error } = celebrities;
 
-  console.log(data);
-
   if (error) throw error;
 
   if (isLoading) {

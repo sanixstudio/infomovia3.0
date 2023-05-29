@@ -17,8 +17,8 @@ export default function Home() {
       <Carousel title={"Upcoming Movies"} />
       <Celebrities />
       {/* <Carousel title={"Upcoming Movies"} /> */}
-      <TvShowCarousel />
       <Stats title="Trending Now" />
+      <TvShowCarousel />
     </div>
   );
 }

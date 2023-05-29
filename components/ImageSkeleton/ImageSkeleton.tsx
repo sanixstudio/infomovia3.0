@@ -8,7 +8,6 @@ type ImageSkeletonProps = {
 
 const ImageSkeleton = ({ src, alt }: ImageSkeletonProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  console.log(src);
 
   const handleImageLoad = () => {
     setIsLoading(false);

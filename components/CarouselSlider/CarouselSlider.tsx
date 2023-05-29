@@ -21,11 +21,10 @@ export default function CarouselSlider({
 }: CarouselSliderProps): JSX.Element {
   return (
     <Carousel
-      autoPlay={play}
+      // autoPlay={play}
       infiniteLoop
       emulateTouch
       showIndicators={false}
-      className="h-full"
     >
       {data?.map((el) => (
         <div key={el.id}>
@@ -34,6 +33,7 @@ export default function CarouselSlider({
             height={720}
             alt={el.title}
             src={BACKDROP_1280_URL + el.backdrop_path}
+            className="object-cover"
           />
           <div className="legend h-1/2 absolute flex flex-col gap-5">
             <h2 className="text-4xl px-4 pt-4 text-left font-bold">

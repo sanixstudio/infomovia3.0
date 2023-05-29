@@ -6,8 +6,6 @@ const FetchTest = () => {
   const usePlayingNowMovies = useMediaData("playingNow", PLAYING_NOW_URL);
   const { data, isLoading, error } = usePlayingNowMovies;
 
-  console.log(data);
-
   if (isLoading) {
     return <div>Loading...</div>;
   }

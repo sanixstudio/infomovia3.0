@@ -16,8 +16,6 @@ const Carousel = ({ title }: SectionTitleProps) => {
   const usePlayingNowMovies = useMediaData("playingNow", PLAYING_NOW_URL);
   const { data, status, isLoading, error } = usePlayingNowMovies;
 
-  console.log(data);
-
   const movePrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prevState) => prevState - 1);
