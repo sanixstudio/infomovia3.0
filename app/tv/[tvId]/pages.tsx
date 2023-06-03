@@ -1,7 +1,15 @@
+"use client";
 import { FullCelebCard, FullPosterCard } from "@/components";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const page = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const path = usePathname();
+  const params = path.split("/").join("");
+
+  console.log(params);
+
   const celebrity = {
     name: "Tom Hanks",
     popularity: 90,
