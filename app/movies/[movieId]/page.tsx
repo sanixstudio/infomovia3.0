@@ -3,7 +3,11 @@ import { FullCelebCard, FullPosterCard } from "@/components";
 import { usePathname } from "next/navigation";
 import useMediaData from "../../../hooks/useFetchMovies";
 import React from "react";
-import { SEARCH_MOVIES_URL } from "@/utils/constants/api_constants";
+import {
+  API_KEY,
+  BASE_URL,
+  SEARCH_MOVIES_URL,
+} from "@/utils/constants/api_constants";
 import { BsThreeDots } from "react-icons/bs";
 
 const page = () => {
@@ -13,11 +17,9 @@ const page = () => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data, status } = useMediaData(
-    "playingNow",
-    SEARCH_MOVIES_URL + params
+    "movieDetails",
+    `${BASE_URL}movie/${params}?api_key=${API_KEY}`
   );
-
-  console.log(SEARCH_MOVIES_URL + params);
 
   if (status === "loading")
     return (
@@ -30,20 +32,10 @@ const page = () => {
       />
     );
 
-  console.log(params);
-
-  const celebrity = {
-    name: "Tom Hanks",
-    popularity: 90,
-    gender: "Male",
-    knownFor: ["Forrest Gump", "Cast Away", "Toy Story"],
-    image: "https://picsum.photos/id/354/450/659",
-  };
-
   return (
     <div className="min-h-[1000px] navbar max-w -[1440px] mx-auto my-0">
       <div className="w-full max-w-[1200px] mx-auto">
-        <FullPosterCard />
+        <FullPosterCard movie={...data} />
       </div>
     </div>
   );

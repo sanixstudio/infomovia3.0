@@ -7,11 +7,15 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchMedia } from "@/utils/fetchMoviesList";
 import { IMG_URL, PLAYING_NOW_URL } from "@/utils/constants/api_constants";
 import useMediaData from "@/hooks/useFetchMovies";
+import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const Carousel = ({ title }: SectionTitleProps) => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef<HTMLDivElement>(null);
+
+  const router = usePathname();
 
   const usePlayingNowMovies = useMediaData("playingNow", PLAYING_NOW_URL);
   const { data, status, isLoading, error } = usePlayingNowMovies;
@@ -122,10 +126,9 @@ const Carousel = ({ title }: SectionTitleProps) => {
               <div
                 key={media.id}
                 className="carousel-item w-[185px] snap-start flex flex-col rounded-md cursor-pointer border border-transparent hover:outline-top ease-in duration-150"
-                onClick={() => alert("hi")}
               >
                 <a
-                  href={media.link}
+                  href={`/movies/${media.id}`}
                   className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                   style={{ backgroundImage: `url(${media.imageUrl || ""})` }}
                 >
