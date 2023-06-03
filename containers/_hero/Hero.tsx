@@ -1,7 +1,6 @@
 "use client";
-import { CarouselSlider, Loading } from "@/components";
+import { CarouselSlider, LoadingDots } from "@/components";
 import React from "react";
-import Image from "next/image";
 import useMediaData from "@/hooks/useFetchMovies";
 import { PLAYING_NOW_URL } from "@/utils/constants/api_constants";
 
@@ -9,7 +8,7 @@ const Hero = () => {
   const heroData = useMediaData("getMoviesForHero", PLAYING_NOW_URL);
   const { data, isLoading, error } = heroData;
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <LoadingDots />;
 
   if (error) return <h1>Error</h1>;
 

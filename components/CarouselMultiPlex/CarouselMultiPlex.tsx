@@ -9,6 +9,7 @@ import { IMG_URL, PLAYING_NOW_URL } from "@/utils/constants/api_constants";
 import useMediaData from "@/hooks/useFetchMovies";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
+import LoadingDots from "../LoadingDots/LoadingDots";
 
 const Carousel = ({ title }: SectionTitleProps) => {
   const maxScrollWidth = useRef(0);
@@ -62,7 +63,7 @@ const Carousel = ({ title }: SectionTitleProps) => {
   }, []);
 
   if (status === "loading" || isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingDots />;
   }
 
   if (status === "error") {

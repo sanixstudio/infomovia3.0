@@ -1,5 +1,5 @@
 "use client";
-import { FullCelebCard, FullPosterCard } from "@/components";
+import { FullPosterCard, LoadingDots } from "@/components";
 import { usePathname } from "next/navigation";
 import useMediaData from "../../../hooks/useFetchMovies";
 import React from "react";
@@ -21,16 +21,7 @@ const page = () => {
     `${BASE_URL}movie/${params}?api_key=${API_KEY}`
   );
 
-  if (status === "loading")
-    return (
-      <BsThreeDots
-        height="80"
-        width="80"
-        radius="9"
-        color="#0BC9C1"
-        aria-label="three-dots-loading"
-      />
-    );
+  if (status === "loading") return <LoadingDots />;
 
   return (
     <div className="min-h-[1000px] navbar max-w -[1440px] mx-auto my-0">

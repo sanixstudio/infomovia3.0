@@ -13,5 +13,4 @@ export { default as FullCelebCard } from "./FullCelebCard/FullCelebCard";
 export { default as Footer } from "./Footer/Footer";
 export { default as LoginModal } from "./LoginModal/LoginModal";
 export { default as RegisterModal } from "./RegisterModal/RegisterModal";
-export { default as Loading } from "./Loading/Loading";
-export { default as HeroLoading } from "./HeroLoading/HeroLoading";
+export { default as LoadingDots } from "./LoadingDots/LoadingDots";

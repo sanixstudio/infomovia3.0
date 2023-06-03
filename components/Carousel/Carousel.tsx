@@ -2,8 +2,8 @@
 import { useState, useRef, useEffect, MutableRefObject, Key } from "react";
 import useMediaData from "@/hooks/useFetchMovies";
 import { UP_COMING_URL } from "@/utils/constants/api_constants";
-import HeroLoading from "../HeroLoading/HeroLoading";
 import Image from "next/image";
+import LoadingDots from "../LoadingDots/LoadingDots";
 
 type CarouselProps = {};
 
@@ -61,7 +61,7 @@ const Carousel: React.FC<CarouselProps> = () => {
   }, []);
 
   if (isLoading) {
-    return <HeroLoading />;
+    return <LoadingDots />;
   }
 
   return (

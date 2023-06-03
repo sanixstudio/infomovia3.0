@@ -6,7 +6,7 @@ import {
   GET_POPULAR_PEOPLE_URL,
   IMG_URL,
 } from "@/utils/constants/api_constants";
-import { Loading } from "@/components";
+import { LoadingDots } from "@/components";
 
 const Celebrities = () => {
   const celebrities = useMediaData("getFamousCelebs", GET_POPULAR_PEOPLE_URL);
@@ -15,7 +15,7 @@ const Celebrities = () => {
   if (error) throw error;
 
   if (isLoading) {
-    return <Loading />;
+    return <LoadingDots />;
   }
 
   return (

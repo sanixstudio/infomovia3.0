@@ -3,13 +3,13 @@ import React from "react";
 import { SectionTitleProps } from "@/utils/typings/typings";
 import useMediaData from "@/hooks/useFetchMovies";
 import { TRENDING_TV_URL } from "@/utils/constants/api_constants";
-import Loading from "../Loading/Loading";
+import { LoadingDots } from "@/components";
 
 const Stats = ({ title }: SectionTitleProps) => {
   const trendingTv = useMediaData("trendingTv", TRENDING_TV_URL);
   const { data, isLoading, error } = trendingTv;
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <LoadingDots />;
 
   if (error) return <h1>Error:</h1>;
 
