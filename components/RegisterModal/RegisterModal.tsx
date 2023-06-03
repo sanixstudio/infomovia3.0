@@ -27,8 +27,8 @@ const RegisterModal = ({
   return (
     <div>
       {registerModalIsOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-20 bg-slate-900 bg-opacity-90 backdrop-blur-lg">
-          <form className="bg-slate-800 border relative border-slate-700 form rounded-lg shadow-lg w-full max-w-md flex flex-col gap-5 p-8">
+        <div className="fixed inset-0 flex items-center justify-center z-20 bg-slate-900 bg-opacity-90 backdrop-blur-xl">
+          <form className="bg-gradient-to-l mx-4 from-slate-700 to-slate-800 border relative border-slate-700 form rounded-lg shadow-lg w-full max-w-md flex flex-col gap-5 p-8">
             <IoIosCloseCircle
               size={32}
               className="absolute right-5 top-5 cursor-pointer hover:text-slate-500"
@@ -87,16 +87,16 @@ const RegisterModal = ({
                 tabIndex={4}
               />
             </div>
-            <div className="flex flex-col gap-3 justify-end">
+            <div className="flex gap-3 justify-between">
               <button
-                className="btn btn-accent"
+                className="btn btn-accent flex-1"
                 tabIndex={6}
                 onClick={() => console.log("submitting...")}
               >
                 Register
               </button>
               <button
-                className="btn btn-outline"
+                className="btn btn-outline flex-1"
                 tabIndex={5}
                 onClick={() => closeRegisterModal()}
               >

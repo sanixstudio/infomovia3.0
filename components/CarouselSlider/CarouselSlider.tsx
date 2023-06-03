@@ -21,7 +21,7 @@ export default function CarouselSlider({
 }: CarouselSliderProps): JSX.Element {
   return (
     <Carousel
-      // autoPlay={play}
+      autoPlay={play}
       infiniteLoop
       emulateTouch
       showIndicators={false}

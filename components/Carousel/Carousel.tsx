@@ -1,10 +1,9 @@
 "use client";
 import { useState, useRef, useEffect, MutableRefObject, Key } from "react";
-
 import useMediaData from "@/hooks/useFetchMovies";
 import { UP_COMING_URL } from "@/utils/constants/api_constants";
-import Image from "next/image";
 import HeroLoading from "../HeroLoading/HeroLoading";
+import Image from "next/image";
 
 type CarouselProps = {};
 

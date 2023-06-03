@@ -16,7 +16,7 @@ const UserMenu = () => {
 
   return (
     <>
-      <div className="navbar-end">
+      <div className="hidden sm:block">
         {user ? (
           <div className="flex-none">
             <div className="dropdown dropdown-end">
