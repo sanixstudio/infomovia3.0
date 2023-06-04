@@ -6,14 +6,23 @@ import {
   HiddenNavbar,
   ToggleDarkMode,
 } from "@/components";
+import Image from "next/image";
 
 const Logo = () => {
   return (
     <a
       href="/"
-      className="text-xl sm:text-2xl lg:text-3xl text-white bg-accent p-2 rounded font-bold uppercase"
+      // className="text-xl sm:text-2xl lg:text-3xl text-white bg-accent p-2 rounded font-bold uppercase"
+      className="mr-8"
     >
-      InfoMovia
+      {/* InfoMovia */}
+      <Image
+        src="/images/im_logo.png"
+        width={400}
+        height={100}
+        alt=""
+        className="max-w-[200px] md:max-w-full"
+      />
     </a>
   );
 };

@@ -11,7 +11,7 @@ import {
 type movieDetailsProps = {
   movie: {
     title: string;
-    release_date: number;
+    release_date: string;
     ratings: number;
     popularity: number;
     vote_count: number;

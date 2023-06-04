@@ -27,8 +27,8 @@ const RegisterModal = ({
   return (
     <div>
       {registerModalIsOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-20 bg-slate-900 bg-opacity-90 backdrop-blur-xl">
-          <form className="bg-gradient-to-l mx-4 from-slate-700 to-slate-800 border relative border-slate-700 form rounded-lg shadow-lg w-full max-w-md flex flex-col gap-5 p-8">
+        <div className="fixed inset-0 flex items-center justify-center z-20 bg-slate-900 bg-opacity-95 backdrop-blur-xl">
+          <form className="bg-gradient-to-l mx-4 from-slate-700 to-slate-800 border relative border-slate-700 form rounded-lg shadow-2xl w-full max-w-md flex flex-col gap-5 p-8">
             <IoIosCloseCircle
               size={32}
               className="absolute right-5 top-5 cursor-pointer hover:text-slate-500"
