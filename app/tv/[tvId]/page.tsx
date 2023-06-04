@@ -11,7 +11,7 @@ const page = () => {
   return (
     <div className="min-h-[1000px] navbar max-w -[1440px] mx-auto my-0">
       <div className="w-full max-w-[1200px] mx-auto">
-        <FullPosterCard
+        {/* <FullPosterCard
           movie={{
             title: "",
             release_date: 0,
@@ -24,7 +24,7 @@ const page = () => {
             overview: "",
             genres: [],
           }}
-        />
+        /> */}
       </div>
     </div>
   );
