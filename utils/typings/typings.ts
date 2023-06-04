@@ -23,3 +23,12 @@ export type CommonModalProps = {
   isOpen: boolean;
   onClose: () => void;
 };
+
+export type PosterProps = {
+  media: {
+    id: number;
+    title: string;
+    poster_path: string;
+    release_date: string;
+  };
+};

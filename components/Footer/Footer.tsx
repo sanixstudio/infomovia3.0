@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-slate-950 dark:bg-slate-600">
+    <div className="bg-slate-950 dark:bg-slate-600 mt-auto">
       <div className="max-w-[1440px] rounded-xl p-1 mx-auto">
         <footer className="footer p-10 text-base-content">
           <div>

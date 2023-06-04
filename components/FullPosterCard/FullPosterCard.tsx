@@ -31,7 +31,7 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
         <Image
           width={300}
           height={310}
-          src={BACKDROP_1280_URL + movie.poster_path}
+          src={movie.poster_path ? movie.poster_path : "/images/No-Image-Placeholder.svg"}
           alt="Movie Poster"
           className="rounded-lg p-2 max-w-full"
         />

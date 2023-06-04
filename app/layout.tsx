@@ -18,9 +18,11 @@ export default function RootLayout({
       <body>
         <QueryClientProvider client={queryClient}>
           <AppContextProvider>
-            <Header />
-            {children && <>{children}</>}
-            <Footer />
+            <div>
+              <Header />
+              {children && <>{children}</>}
+              <Footer />
+            </div>
           </AppContextProvider>
         </QueryClientProvider>
       </body>

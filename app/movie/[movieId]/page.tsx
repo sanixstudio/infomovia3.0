@@ -19,7 +19,7 @@ const page = () => {
   if (status === "loading") return <LoadingDots />;
 
   return (
-    <div className="min-h-[1000px] navbar max-w -[1440px] mx-auto my-0">
+    <div className="min-h-fit navbar max-w -[1440px] mx-auto my-0">
       <div className="w-full max-w-[1200px] mx-auto">
         <FullPosterCard movie={data} />
       </div>
