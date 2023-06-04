@@ -7,7 +7,16 @@ import { PosterProps } from "@/utils/typings/typings";
 const Poster = ({ media }: PosterProps) => {
   console.log(IMG_URL + media.poster_path);
   const NO_IMAGE = "/images/No-Image-Placeholder.svg";
-  
+  const posterPath = media.poster_path
+    ? `${IMG_URL}${media.poster_path}`
+    : NO_IMAGE;
+
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    e.currentTarget.src = NO_IMAGE;
+  };
+
   return (
     <div
       key={media.id}
@@ -20,11 +29,8 @@ const Poster = ({ media }: PosterProps) => {
         <Image
           width={185}
           height={185}
-          src={
-            media.poster_path === null
-              ? "https://picsum.photos/id/237/200/300"
-              : IMG_URL + media.poster_path
-          }
+          src={posterPath}
+          onError={() => handleImageError}
           alt={media.title}
           className="w-full aspect-square object-cover hidden rounded-t-md bg-slate-800"
         />

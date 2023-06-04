@@ -24,16 +24,27 @@ type movieDetailsProps = {
 };
 
 const FullPosterCard = ({ movie }: movieDetailsProps) => {
-  console.log(movie);
+  const NO_IMAGE = "/images/No-Image-Placeholder.svg";
+  const posterPath = movie.poster_path
+    ? `${BACKDROP_1280_URL}${movie.poster_path}`
+    : NO_IMAGE;
+
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    e.currentTarget.src = NO_IMAGE;
+  };
+
   return (
-    <div className="flex-1 flex flex-col justify-center items-center lg:items-start lg:flex-row gap-20 w-full">
+    <div className="flex-1 flex flex-col mt-8 md:mt-20 justify-center items-center lg:items-start lg:flex-row gap-20 w-full">
       <div className="">
         <Image
           width={300}
           height={310}
-          src={movie.poster_path ? movie.poster_path : "/images/No-Image-Placeholder.svg"}
+          src={posterPath}
           alt="Movie Poster"
           className="rounded-lg p-2 max-w-full"
+          onError={() => handleImageError}
         />
       </div>
 

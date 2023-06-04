@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <QueryClientProvider client={queryClient}>
           <AppContextProvider>
-            <div>
+            <div className="flex flex-col h-screen">
               <Header />
               {children && <>{children}</>}
               <Footer />

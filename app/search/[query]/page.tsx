@@ -24,7 +24,7 @@ const page = () => {
 
   return (
     <>
-      {data.results.length ? (
+      {data.results?.length ? (
         <div className="my-10 max-w-[1440px] mx-auto p-4">
           <h1 className="text-4xl mb-10">Results</h1>
           <div className="flex flex-wrap gap-10 justify-center">
