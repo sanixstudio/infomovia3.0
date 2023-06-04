@@ -1,5 +1,5 @@
 "use client";
-import { FullCelebCard, FullPosterCard, LoadingDots } from "@/components";
+import { FullCelebCard, LoadingDots } from "@/components";
 import { usePathname } from "next/navigation";
 import useMediaData from "../../../hooks/useFetchMovies";
 import React from "react";

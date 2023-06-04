@@ -1,4 +1,4 @@
-import { IMG_URL } from "@/utils/constants/api_constants";
+import { BACKDROP_1280_URL } from "@/utils/constants/api_constants";
 import Image from "next/image";
 import { AiFillStar, AiOutlineCalendar } from "react-icons/ai";
 import { BsPlusCircleFill } from "react-icons/bs";
@@ -29,11 +29,11 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
     <div className="flex-1 flex flex-col justify-center items-center lg:items-start lg:flex-row gap-20 w-full">
       <div className="">
         <Image
-          width={217}
+          width={300}
           height={310}
-          src={IMG_URL + movie.poster_path}
+          src={BACKDROP_1280_URL + movie.poster_path}
           alt="Movie Poster"
-          className="rounded-lg border-8 border-gray-300 p-2 w-full"
+          className="rounded-lg p-2 max-w-full"
         />
       </div>
 

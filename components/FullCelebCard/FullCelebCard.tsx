@@ -1,4 +1,4 @@
-import { IMG_URL } from "@/utils/constants/api_constants";
+import { BACKDROP_1280_URL, IMG_URL } from "@/utils/constants/api_constants";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -38,9 +38,9 @@ const FullCelebCard = ({ celebrity }: FullCelebCardProps) => {
     <div className="flex-1 flex flex-col items-center lg:items-start lg:flex-row gap-20 w-full">
       <div>
         <Image
-          width={185}
+          width={400}
           height={659}
-          src={IMG_URL + celebrity.profile_path}
+          src={BACKDROP_1280_URL + celebrity.profile_path}
           alt="Celebrity Poster"
           className="max-w-full rounded-[20px] border-gray-300 p-2"
         />

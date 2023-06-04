@@ -21,7 +21,14 @@ const Logo = () => {
         width={400}
         height={100}
         alt=""
-        className="max-w-[200px] md:max-w-full"
+        className="hidden sm:block max-w-[200px] md:max-w-full"
+      />
+      <Image
+        src="/images/im_icon.png"
+        width={40}
+        height={100}
+        alt=""
+        className="sm:hidden max-w-[200px] md:max-w-full"
       />
     </a>
   );

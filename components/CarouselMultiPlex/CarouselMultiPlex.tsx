@@ -129,7 +129,7 @@ const Carousel = ({ title }: SectionTitleProps) => {
                 className="carousel-item w-[185px] snap-start flex flex-col rounded-md cursor-pointer border border-transparent hover:outline-top ease-in duration-150"
               >
                 <a
-                  href={`/movies/${media.id}`}
+                  href={`/movie/${media.id}`}
                   className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                   style={{ backgroundImage: `url(${media.imageUrl || ""})` }}
                 >

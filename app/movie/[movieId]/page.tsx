@@ -3,12 +3,7 @@ import { FullPosterCard, LoadingDots } from "@/components";
 import { usePathname } from "next/navigation";
 import useMediaData from "../../../hooks/useFetchMovies";
 import React from "react";
-import {
-  API_KEY,
-  BASE_URL,
-  SEARCH_MOVIES_URL,
-} from "@/utils/constants/api_constants";
-import { BsThreeDots } from "react-icons/bs";
+import { API_KEY, BASE_URL } from "@/utils/constants/api_constants";
 
 const page = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
