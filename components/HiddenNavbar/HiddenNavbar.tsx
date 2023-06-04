@@ -1,6 +1,8 @@
 import React from "react";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import { GENRES } from "@/utils/constants/api_constants";
+import Link from "next/link";
 
 const HiddenNavbar = () => {
   const [loginModalIsOpen, setLoginModalIsOPen] = React.useState(false);
@@ -45,25 +47,14 @@ const HiddenNavbar = () => {
                 <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
               </svg>
             </a>
-            <ul className="p-2 bg-slate-800">
-              <li>
-                <a>Action</a>
-              </li>
-              <li>
-                <a>Animation </a>
-              </li>
-              <li>
-                <a>Comedy</a>
-              </li>
-              <li>
-                <a>Horror</a>
-              </li>
-              <li>
-                <a>Submenu 2</a>
-              </li>
-              <li>
-                <a>Submenu 2</a>
-              </li>
+            <ul className="p-2 bg-slate-800 w-full">
+              {Object.entries(GENRES.moviesList).map(([key, value]) => (
+                <li key={value}>
+                  <Link href={`/genre/${value}`} className="py-1">
+                    {key}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </li>
           <li tabIndex={1}>
@@ -95,9 +86,6 @@ const HiddenNavbar = () => {
             </ul>
           </li>
           <li>
-            <a>Item 3</a>
-          </li>
-          <li>
             <div className="md:hidden form-control">
               <input
                 type="text"
@@ -122,14 +110,14 @@ const HiddenNavbar = () => {
           </div>
         </ul>
       </div>
-        <LoginModal
-          loginModalIsOpen={loginModalIsOpen}
-          closeLoginModal={closeLoginModal}
-        />
-        <RegisterModal
-          registerModalIsOpen={registerModalIsOpen}
-          closeRegisterModal={closeRegisterModal}
-        />
+      <LoginModal
+        loginModalIsOpen={loginModalIsOpen}
+        closeLoginModal={closeLoginModal}
+      />
+      <RegisterModal
+        registerModalIsOpen={registerModalIsOpen}
+        closeRegisterModal={closeRegisterModal}
+      />
     </>
   );
 };

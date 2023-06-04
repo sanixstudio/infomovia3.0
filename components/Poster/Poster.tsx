@@ -5,7 +5,6 @@ import { IMG_URL } from "@/utils/constants/api_constants";
 import { PosterProps } from "@/utils/typings/typings";
 
 const Poster = ({ media }: PosterProps) => {
-  console.log(IMG_URL + media.poster_path);
   const NO_IMAGE = "/images/No-Image-Placeholder.svg";
   const posterPath = media.poster_path
     ? `${IMG_URL}${media.poster_path}`

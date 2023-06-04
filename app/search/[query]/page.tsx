@@ -14,7 +14,7 @@ const page = () => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data, isLoading, error } = useMediaData(
-    "movieDetails",
+    "getSearchedMoviesDetails",
     `${BASE_URL}search/movie?query=${params}&api_key=${API_KEY}`
   );
 

@@ -1,3 +1,5 @@
+import { Key } from "react";
+
 export type MovieProps = {
   id: number;
   backdrop_path: string;
@@ -26,7 +28,7 @@ export type CommonModalProps = {
 
 export type PosterProps = {
   media: {
-    id: number;
+    id: Key;
     title: string;
     poster_path: string;
     release_date: string;

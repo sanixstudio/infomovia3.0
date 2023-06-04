@@ -27,7 +27,6 @@ type FullCelebCardProps = {
 };
 
 const FullCelebCard = ({ celebrity }: FullCelebCardProps) => {
-  console.log(celebrity);
   const getGender = () => {
     if (celebrity.gender === 1) return "Female";
     if (celebrity.gender === 2) return "Male";

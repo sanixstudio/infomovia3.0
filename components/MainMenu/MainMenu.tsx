@@ -1,3 +1,5 @@
+import { GENRES } from "@/utils/constants/api_constants";
+import Link from "next/link";
 import React from "react";
 
 const MainMenu = () => {
@@ -18,24 +20,13 @@ const MainMenu = () => {
             </svg>
           </a>
           <ul className="p-2 bg-slate-800 z-10">
-            <li>
-              <a>Action</a>
-            </li>
-            <li>
-              <a>Animation </a>
-            </li>
-            <li>
-              <a>Comedy</a>
-            </li>
-            <li>
-              <a>Horror</a>
-            </li>
-            <li>
-              <a>Submenu 2</a>
-            </li>
-            <li>
-              <a>Submenu 2</a>
-            </li>
+            {Object.entries(GENRES.moviesList).map(([key, value]) => (
+              <li key={value}>
+                <Link href={`/genre/${value}`} className="py-1">
+                  {key}
+                </Link>
+              </li>
+            ))}
           </ul>
         </li>
         <li tabIndex={0}>

@@ -12,7 +12,7 @@ const page = () => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data, status } = useMediaData(
-    "movieDetails",
+    "getCelebrityDetails",
     `${BASE_URL}person/${params}?api_key=${API_KEY}`
   );
 
