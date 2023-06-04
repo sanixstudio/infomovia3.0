@@ -1,15 +1,11 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { AiFillStar } from "react-icons/ai";
-import Image from "next/image";
 import { MovieProps, SectionTitleProps } from "@/utils/typings/typings";
-import { useQuery } from "@tanstack/react-query";
-import { fetchMedia } from "@/utils/fetchMoviesList";
-import { IMG_URL, PLAYING_NOW_URL } from "@/utils/constants/api_constants";
+import { PLAYING_NOW_URL } from "@/utils/constants/api_constants";
 import useMediaData from "@/hooks/useFetchMovies";
-import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 import LoadingDots from "../LoadingDots/LoadingDots";
+import Poster from "../Poster/Poster";
 
 const Carousel = ({ title }: SectionTitleProps) => {
   const maxScrollWidth = useRef(0);
@@ -123,44 +119,7 @@ const Carousel = ({ title }: SectionTitleProps) => {
           className="carousel-container relative flex gap-5 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
           {data.results.map((media: MovieProps, index: number) => {
-            return (
-              <div
-                key={media.id}
-                className="carousel-item w-[185px] snap-start flex flex-col rounded-md cursor-pointer border border-transparent hover:outline-top ease-in duration-150"
-              >
-                <a
-                  href={`/movie/${media.id}`}
-                  className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
-                  style={{ backgroundImage: `url(${media.imageUrl || ""})` }}
-                >
-                  <Image
-                    width={185}
-                    height={185}
-                    src={IMG_URL + media.poster_path}
-                    alt={media.title}
-                    className="w-full aspect-square object-cover hidden rounded-t-md bg-slate-800"
-                  />
-                </a>
-                <div className="h-full rounded-b-md items-left p-4 w-full top-[100px] left-0 transition-opacity duration-300 hover:opacity-100 bg-slate-800 bg-opacity-50 z-10">
-                  <h3 className="text-lg font-bold mb-3 line-clamp-2">
-                    {media.title}
-                  </h3>
-                  <div className="flex gap-5">
-                    <p className="text-sm w-24">Year Released: </p>
-                    <div className="text-sm flex justify-end w-12 gap-2 items-center">
-                      <span>{new Date(media.release_date).getFullYear()}</span>
-                    </div>
-                  </div>
-                  <div className="flex gap-5">
-                    <p className="text-sm w-24">Ratings: </p>
-                    <div className="text-sm flex justify-end w-12 gap-1 items-center">
-                      <AiFillStar color="yellow" />
-                      <p>5.8</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
+            return <Poster key={media.id} media={media} />;
           })}
         </div>
       </div>
