@@ -2,8 +2,10 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import useMediaData from "@/hooks/useFetchMovies";
-import { API_KEY, BASE_URL } from "@/utils/constants/api_constants";
-import { LoadingDots, Poster } from "@/components";
+import { API_KEY, BASE_URL, IMG_URL } from "@/utils/constants/api_constants";
+import { LoadingDots } from "@/components";
+import Image from "next/image";
+import Link from "next/link";
 
 const page = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -20,8 +22,6 @@ const page = () => {
 
   if (error) return <h1 className="text-6xl">Error</h1>;
 
-  console.log(data.results);
-
   return (
     <>
       {data.results?.length ? (
@@ -35,7 +35,15 @@ const page = () => {
                 poster_path: string;
                 release_date: string;
               }) => (
-                <Poster key={movie.id} media={movie} />
+                // <Poster key={movie.id} media={movie} />
+                <Link key={movie.id} href={`/movie/${movie.id}`}>
+                  <Image
+                    src={IMG_URL + movie.poster_path}
+                    width={185}
+                    height={200}
+                    alt=""
+                  />
+                </Link>
               )
             )}
           </div>

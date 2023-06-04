@@ -30,6 +30,9 @@ export const SEARCH_MOVIES_URL = `${BASE_URL}search/movie?api_key=${API_KEY}&lan
 export const SEARCH_TV_URL = `${BASE_URL}search/tv?query=`;
 export const TRENDING_TV_URL = `${BASE_URL}trending/tv/day?api_key=${API_KEY}&language=en-US&`;
 
+// Image Fallback
+export const NO_IMAGE = "/images/No-Image-Placeholder.svg";
+
 export const GENRES = {
   moviesList: {
     action: 28,

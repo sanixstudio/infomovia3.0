@@ -13,7 +13,7 @@ const Carousel: React.FC<CarouselProps> = () => {
   const carousel = useRef<HTMLDivElement>(null);
 
   const upComing = useMediaData("upComingForHero", UP_COMING_URL);
-  const { data, status, isLoading, error } = upComing;
+  const { data, isLoading, error } = upComing;
 
   const movePrev = () => {
     if (currentIndex > 0) {
@@ -64,11 +64,12 @@ const Carousel: React.FC<CarouselProps> = () => {
     return <LoadingDots />;
   }
 
+  if (error) {
+    return <h1 className="text-4xl">Error:</h1>;
+  }
+
   return (
     <div className="carousel my-12 mx-auto">
-      <h2 className="text-4xl leading-8 font-semibold mb-12 text-slate-700">
-        Our epic carousel
-      </h2>
       <div className="relative overflow-hidden">
         <div className="flex justify-between absolute top left w-full h-full">
           <button
@@ -118,45 +119,47 @@ const Carousel: React.FC<CarouselProps> = () => {
           ref={carousel as MutableRefObject<HTMLDivElement>}
           className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
-          {data.results.map(
-            (
-              movie: {
-                link: string | undefined;
-                imageUrl: any;
+          {data.results
+            .slice(0, 20)
+            .map(
+              (movie: {
+                id: Key;
+                link: string;
+                imageUrl: string;
                 title: string;
-              },
-              index: Key | null | undefined
-            ) => {
-              return (
-                <div
-                  key={index}
-                  className="carousel-item text-center relative w-64 h-64 snap-start"
-                >
-                  <a
-                    href={movie.link}
-                    className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
-                    style={{ backgroundImage: `url(${movie.imageUrl || ""})` }}
+              }) => {
+                return (
+                  <div
+                    key={movie.id}
+                    className="carousel-item text-center relative w-64 h-64 snap-start"
                   >
-                    <Image
-                      width={1280}
-                      height={720}
-                      src={movie.imageUrl || ""}
-                      alt={movie.title}
-                      className="w-full aspect-square hidden"
-                    />
-                  </a>
-                  <a
-                    href={movie.link}
-                    className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
-                  >
-                    <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                      {movie.title}
-                    </h3>
-                  </a>
-                </div>
-              );
-            }
-          )}
+                    <a
+                      href={movie.link}
+                      className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
+                      style={{
+                        backgroundImage: `url(${movie.imageUrl || ""})`,
+                      }}
+                    >
+                      <Image
+                        width={1280}
+                        height={720}
+                        src={movie.imageUrl || ""}
+                        alt={movie.title}
+                        className="w-full aspect-square hidden"
+                      />
+                    </a>
+                    <a
+                      href={movie.link}
+                      className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
+                    >
+                      <h3 className="text-white py-6 px-3 mx-auto text-xl">
+                        {movie.title}
+                      </h3>
+                    </a>
+                  </div>
+                );
+              }
+            )}
         </div>
       </div>
     </div>

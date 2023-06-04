@@ -1,4 +1,4 @@
-import { BACKDROP_1280_URL } from "@/utils/constants/api_constants";
+import { getPosterWithFallback, handleImageError } from "@/utils/helpers";
 import Image from "next/image";
 import { AiFillStar, AiOutlineCalendar } from "react-icons/ai";
 import { BsPlusCircleFill } from "react-icons/bs";
@@ -24,24 +24,13 @@ type movieDetailsProps = {
 };
 
 const FullPosterCard = ({ movie }: movieDetailsProps) => {
-  const NO_IMAGE = "/images/No-Image-Placeholder.svg";
-  const posterPath = movie.poster_path
-    ? `${BACKDROP_1280_URL}${movie.poster_path}`
-    : NO_IMAGE;
-
-  const handleImageError = (
-    e: React.SyntheticEvent<HTMLImageElement, Event>
-  ) => {
-    e.currentTarget.src = NO_IMAGE;
-  };
-
   return (
     <div className="flex-1 flex flex-col mt-8 md:mt-20 justify-center items-center lg:items-start lg:flex-row gap-20 w-full">
       <div className="">
         <Image
           width={300}
           height={310}
-          src={posterPath}
+          src={getPosterWithFallback(movie.poster_path)}
           alt="Movie Poster"
           className="rounded-lg p-2 max-w-full"
           onError={() => handleImageError}
@@ -91,7 +80,7 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
         <div className="mb-2">
           <h2 className="text-lg font-semibold mb-1">Genres</h2>
           <div className="flex gap-1">
-            {movie.genres.map((genre: { id: number; name: string }) => (
+            {movie.genres?.map((genre: { id: number; name: string }) => (
               <button key={genre.id} className="btn btn-sm">
                 {genre.name}
               </button>
