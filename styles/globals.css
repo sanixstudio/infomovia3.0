@@ -58,3 +58,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.tab-active {
+  border: 1px solid #20b1a5 !important;
+  color: #20b1a5 !important;
+}

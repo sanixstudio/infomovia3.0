@@ -44,16 +44,16 @@ const MainMenu = () => {
           </a>
           <ul className="p-2 bg-slate-800 z-10">
             <li>
-              <a>Movies </a>
+              <Link href={"/movies"}>Movies </Link>
             </li>
             <li>
-              <a>TV Shows</a>
+              <Link href={"/tvshows"}>TV Shows</Link>
             </li>
             <li>
-              <a>People</a>
+              <Link href={"/people"}>People</Link>
             </li>
             <li>
-              <a>News</a>
+              <Link href={"/news"}>News</Link>
             </li>
           </ul>
         </li>
