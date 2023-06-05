@@ -1,5 +1,6 @@
 const daisyui = require("daisyui");
 const lineClamp = require("@tailwindcss/line-clamp");
+const flowbite = require("flowbite/plugin");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -28,5 +29,5 @@ module.exports = {
     ],
   },
   darkMode: "class",
-  plugins: [daisyui, lineClamp],
+  plugins: [daisyui, lineClamp, flowbite],
 };
