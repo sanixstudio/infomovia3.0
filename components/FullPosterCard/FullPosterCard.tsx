@@ -11,6 +11,7 @@ import {
 type movieDetailsProps = {
   movie: {
     title: string;
+    original_name?: string;
     release_date: string;
     ratings: number;
     popularity: number;
@@ -25,7 +26,7 @@ type movieDetailsProps = {
 
 const FullPosterCard = ({ movie }: movieDetailsProps) => {
   return (
-    <div className="flex-1 flex flex-col mt-8 md:mt-20 justify-center items-center lg:items-start lg:flex-row gap-20 w-full">
+    <div className="flex-1 flex flex-col my-6 md:mt-20 justify-center items-center lg:items-start lg:flex-row gap-20 w-full">
       <div className="">
         <Image
           width={300}
@@ -38,7 +39,9 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
       </div>
 
       <div className="md:justify-between max-w-[600px] md:min-w-[500px] flex flex-col gap-5 px-4 py-2">
-        <h1 className="text-4xl font-bold mb-4">{movie.title}</h1>
+        <h1 className="text-4xl font-bold mb-4">
+          {movie.title ? movie.title : movie.original_name}
+        </h1>
         <div>
           <div className="flex gap-3">
             <div className="flex items-center mb-2">

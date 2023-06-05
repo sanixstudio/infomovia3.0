@@ -31,6 +31,8 @@ export const SEARCH_MOVIES_URL = `${BASE_URL}search/movie?api_key=${API_KEY}&lan
 // TV
 export const SEARCH_TV_URL = `${BASE_URL}search/tv?query=`;
 export const TRENDING_TV_URL = `${BASE_URL}trending/tv/day?api_key=${API_KEY}&language=en-US&`;
+export const AIRING_TODAY_TV_URL = `${BASE_URL}tv/airing_today?api_key=${API_KEY}&language=en-US&page=1`;
+export const TOP_RATED_TV_URL = `${BASE_URL}tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
 
 // Image Fallback
 export const NO_IMAGE = "/images/No-Image-Placeholder.svg";
