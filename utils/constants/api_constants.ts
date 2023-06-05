@@ -21,6 +21,7 @@ export const GET_TVs_BY_GENRE_URL = `${BASE_URL}discover/movie&api_key=${API_KEY
 
 // People
 export const GET_POPULAR_PEOPLE_URL = `${BASE_URL}/person/popular?language=en-US&api_key=${API_KEY}`;
+export const GET_TRENDING_PEOPLE_URL = `${BASE_URL}trending/person/day?api_key=${API_KEY}&language=en-US`;
 export const GET_PEOPLE_DETAILS_URL = `${BASE_URL}/person?api_key=${API_KEY}&person_id=`;
 export const PEOPLE_URL = `${BASE_URL}search/person?api_key=${API_KEY}&query=`;
 
