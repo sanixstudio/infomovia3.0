@@ -1,5 +1,5 @@
 "use client";
-import { FullCelebCard, FullPosterCard } from "@/components";
+import { FullPosterCard } from "@/components";
 import { usePathname } from "next/navigation";
 import React from "react";
 
