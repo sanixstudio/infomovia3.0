@@ -15,3 +15,4 @@ export { default as LoginModal } from "./LoginModal/LoginModal";
 export { default as RegisterModal } from "./RegisterModal/RegisterModal";
 export { default as LoadingDots } from "./LoadingDots/LoadingDots";
 export { default as Poster } from "./Poster/Poster";
+export { default as Tabs } from "./Tabs/Tabs";
