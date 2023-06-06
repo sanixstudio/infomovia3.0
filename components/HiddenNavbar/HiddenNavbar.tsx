@@ -72,16 +72,13 @@ const HiddenNavbar = () => {
             </a>
             <ul className="p-2 bg-slate-800 z-10">
               <li>
-                <Link href={"/movies"}>Movies </Link>
+                <Link href={"/movies"}>Movies</Link>
               </li>
               <li>
                 <Link href={"/tvshows"}>TV Shows</Link>
               </li>
               <li>
                 <Link href={"/people"}>People</Link>
-              </li>
-              <li>
-                <Link href={"/news"}>News</Link>
               </li>
             </ul>
           </li>

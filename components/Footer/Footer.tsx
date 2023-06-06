@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -8,23 +9,24 @@ const Footer = () => {
         <footer className="footer p-10 text-base-content">
           <div>
             <span className="footer-title">Movies</span>
-            <a className="link link-hover">Currently Playing</a>
-            <a className="link link-hover">Upcoming Movies</a>
-            <a className="link link-hover">Top Movie</a>
-            <a className="link link-hover">Trending</a>
+            <Link href="/filter" className="link link-hover">
+              Search Movies with filters (upcoming)
+            </Link>
+            <Link href="/movies" className="link link-hover">
+              Explore Categories
+            </Link>
           </div>
           <div>
             <span className="footer-title">TV Shows</span>
-            <a className="link link-hover">Currently Playing</a>
-            <a className="link link-hover">Upcoming</a>
-            <a className="link link-hover">Top TV Shows</a>
-            <a className="link link-hover">Trending</a>
+            <Link href="tvshows" className="link link-hover">
+              Explore TV Shows
+            </Link>
           </div>
           <div>
             <span className="footer-title">Explore</span>
-            <a className="link link-hover">Movie Genres</a>
-            <a className="link link-hover">People</a>
-            <a className="link link-hover">News</a>
+            <Link href="/people" className="link link-hover">
+              People
+            </Link>
           </div>
         </footer>
         <footer className="footer px-10 py-4 text-base-content">

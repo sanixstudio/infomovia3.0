@@ -52,9 +52,6 @@ const MainMenu = () => {
             <li>
               <Link href={"/people"}>People</Link>
             </li>
-            <li>
-              <Link href={"/news"}>News</Link>
-            </li>
           </ul>
         </li>
       </ul>
@@ -62,4 +59,4 @@ const MainMenu = () => {
   );
 };
 
-export default MainMenu;
+export default React.memo(MainMenu);

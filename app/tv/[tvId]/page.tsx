@@ -1,7 +1,7 @@
 "use client";
 import { FullPosterCard, LoadingDots } from "@/components";
 import { usePathname } from "next/navigation";
-import useMediaData from "../../../hooks/useFetchMovies";
+import useMediaData from "@/hooks/useFetchMovies";
 import React from "react";
 import { API_KEY, BASE_URL } from "@/utils/constants/api_constants";
 
