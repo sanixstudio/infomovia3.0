@@ -23,7 +23,7 @@ const MoviesReviews = ({ movieId }: MoviesReviewsProps) => {
   console.log(data);
 
   return (
-    <div className="mb-8  flex flex-col gap-3">
+    <div className="mb-8 flex flex-col gap-3 p-2">
       {data.results.map(
         (review: {
           created_at: string;

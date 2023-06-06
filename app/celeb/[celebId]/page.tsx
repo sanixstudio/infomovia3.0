@@ -19,7 +19,7 @@ const page = () => {
   if (status === "loading") return <LoadingDots />;
 
   return (
-    <div className="max-h-full my-10 mx-auto">
+    <div className="my-10 mx-auto">
       <div className="w-full max-w-[1200px] mx-auto">
         <FullCelebCard celebrity={data} />
       </div>

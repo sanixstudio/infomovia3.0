@@ -85,7 +85,7 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
           </div>
           <div className="mb-2">
             <h2 className="text-lg font-semibold mb-1">Genres</h2>
-            <div className="flex gap-1">
+            <div className="flex gap-1 flex-wrap">
               {movie.genres?.map((genre: { id: number; name: string }) => (
                 <button key={genre.id} className="btn btn-sm">
                   {genre.name}
@@ -99,7 +99,7 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
               {movie.overview}
             </p>
           </div>
-          <button className="w-full py-2 btn btn-accent rounded-lg flex items-center justify-center">
+          <button className="sm:w-full py-2 btn btn-accent rounded-lg flex items-center justify-center">
             <BsPlusCircleFill size={22} className="mr-2" />
             ADD TO WISHLIST
           </button>

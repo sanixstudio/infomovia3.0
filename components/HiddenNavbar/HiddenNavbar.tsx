@@ -47,7 +47,7 @@ const HiddenNavbar = () => {
                 <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
               </svg>
             </a>
-            <ul className="p-2 bg-slate-800 w-full">
+            <ul className="p-2 bg-slate-800 w-full list left-0 z-10 top-[100%]">
               {Object.entries(GENRES.moviesList).map(([key, value]) => (
                 <li key={value}>
                   <Link href={`/genre/${value}`} className="py-1">
@@ -70,7 +70,7 @@ const HiddenNavbar = () => {
                 <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
               </svg>
             </a>
-            <ul className="p-2 bg-slate-800 z-10">
+            <ul className="p-2 bg-slate-800 z-10 left-0 top-[100%]">
               <li>
                 <Link href={"/movies"}>Movies</Link>
               </li>
@@ -91,7 +91,7 @@ const HiddenNavbar = () => {
               />
             </div>
           </li>
-          <div className="flex gap-2 ml-5">
+          <div className="flex gap-2 ml-5 py-2">
             <button
               className="btn btn-sm btn-outline btn-accent"
               onClick={() => setLoginModalIsOPen(true)}
