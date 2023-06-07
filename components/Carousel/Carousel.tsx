@@ -1,169 +1,46 @@
 "use client";
-import { useState, useRef, useEffect, MutableRefObject, Key } from "react";
 import useMediaData from "@/hooks/useFetchMovies";
-import { UP_COMING_URL } from "@/utils/constants/api_constants";
+import {
+  AIRING_TODAY_TV_URL,
+  BACKDROP_1280_URL,
+  PLAYING_NOW_URL,
+} from "@/utils/constants/api_constants";
 import Image from "next/image";
 import LoadingDots from "../LoadingDots/LoadingDots";
+import { Carousel } from "react-responsive-carousel";
+import { Key } from "react";
 
 type CarouselProps = {};
 
-const Carousel: React.FC<CarouselProps> = () => {
-  const maxScrollWidth = useRef<number>(0);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const carousel = useRef<HTMLDivElement>(null);
-
-  const upComing = useMediaData("upComingForHero", UP_COMING_URL);
+const TvCarousel: React.FC<CarouselProps> = () => {
+  const upComing = useMediaData("upComingForHero", PLAYING_NOW_URL);
   const { data, isLoading, error } = upComing;
 
-  const movePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevState) => prevState - 1);
-    }
-  };
+  if (isLoading) return <LoadingDots />;
 
-  const moveNext = () => {
-    if (
-      carousel.current !== null &&
-      carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
-    ) {
-      setCurrentIndex((prevState) => prevState + 1);
-    }
-  };
-
-  const isDisabled = (direction: string): boolean => {
-    if (direction === "prev") {
-      return currentIndex <= 0;
-    }
-
-    if (direction === "next" && carousel.current !== null) {
-      return (
-        carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
-      );
-    }
-
-    return false;
-  };
-
-  useEffect(() => {
-    if (
-      carousel !== null &&
-      carousel.current !== null &&
-      carousel.current.offsetWidth
-    ) {
-      carousel.current.scrollLeft = carousel.current.offsetWidth * currentIndex;
-    }
-  }, [currentIndex]);
-
-  useEffect(() => {
-    maxScrollWidth.current =
-      //@ts-ignore
-      carousel?.current?.scrollWidth - carousel.current?.offsetWidth || 0;
-  }, []);
-
-  if (isLoading) {
-    return <LoadingDots />;
-  }
-
-  if (error) {
-    return <h1 className="text-4xl">Error:</h1>;
-  }
+  if (error) return <h1 className="text-4xl">Error:</h1>;
 
   return (
-    <div className="carousel my-12 mx-auto">
-      <div className="relative overflow-hidden">
-        <div className="flex justify-between absolute top left w-full h-full">
-          <button
-            onClick={movePrev}
-            className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
-            disabled={isDisabled("prev")}
+    <Carousel autoPlay>
+      {data.results.map(
+        (tvShow: { id: Key; name: string; poster_path: string }) => (
+          <div
+            key={tvShow.id}
+            className="max-w-[1280px] max-h-[500px] mx-auto px-4"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-20 -ml-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            <span className="sr-only">Prev</span>
-          </button>
-          <button
-            onClick={moveNext}
-            className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
-            disabled={isDisabled("next")}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-20 -ml-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-            <span className="sr-only">Next</span>
-          </button>
-        </div>
-        <div
-          ref={carousel as MutableRefObject<HTMLDivElement>}
-          className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
-        >
-          {data.results
-            .slice(0, 20)
-            .map(
-              (movie: {
-                id: Key;
-                link: string;
-                imageUrl: string;
-                title: string;
-              }) => {
-                return (
-                  <div
-                    key={movie.id}
-                    className="carousel-item text-center relative w-64 h-64 snap-start"
-                  >
-                    <a
-                      href={movie.link}
-                      className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
-                      style={{
-                        backgroundImage: `url(${movie.imageUrl || ""})`,
-                      }}
-                    >
-                      <Image
-                        width={1280}
-                        height={720}
-                        src={movie.imageUrl || ""}
-                        alt={movie.title}
-                        className="w-full aspect-square hidden"
-                      />
-                    </a>
-                    <a
-                      href={movie.link}
-                      className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
-                    >
-                      <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                        {movie.title}
-                      </h3>
-                    </a>
-                  </div>
-                );
-              }
-            )}
-        </div>
-      </div>
-    </div>
+            <Image
+              height={1280}
+              width={720}
+              alt={tvShow.name}
+              src={BACKDROP_1280_URL + tvShow.poster_path}
+              className=""
+            />
+            <p className="legend">{tvShow.name}</p>
+          </div>
+        )
+      )}
+    </Carousel>
   );
 };
 
-export default Carousel;
+export default TvCarousel;

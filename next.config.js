@@ -5,6 +5,7 @@ const nextConfig = {
       "image.tmdb.org",
       "https://image.tmdb.org/t/p/w185",
       "secure.gravatar.com",
+      "picsum.photos",
     ],
     remotePatterns: [
       {
