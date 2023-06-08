@@ -15,7 +15,7 @@ const page = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data, isLoading, error } = useMediaData(
     "getSearchedMoviesDetails",
-    `${BASE_URL}search/movie?query=${params}&api_key=${API_KEY}`
+    `${BASE_URL}search/multi?query=${params}&api_key=${API_KEY}`
   );
 
   if (isLoading) return <LoadingDots />;
@@ -35,13 +35,12 @@ const page = () => {
                 poster_path: string;
                 release_date: string;
               }) => (
-                // <Poster key={movie.id} media={movie} />
                 <Link key={movie.id} href={`/movie/${movie.id}`}>
                   <Image
                     src={IMG_URL + movie.poster_path}
                     width={185}
                     height={200}
-                    alt=""
+                    alt={movie.title}
                   />
                 </Link>
               )

@@ -8,6 +8,7 @@ import {
   HiOutlineLightningBolt,
   HiOutlineCheckCircle,
 } from "react-icons/hi";
+import { IMG_URL } from "@/utils/constants/api_constants";
 
 type movieDetailsProps = {
   movie: {
@@ -34,7 +35,7 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
           <Image
             width={300}
             height={310}
-            src={getPosterWithFallback(movie.poster_path)}
+            src={IMG_URL + movie.poster_path}
             alt="Movie Poster"
             className="rounded-lg p-2 max-w-full"
             onError={() => handleImageError}

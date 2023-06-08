@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { MovieProps, SectionTitleProps } from "@/utils/typings/typings";
-import { PLAYING_NOW_URL } from "@/utils/constants/api_constants";
+import { LOCAL_HOST, PLAYING_NOW_URL } from "@/utils/constants/api_constants";
 import useMediaData from "@/hooks/useFetchMovies";
 import { usePathname } from "next/navigation";
 import LoadingDots from "../LoadingDots/LoadingDots";
@@ -14,7 +14,10 @@ const Carousel = ({ title }: SectionTitleProps) => {
 
   const router = usePathname();
 
-  const usePlayingNowMovies = useMediaData("playingNow", PLAYING_NOW_URL);
+  const usePlayingNowMovies = useMediaData(
+    "playingNow",
+    `${LOCAL_HOST}/api/movies/playingnow`
+  );
   const { data, status, isLoading, error } = usePlayingNowMovies;
 
   const movePrev = () => {

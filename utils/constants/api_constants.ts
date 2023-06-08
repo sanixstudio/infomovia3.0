@@ -3,6 +3,7 @@ export const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 export const TMDB_ACCESS_TOKEN = process.env.NEXT_PUBLIC_TMDB_ACCESS_TOKEN;
 
 // Base URLs
+export const LOCAL_HOST = "http://localhost:3000";
 export const BASE_URL = "https://api.themoviedb.org/3/";
 export const IMG_URL = "https://image.tmdb.org/t/p/w185/";
 export const BACKDROP_1280_URL = "https://image.tmdb.org/t/p/w1280/";
@@ -11,6 +12,7 @@ export const BACKDROP_1280_URL = "https://image.tmdb.org/t/p/w1280/";
 export const PLAYING_NOW_URL = `${BASE_URL}movie/now_playing?language=en-US&api_key=${API_KEY}`;
 export const UP_COMING_URL = `${BASE_URL}movie/upcoming?language=en-US&api_key=${API_KEY}`;
 export const TOP_RATED_URL = `${BASE_URL}movie/top_rated?language=en-US&api_key=${API_KEY}`;
+export const MULTI = `${BASE_URL}search/multi?language=en-US&api_key=${API_KEY}`;
 
 // Genres
 

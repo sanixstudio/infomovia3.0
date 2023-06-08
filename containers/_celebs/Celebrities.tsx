@@ -5,12 +5,16 @@ import useMediaData from "@/hooks/useFetchMovies";
 import {
   GET_POPULAR_PEOPLE_URL,
   IMG_URL,
+  LOCAL_HOST,
 } from "@/utils/constants/api_constants";
 import { LoadingDots } from "@/components";
 
 const Celebrities = () => {
-  const celebrities = useMediaData("getFamousCelebs", GET_POPULAR_PEOPLE_URL);
-  const { data, status, isLoading, error } = celebrities;
+  const celebrities = useMediaData(
+    "getFamousCelebs",
+    `${LOCAL_HOST}/api/people/popular`
+  );
+  const { data, isLoading, error } = celebrities;
 
   if (error) throw error;
 

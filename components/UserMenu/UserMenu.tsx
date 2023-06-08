@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import { useAppContext } from "@/context/appContext";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const UserMenu = () => {
   const [loginModalIsOpen, setLoginModalIsOPen] = useState(false);
@@ -53,13 +54,13 @@ const UserMenu = () => {
           <div className="flex gap-2 ml-5">
             <button
               className="btn btn-sm btn-outline btn-accent"
-              onClick={() => setLoginModalIsOPen(true)}
+              onClick={() => signIn()}
             >
               Login
             </button>
             <button
               className="btn btn-sm btn-outline btn-accent"
-              onClick={() => setRegisterModalIsOpen(true)}
+              onClick={() => signOut()}
             >
               Register
             </button>

@@ -23,6 +23,17 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "context/dataContext.tsx", "context/appContext.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "context/dataContext.tsx",
+    "context/appContext.ts",
+    "app/api/auth/[...nextauth].ts",
+    "app/api/auth/session.js",
+    "app/api/auth/session.js",
+    "app/api/user.js"
+  ],
   "exclude": ["node_modules"]
 }

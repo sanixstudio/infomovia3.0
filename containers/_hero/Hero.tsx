@@ -2,10 +2,13 @@
 import { CarouselSlider, LoadingDots } from "@/components";
 import React from "react";
 import useMediaData from "@/hooks/useFetchMovies";
-import { PLAYING_NOW_URL } from "@/utils/constants/api_constants";
+import { LOCAL_HOST } from "@/utils/constants/api_constants";
 
 const Hero = () => {
-  const heroData = useMediaData("getMoviesForHero", PLAYING_NOW_URL);
+  const heroData = useMediaData(
+    "getMoviesForHero",
+    `${LOCAL_HOST}/api/movies/upcoming`
+  );
   const { data, isLoading, error } = heroData;
 
   if (isLoading) return <LoadingDots />;
