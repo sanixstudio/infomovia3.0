@@ -34,8 +34,10 @@ const page = () => {
                 title: string;
                 poster_path: string;
                 release_date: string;
+                media_type: string;
               }) => (
-                <Link key={movie.id} href={`/movie/${movie.id}`}>
+                //media_type is based on, if a media type is "movie" or "tv" or "person"
+                <Link key={movie.id} href={`/${movie.media_type}/${movie.id}`}>
                   <Image
                     src={IMG_URL + movie.poster_path}
                     width={185}

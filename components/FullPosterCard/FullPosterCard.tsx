@@ -1,4 +1,4 @@
-import { getPosterWithFallback, handleImageError } from "@/utils/helpers";
+import { handleImageError } from "@/utils/helpers";
 import Image from "next/image";
 import { AiFillStar, AiOutlineCalendar } from "react-icons/ai";
 import { BsPlusCircleFill } from "react-icons/bs";
@@ -13,6 +13,7 @@ import { IMG_URL } from "@/utils/constants/api_constants";
 type movieDetailsProps = {
   movie: {
     id: number;
+    first_air_date?: string;
     title: string;
     original_name?: string;
     release_date: string;
@@ -28,6 +29,7 @@ type movieDetailsProps = {
 };
 
 const FullPosterCard = ({ movie }: movieDetailsProps) => {
+  console.log(movie.first_air_date);
   return (
     <div className="w-full flex flex-col gap-10">
       <div className="flex-1 flex flex-col my-6 md:mt-20 justify-center items-center lg:items-start lg:flex-row gap-20 w-full">
@@ -106,7 +108,7 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
           </button>
         </div>
       </div>
-      <MoviesReviews movieId={movie.id} />
+      {!movie.first_air_date ? <MoviesReviews movieId={movie.id} /> : null}
     </div>
   );
 };
