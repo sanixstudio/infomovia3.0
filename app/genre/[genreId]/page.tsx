@@ -8,11 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Genre",
-  description: "Movies and TV shows information database",
-};
-
 const Page = () => {
   const path = usePathname();
   const params = path.split("/")[2];

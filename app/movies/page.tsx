@@ -10,12 +10,6 @@ import {
 } from "@/utils/constants/api_constants";
 import Image from "next/image";
 import Link from "next/link";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Movies",
-  description: "Movies and TV shows information database",
-};
 
 const Page = () => {
   const [selectedPage, setSelectedPage] = useState(PLAYING_NOW_URL);
