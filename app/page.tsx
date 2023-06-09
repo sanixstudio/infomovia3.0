@@ -1,6 +1,7 @@
 import { Stats, TvShowCarousel, Carousel } from "@/components";
 import FetchTest from "@/components/FetchTest";
 import { Celebrities, Hero } from "@/containers";
+import { Metadata } from "next";
 import dynamic from "next/dynamic";
 const TheCarousel = dynamic(
   () => import("../components/CarouselMultiPlex/CarouselMultiPlex"),
@@ -8,6 +9,11 @@ const TheCarousel = dynamic(
     ssr: false,
   }
 );
+
+export const metadata: Metadata = {
+  title: "Infomovia",
+  description: "Movies and TV shows information database",
+};
 
 export default function Home() {
   return (

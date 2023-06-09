@@ -6,6 +6,12 @@ import { DISCOVER_MOVIES, IMG_URL } from "@/utils/constants/api_constants";
 import { LoadingDots } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Genre",
+  description: "Movies and TV shows information database",
+};
 
 const Page = () => {
   const path = usePathname();
