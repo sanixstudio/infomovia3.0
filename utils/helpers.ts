@@ -1,4 +1,10 @@
-import { BACKDROP_1280_URL, NO_IMAGE } from "./constants/api_constants";
+import {
+  BACKDROP_1280_URL,
+  IS_PROD_ENV,
+  LOCAL_HOST,
+  NO_IMAGE,
+  PROD_URL,
+} from "./constants/api_constants";
 import React from "react";
 
 export const getPosterWithFallback = (posterPath: string | null): string => {
@@ -13,3 +19,5 @@ export const handleImageError = (
 ): void => {
   e.currentTarget.src = NO_IMAGE;
 };
+
+export const getDeploymentEnv = () => (IS_PROD_ENV ? PROD_URL : LOCAL_HOST);

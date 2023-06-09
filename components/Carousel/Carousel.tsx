@@ -1,17 +1,18 @@
 "use client";
 import useMediaData from "@/hooks/useFetchMovies";
-import { BACKDROP_1280_URL, LOCAL_HOST } from "@/utils/constants/api_constants";
+import { BACKDROP_1280_URL } from "@/utils/constants/api_constants";
 import Image from "next/image";
 import LoadingDots from "../LoadingDots/LoadingDots";
 import { Carousel } from "react-responsive-carousel";
 import { Key } from "react";
+import { getDeploymentEnv } from "@/utils/helpers";
 
 type CarouselProps = {};
 
 const TvCarousel: React.FC<CarouselProps> = () => {
   const upComing = useMediaData(
     "upComingForHero",
-    `${LOCAL_HOST}/api/movies/playingnow`
+    `${getDeploymentEnv()}/api/movies/playingnow`
   );
   const { data, isLoading, error } = upComing;
 

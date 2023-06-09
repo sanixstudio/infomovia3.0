@@ -2,12 +2,7 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import useMediaData from "@/hooks/useFetchMovies";
-import {
-  API_KEY,
-  BASE_URL,
-  IMG_URL,
-  NO_IMAGE,
-} from "@/utils/constants/api_constants";
+import { API_KEY, BASE_URL, IMG_URL } from "@/utils/constants/api_constants";
 import { LoadingDots } from "@/components";
 import Image from "next/image";
 import Link from "next/link";

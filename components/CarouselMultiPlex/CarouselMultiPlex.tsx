@@ -1,11 +1,11 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { MovieProps, SectionTitleProps } from "@/utils/typings/typings";
-import { LOCAL_HOST, PLAYING_NOW_URL } from "@/utils/constants/api_constants";
 import useMediaData from "@/hooks/useFetchMovies";
 import { usePathname } from "next/navigation";
 import LoadingDots from "../LoadingDots/LoadingDots";
 import Poster from "../Poster/Poster";
+import { getDeploymentEnv } from "@/utils/helpers";
 
 const Carousel = ({ title }: SectionTitleProps) => {
   const maxScrollWidth = useRef(0);
@@ -16,7 +16,7 @@ const Carousel = ({ title }: SectionTitleProps) => {
 
   const usePlayingNowMovies = useMediaData(
     "playingNow",
-    `${LOCAL_HOST}/api/movies/playingnow`
+    `${getDeploymentEnv()}/api/movies/playingnow`
   );
   const { data, status, isLoading, error } = usePlayingNowMovies;
 

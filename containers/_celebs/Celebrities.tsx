@@ -2,17 +2,14 @@
 import React from "react";
 import Image from "next/image";
 import useMediaData from "@/hooks/useFetchMovies";
-import {
-  GET_POPULAR_PEOPLE_URL,
-  IMG_URL,
-  LOCAL_HOST,
-} from "@/utils/constants/api_constants";
+import { IMG_URL } from "@/utils/constants/api_constants";
 import { LoadingDots } from "@/components";
+import { getDeploymentEnv } from "@/utils/helpers";
 
 const Celebrities = () => {
   const celebrities = useMediaData(
     "getFamousCelebs",
-    `${LOCAL_HOST}/api/people/popular`
+    `${getDeploymentEnv()}/api/people/popular`
   );
   const { data, isLoading, error } = celebrities;
 
@@ -38,7 +35,7 @@ const Celebrities = () => {
                 key={celebrity.id}
                 className="flex-col-center max-w-md relative ease-in duration-150 border-8 border-slate-800 rounded-full hover:border-accent cursor-pointer "
               >
-                <a href={`/person/${celebrity.id}`}>
+                <a href={`/celeb/${celebrity.id}`}>
                   <Image
                     width={200}
                     height={200}
