@@ -1,8 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
 const options = {
+  debugger: true,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID as string,
@@ -18,6 +18,4 @@ const options = {
   ],
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default (req: NextApiRequest, res: NextApiResponse) =>
-  NextAuth(req, res, options);
+export default NextAuth(options)

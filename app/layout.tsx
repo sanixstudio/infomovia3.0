@@ -11,13 +11,14 @@ const queryClient = new QueryClient();
 
 type RootLayoutProps = {
   children: React.ReactNode;
+  pageProps: any;
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body>
-        <SessionProvider session={null}>
+        <SessionProvider>
           <QueryClientProvider client={queryClient}>
             <AppContextProvider>
               <div className="flex flex-col h-screen">

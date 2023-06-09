@@ -15,6 +15,10 @@ const UserMenu = () => {
 
   const { user } = useAppContext();
 
+  const { data: session } = useSession();
+
+  console.log(session);
+
   return (
     <>
       <div className="hidden sm:block">
@@ -51,20 +55,19 @@ const UserMenu = () => {
             </div>
           </div>
         ) : (
-          <div className="flex gap-2 ml-5">
-            <button
-              className="btn btn-sm btn-outline btn-accent"
-              onClick={() => signIn()}
-            >
-              Login
-            </button>
-            <button
-              className="btn btn-sm btn-outline btn-accent"
-              onClick={() => signOut()}
-            >
-              Register
-            </button>
-          </div>
+          <>
+            {session && session.user ? (
+              <button onClick={() => signOut()}>Sign out</button>
+            ) : (
+              <button
+                onClick={() =>
+                  signIn("google", { callbackUrl: "http://localhost:3000/" })
+                }
+              >
+                Sign in
+              </button>
+            )}
+          </>
         )}
       </div>
       <LoginModal
