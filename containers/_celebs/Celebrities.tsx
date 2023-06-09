@@ -35,7 +35,7 @@ const Celebrities = () => {
                 key={celebrity.id}
                 className="flex-col-center max-w-md relative ease-in duration-150 border-8 border-slate-800 rounded-full hover:border-accent cursor-pointer "
               >
-                <a href={`/celeb/${celebrity.id}`}>
+                <a href={`/person/${celebrity.id}`}>
                   <Image
                     width={200}
                     height={200}

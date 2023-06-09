@@ -26,7 +26,7 @@ const page = () => {
     <div className="flex max-w-[1440px] flex-wrap mt-10 gap-10 justify-center mx-auto my-8">
       {data.results.map(
         (person: { profile_path: string; name: string; id: React.Key }) => (
-          <Link href={`/celeb/${person.id}`} key={person.id}>
+          <Link href={`/person/${person.id}`} key={person.id}>
             <div className="">{person.name}</div>
             <Image
               src={IMG_URL + person.profile_path}

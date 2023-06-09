@@ -1,4 +1,4 @@
-import { BACKDROP_1280_URL, IMG_URL } from "@/utils/constants/api_constants";
+import { BACKDROP_1280_URL } from "@/utils/constants/api_constants";
 import Image from "next/image";
 import Link from "next/link";
 import {

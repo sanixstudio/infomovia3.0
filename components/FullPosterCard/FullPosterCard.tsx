@@ -8,7 +8,7 @@ import {
   HiOutlineLightningBolt,
   HiOutlineCheckCircle,
 } from "react-icons/hi";
-import { IMG_URL } from "@/utils/constants/api_constants";
+import { BACKDROP_1280_URL } from "@/utils/constants/api_constants";
 
 type movieDetailsProps = {
   movie: {
@@ -29,17 +29,16 @@ type movieDetailsProps = {
 };
 
 const FullPosterCard = ({ movie }: movieDetailsProps) => {
-  console.log(movie.first_air_date);
   return (
     <div className="w-full flex flex-col gap-10">
       <div className="flex-1 flex flex-col my-6 md:mt-20 justify-center items-center lg:items-start lg:flex-row gap-20 w-full">
-        <div className="">
+        <div>
           <Image
             width={300}
             height={310}
-            src={IMG_URL + movie.poster_path}
+            src={BACKDROP_1280_URL + movie.poster_path}
             alt="Movie Poster"
-            className="rounded-lg p-2 max-w-full"
+            className="max-w-full rounded-lg shadow-xl"
             onError={() => handleImageError}
           />
         </div>
