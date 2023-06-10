@@ -5,19 +5,13 @@ import Image from "next/image";
 import { AiFillStar, AiOutlineCalendar } from "react-icons/ai";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { BiMoviePlay } from "react-icons/bi";
-import { LoadingDots, MoviesReviews, Trailer } from "@/components";
+import { MoviesReviews, Trailer } from "@/components";
 import {
   HiClock,
   HiOutlineLightningBolt,
   HiOutlineCheckCircle,
 } from "react-icons/hi";
-import {
-  API_KEY,
-  BACKDROP_1280_URL,
-  BASE_URL,
-  YT_VIDEO_URL,
-} from "@/utils/constants/api_constants";
-import useMediaData from "@/hooks/useFetchMovies";
+import { BACKDROP_1280_URL } from "@/utils/constants/api_constants";
 
 type movieDetailsProps = {
   movie: {
@@ -38,19 +32,6 @@ type movieDetailsProps = {
 };
 
 const FullPosterCard = ({ movie }: movieDetailsProps) => {
-  const VIDEOS_MOVIES_URL = `${BASE_URL}movie/${movie.id}/videos?language=en-US&api_key=${API_KEY}`;
-
-  const { data, isLoading, error } = useMediaData(
-    "getVideo",
-    VIDEOS_MOVIES_URL
-  );
-
-  if (isLoading) return <LoadingDots />;
-
-  if (error) return <h1 className="text-4xl">Error:</h1>;
-
-  const trailerLink = data.results[0].key || data.results[1].key;
-
   return (
     <>
       <div className="w-full flex flex-col gap-10">
@@ -131,23 +112,16 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
               <BiMoviePlay size={22} className="mr-2" />
               Watch Trailer
             </button> */}
-            {data && (
-              <div className="w-full flex aspect-video">
-                <iframe
-                  className="w-full"
-                  src={`${YT_VIDEO_URL}/${trailerLink}`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            )}
+            <Trailer key={movie.id} id={movie.id} />
             <button className="sm:w-full py-2 btn btn-accent rounded-lg flex items-center justify-center">
               <BsPlusCircleFill size={22} className="mr-2" />
               ADD TO WISHLIST
             </button>
           </div>
         </div>
-        {!movie.first_air_date ? <MoviesReviews movieId={movie.id} /> : null}
+        {!movie.first_air_date ? (
+          <MoviesReviews key={movie.id} movieId={movie.id} />
+        ) : null}
       </div>
     </>
   );

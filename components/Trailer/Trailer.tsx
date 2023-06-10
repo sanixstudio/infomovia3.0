@@ -1,37 +1,44 @@
 "use client";
 import React from "react";
-import { AiOutlineCloseCircle } from "react-icons/ai";
-
-export type movieDetailsProps = {
-  movie: {};
-};
+import {
+  API_KEY,
+  BASE_URL,
+  YT_VIDEO_URL,
+} from "@/utils/constants/api_constants";
+import useMediaData from "@/hooks/useFetchMovies";
+import LoadingDots from "../LoadingDots/LoadingDots";
+import { useParams } from "next/navigation";
 
 type TrailerProps = {
-  isOpen: boolean;
-  closeModal: () => void;
-  src: string;
+  id: number;
 };
 
-const Trailer = ({ isOpen, closeModal, src }: TrailerProps) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const Trailer = ({ id }: TrailerProps) => {
+  const VIDEOS_MOVIES_URL = `${BASE_URL}movie/${id}/videos?language=en-US&api_key=${API_KEY}`;
+  const VIDEOS_TV_URL = `${BASE_URL}tv/${id}/videos?language=en-US&api_key=${API_KEY}`;
+  const urlParams = Object.keys(useParams());
+  const requestIsTv = urlParams[0] !== "movieId";
 
-  console.log(isOpen);
+  const handledUrlParams = requestIsTv ? VIDEOS_TV_URL : VIDEOS_MOVIES_URL;
+
+  console.log(handledUrlParams);
+
+  const { data, isLoading, error } = useMediaData("getVideo", handledUrlParams);
+
+  if (isLoading) return <LoadingDots />;
+
+  if (error) return <h1 className="text-4xl">Error:</h1>;
+
+  const trailerLink = data?.results[0]?.key || data?.results[1]?.key;
 
   return (
-    <div
-      className={`max-h-screen`}
-    >
-      <div className="aspect-video">
-        <button className="" onClick={() => closeModal}>
-          <AiOutlineCloseCircle size="32" className="ml-2" />
-        </button>
-        <iframe
-          className="w-screen max-w-[1440px] h-full p-4"
-          src={(src && src) || "https://www.youtube.com/embed/FF3fuYLnApQ"}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </div>
+    <div className="aspect-video">
+      <iframe
+        className="w-full h-full"
+        src={`${YT_VIDEO_URL}/${trailerLink}`}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
     </div>
   );
 };
