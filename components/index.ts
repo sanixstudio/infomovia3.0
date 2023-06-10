@@ -1,3 +1,4 @@
+export { default as Accordion } from "./Accordion/Accordion";
 export { default as Carousel } from "./Carousel/Carousel";
 export { default as CarouselMultiPlex } from "./CarouselMultiPlex/CarouselMultiPlex";
 export { default as CarouselSlider } from "./CarouselSlider/CarouselSlider";
@@ -17,6 +18,7 @@ export { default as Search } from "./Search/Search";
 export { default as Stats } from "./Stats/Stats";
 export { default as TheVideo } from "./TheVideo/TheVideo";
 export { default as ToggleDarkMode } from "./ToggleDarkMode/ToggleDarkMode";
+export { default as Trailer } from "./Trailer/Trailer";
 export { default as TvShowCarousel } from "./TvShowCarousel/TvShowCarousel";
 export { default as UserMenu } from "./UserMenu/UserMenu";
 export { default as WishListBtn } from "./WishListBtn/WishListBtn";

@@ -20,8 +20,6 @@ const MoviesReviews = ({ movieId }: MoviesReviewsProps) => {
 
   if (error) return <h1 className="text-4xl">Error:</h1>;
 
-  console.log(data);
-
   return (
     <div className="mb-8 flex flex-col gap-3 p-2">
       {data.results.map(

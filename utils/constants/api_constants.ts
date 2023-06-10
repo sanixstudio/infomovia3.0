@@ -16,6 +16,7 @@ export const PLAYING_NOW_URL = `${BASE_URL}movie/now_playing?language=en-US&api_
 export const UP_COMING_URL = `${BASE_URL}movie/upcoming?language=en-US&api_key=${API_KEY}`;
 export const TOP_RATED_URL = `${BASE_URL}movie/top_rated?language=en-US&api_key=${API_KEY}`;
 export const MULTI = `${BASE_URL}search/multi?language=en-US&api_key=${API_KEY}`;
+export const YT_VIDEO_URL = `https://www.youtube.com/embed`;
 
 // Genres
 
