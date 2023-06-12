@@ -6,6 +6,7 @@ const nextConfig = {
       "https://image.tmdb.org/t/p/w185",
       "secure.gravatar.com",
       "picsum.photos",
+      "lh3.googleusercontent.com",
     ],
     remotePatterns: [
       {

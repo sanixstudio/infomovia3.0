@@ -1,4 +1,4 @@
-import { Stats, TvShowCarousel, Carousel } from "@/components";
+import { Stats, Carousel } from "@/components";
 import FetchTest from "@/components/FetchTest";
 import { Celebrities, Hero } from "@/containers";
 import dynamic from "next/dynamic";
@@ -16,9 +16,7 @@ export default function Home() {
       <FetchTest />
       <TheCarousel title={"Upcoming Movies"} />
       <Celebrities />
-      {/* <Carousel title={"Upcoming Movies"} /> */}
       <Stats title="Trending Now" />
-      {/* <TvShowCarousel /> */}
       <Carousel />
     </div>
   );
