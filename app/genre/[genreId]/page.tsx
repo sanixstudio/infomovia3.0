@@ -10,7 +10,7 @@ import { Metadata } from "next";
 
 const Page = () => {
   const path = usePathname();
-  const params = path.split("/")[2];
+  const params = path?.split("/")[2];
 
   const { data, status, error } = useMediaData(
     "getMoviesByGenre",
