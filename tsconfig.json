@@ -30,10 +30,10 @@
     ".next/types/**/*.ts",
     "context/dataContext.tsx",
     "context/appContext.ts",
-    "app/api/auth/[...nextauth].ts",
-    "app/api/auth/session.js",
-    "app/api/auth/session.js",
+    "pages/api/auth/[...nextauth].ts",
+    "pages/api/auth/session.js",
+    "pages/api/auth/session.js",
     "app/api/user.js"
-  ],
+, "pages/indexs.js"  ],
   "exclude": ["node_modules"]
 }
