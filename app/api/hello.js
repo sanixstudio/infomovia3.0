@@ -1,12 +1,14 @@
-export default function handler(req, res) {
-  const requestMethod = req.method;
-  const body = JSON.parse(req.body);
-  switch (requestMethod) {
-    case 'POST':
-      res.status(200).json({ message: `You submitted the following data: ${body}` })
-      
-    // handle other HTTP methods
-    default:
-      res.status(200).json({ message: 'Welcome to API Routes!'})
+export async function GET() {
+  try {
+    const res = await fetch(AIRING_TODAY_TV_URL, {
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) throw new Error("Could not get resource");
+    const upcomingMovies = await res.json();
+
+    return new Response(JSON.stringify(upcomingMovies));
+  } catch (err) {
+    return new Response(JSON.stringify(err));
   }
 }
