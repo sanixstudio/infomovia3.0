@@ -16,7 +16,8 @@ type TrailerProps = {
 const Trailer = ({ id }: TrailerProps) => {
   const VIDEOS_MOVIES_URL = `${BASE_URL}movie/${id}/videos?language=en-US&api_key=${API_KEY}`;
   const VIDEOS_TV_URL = `${BASE_URL}tv/${id}/videos?language=en-US&api_key=${API_KEY}`;
-  const urlParams = Object.keys(useParams());
+
+  const urlParams = Object.keys(useParams() ?? {});
   const requestIsTv = urlParams[0] !== "movieId";
 
   const handledUrlParams = requestIsTv ? VIDEOS_TV_URL : VIDEOS_MOVIES_URL;
