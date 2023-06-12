@@ -5,9 +5,6 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 const UserMenu = () => {
   const { data: session } = useSession();
-
-  console.log(session);
-
   return (
     <>
       <div className="hidden sm:block">
@@ -17,7 +14,7 @@ const UserMenu = () => {
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full h-10 bg-slate-500">
                   <Image
-                    src={session?.user?.image}
+                    src={session?.user?.image ?? ""}
                     width={26}
                     height={26}
                     alt=""
