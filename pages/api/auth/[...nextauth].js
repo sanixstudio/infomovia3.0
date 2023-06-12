@@ -17,6 +17,6 @@ export const authOptions = {
 //   site: process.env.NEXTAUTH_URL || "http://localhost:3000",
 // });
 
-const handler = NextAuth(authOptions);
+export default NextAuth(authOptions);
 
-export { handler as GET, handler as POST };
+// export { handler as GET, handler as POST };
