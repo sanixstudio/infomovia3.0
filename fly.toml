@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for infomovia on 2023-06-08T22:46:10-07:00
+# fly.toml app configuration file generated for infomovia on 2023-06-12T14:20:46-07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -12,3 +12,11 @@ primary_region = "sjc"
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
+
+[env]
+NEXT_PUBLIC_TMDB_ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMmU3YzFiYjk2ZTMxMjc4YzczMjhmYTlhNTJiNWJhZCIsInN1YiI6IjVkYjgwYjNkMGYyZmJkMDAxNzc0MzMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tt6O_PLwoy69CMgYDx-7_xgNFW9lWPPPN0oJfQYU_To"
+NEXT_PUBLIC_API_KEY= "22e7c1bb96e31278c7328fa9a52b5bad"
+GOOGLE_ID= "555700177401-atfi22n6c56m53c8dfmq95q3qvb3irjv.apps.googleusercontent.com"
+GOOGLE_SECRET= "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"
+SECRET= "s0mRandomGen_s@sl^M"
+NEXTAUTH_URL= "infomovia.fly.dev"
