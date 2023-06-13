@@ -17,7 +17,7 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-slate-900">
         <SessionProvider>
           <QueryClientProvider client={queryClient}>
             <AppContextProvider>

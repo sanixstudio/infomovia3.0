@@ -1,24 +1,22 @@
 "use client";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 const AppContextProvider = ({ children }) => {
+  const [darkMode, setDarkMode] = React.useState(true);
+  const [name, setName] = React.useState("Adi");
   const [user, setUser] = useState(null);
-  const [fakeData, setFakeData] = useState([]);
 
-  useEffect(() => {
-    const fetchFakeData = async () => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/todos");
-      const data = await res.json();
-      setFakeData(data);
-    };
-    fetchFakeData();
-  }, []);
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   return (
-    <AppContext.Provider value={{ user, setUser, fakeData }}>
+    <AppContext.Provider
+      value={{ user, setUser, darkMode, toggleDarkMode, name, setName }}
+    >
       {children}
     </AppContext.Provider>
   );
