@@ -1,17 +1,12 @@
-"use client";
 import React from "react";
-import { useAppContext } from "@/context/appContext";
 
 const ToggleDarkMode = () => {
-  const { darkMode, toggleDarkMode } = useAppContext();
-
   return (
     <label className="swap swap-rotate">
       <input
         type="checkbox"
         className="hidden"
-        checked={darkMode}
-        onChange={() => toggleDarkMode()}
+        onChange={() => console.log("clicked")}
       />
       <svg
         className="swap-on fill-current w-7 h-7"

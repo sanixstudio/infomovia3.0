@@ -16,7 +16,7 @@ const Hero = () => {
   if (error) return <h1>Error</h1>;
 
   return (
-    <div className="bg-gradient-to-t from-slate-950">
+    <div className="bg-gradient-to-t from-black">
       <div className="max-w-[1440px] mx-auto relative">
         <div className="flex gap-5">
           <div className="main-carousel">

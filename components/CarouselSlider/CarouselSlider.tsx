@@ -20,12 +20,7 @@ export default function CarouselSlider({
   play,
 }: CarouselSliderProps): JSX.Element {
   return (
-    <Carousel
-      autoPlay={play}
-      infiniteLoop
-      emulateTouch
-      showIndicators={false}
-    >
+    <Carousel autoPlay={play} infiniteLoop emulateTouch showIndicators={false}>
       {data?.map((el) => (
         <div key={el.id}>
           <Image
@@ -35,12 +30,12 @@ export default function CarouselSlider({
             src={BACKDROP_1280_URL + el.backdrop_path}
             className="object-cover"
           />
-          <div className="legend h-1/2 absolute flex flex-col gap-5">
+          <div className="legend h-1/2 absolute flex flex-col gap-5 justify-end">
             <h2 className="text-4xl px-4 pt-4 text-left font-bold">
               {el.title} - {new Date(el.release_date).getFullYear()}
             </h2>
-            <p className="text-xl text-left">{el.release_date}</p>
-            <p className="text-left text-lg px-4">{el.overview}</p>
+            <p className="text-xl text-left px-4">{el.release_date}</p>
+            <p className="max-w-2xl text-left text-lg px-4 line-clamp-3">{el.overview}</p>
           </div>
         </div>
       ))}

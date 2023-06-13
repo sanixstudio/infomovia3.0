@@ -27,7 +27,7 @@
   opacity: 1 !important;
   background-image: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.9) 50%,
+    rgba(0, 0, 0, 0.9),
     transparent
   ) !important;
 }

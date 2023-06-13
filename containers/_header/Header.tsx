@@ -4,9 +4,7 @@ import {
   MainMenu,
   WishListBtn,
   HiddenNavbar,
-  ToggleDarkMode,
 } from "@/components";
-import { useAppContext } from "@/context/appContext";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -32,15 +30,13 @@ const Logo = () => {
 };
 
 const Header = () => {
-  const { darkMode } = useAppContext();
   return (
-    <div className={`${darkMode ? "bg-slate-950" : "bg-slate-100"} py-2`}>
+    <div className="bg-slate-950 py-2">
       <div className="navbar max-w-[1440px] flex justify-between mx-auto my-0">
         <HiddenNavbar />
         <Logo />
         <MainMenu />
         <Search />
-        <ToggleDarkMode />
         <WishListBtn />
         <UserMenu />
       </div>

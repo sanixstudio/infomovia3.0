@@ -2,11 +2,9 @@
 import React from "react";
 import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useAppContext } from "@/context/appContext";
 
 const UserMenu = () => {
   const { data: session } = useSession();
-  const { darkMode } = useAppContext();
 
   return (
     <>
@@ -37,9 +35,7 @@ const UserMenu = () => {
         ) : (
           <div className="flex gap-2 ml-5">
             <button
-              className={`btn btn-sm ${
-                darkMode ? "btn-outline" : ""
-              } btn-accent`}
+              className="btn btn-sm btn-outline btn-accent"
               onClick={() => signIn()}
             >
               Login
