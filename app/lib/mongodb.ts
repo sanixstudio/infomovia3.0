@@ -4,7 +4,7 @@ declare global {
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
-const uri = process.env.NEXT_PUBLIC_MONGODB_URI;
+const uri = process.env.DATABASE_URL;
 
 if (!uri) {
   throw new Error('Invalid environment variable: "NEXT_PUBLIC_MONGODB_URI"');
