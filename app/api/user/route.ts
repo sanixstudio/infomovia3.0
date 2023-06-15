@@ -1,7 +1,7 @@
 import prisma from "@/prisma";
 import { NextResponse } from "next/server";
 import { hashPassword, main } from "../../lib/helper";
-import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export const GET = async (req: Request, res: NextResponse) => {
   try {
@@ -26,7 +26,25 @@ export const POST = async (req: Request, res: NextResponse) => {
     const user = await prisma.user.create({
       data: { email, password: encryptedPassword },
     });
-    return NextResponse.json({ message: "Success: ", user }, { status: 200 });
+
+    if (!user) {
+      return NextResponse.json(
+        { message: "Error: not found" },
+        { status: 404 }
+      );
+    }
+
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
+      expiresIn: "1h",
+    });
+
+    return NextResponse.json({ message: "Success: ", token }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ message: "Error: ", err }, { status: 500 });
   } finally {
