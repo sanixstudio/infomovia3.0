@@ -15,6 +15,7 @@ export { default as MoviesReviews } from "./MovieReviews/MoviesReviews";
 export { default as Poster } from "./Poster/Poster";
 export { default as RegisterModal } from "./RegisterModal/RegisterModal";
 export { default as Search } from "./Search/Search";
+export { default as SigninModal } from "../app/signin/page";
 export { default as Stats } from "./Stats/Stats";
 export { default as TheVideo } from "./TheVideo/TheVideo";
 export { default as ToggleDarkMode } from "./ToggleDarkMode/ToggleDarkMode";
