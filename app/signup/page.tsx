@@ -1,16 +1,17 @@
 "use client";
-import { signIn, useSession } from "next-auth/react";
-import React, { useRef, useState } from "react";
+import React, { FormEventHandler, useState } from "react";
 import Link from "next/link";
+import useMediaData from "@/hooks/useFetchMovies";
 
 export default function Page() {
-  const { data: session } = useSession();
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  const emailRef = React.useRef<HTMLInputElement | null>(null);
+  const passwordRef = React.useRef<HTMLInputElement | null>(null);
+  const confirmPasswordRef = React.useRef<HTMLInputElement | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
 
@@ -20,26 +21,22 @@ export default function Page() {
     }
 
     try {
-      const result = await signIn("credentials", {
-        redirect: false,
-        email,
-        password,
-      });
-
-      if (result?.error) {
-        setErrorMessage(result.error);
-      }
-    } catch (error) {
-      setErrorMessage("An error occurred while signing in.");
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const { data, isLoading, error } = useMediaData(
+        "registerUser",
+        "/api/user/create"
+      );
+    } catch (err) {
+      setErrorMessage("Invalid email or password: " + err);
     }
   };
 
   return (
     <div className="w-full max-w-[1440px] mx-auto h-screen bg-slate-900">
       <div className="h-full flex-col flex justify-center items-center p-4">
-        <h1 className="text-4xl font-bold mb-8">Sign Up</h1>
+        <h1 className="text-4xl font-bold mb-8">Sign In</h1>
         <form
-          onSubmit={handleSubmit}
+          onSubmit={() => handleSubmit}
           className="w-full relative flex flex-col gap-6 max-w-md"
         >
           <div className="flex flex-col gap-2">
@@ -52,7 +49,7 @@ export default function Page() {
               id="email"
               name="email"
               placeholder="Enter your Email"
-              className="rounded-full bg-slate-900 px-4"
+              className="py-3 rounded-full bg-slate-900 px-4"
               required
             />
           </div>
@@ -64,43 +61,44 @@ export default function Page() {
               ref={passwordRef}
               type="password"
               name="password"
-              placeholder="Enter your Password"
+              placeholder="Enter your password"
               id="password"
-              className="rounded-full bg-slate-900 px-4"
+              className="py-3 rounded-full bg-slate-900 px-4"
               required
             />
           </div>
           <div className="flex flex-col gap-2">
             <label className="ml-3" htmlFor="confirm-password">
-             Confirm Password
+              Confirm Password
             </label>
             <input
-              ref={passwordRef}
+              ref={confirmPasswordRef}
               type="password"
               name="confirm-password"
+              placeholder="Re-enter your password"
               id="confirm-password"
-              placeholder="Re-enter your Password"
-              className="rounded-full bg-slate-900 px-4"
+              className="py-3 rounded-full bg-slate-900 px-4"
               required
             />
           </div>
-          {errorMessage && <p>{errorMessage}</p>}
+          <div>{errorMessage && <p>{errorMessage}</p>}</div>
           <div className="w-full flex justify-end gap-4">
-            <Link href={"/"} className="btn btn-accent btn-outline rounded-full">
+            <Link
+              href={"/"}
+              className="btn btn-accent btn-outline rounded-full"
+            >
               Cancel
             </Link>
             <button type="submit" className="btn btn-accent rounded-full">
               Sign Up
             </button>
           </div>
-          {!session && (
-            <div className="text-sm flex gap-2 justify-center mt-4">
-              <p>Already have an account?</p>
-              <Link href="/singup" className="text-accent">
-                Sign-In here
-              </Link>
-            </div>
-          )}
+          <div className="text-sm flex gap-2 justify-center mt-4">
+            <p>Already have an account?</p>
+            <Link href="/signin" className="text-accent">
+              Sign-In here
+            </Link>
+          </div>
         </form>
       </div>
     </div>

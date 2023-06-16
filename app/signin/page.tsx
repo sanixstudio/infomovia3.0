@@ -1,16 +1,16 @@
 "use client";
-import { signIn, useSession } from "next-auth/react";
-import React, { useRef, useState } from "react";
+import React, { FormEventHandler, useState } from "react";
 import Link from "next/link";
+import useMediaData from "@/hooks/useFetchMovies";
 
 export default function Page() {
-  const { data: session } = useSession();
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  const emailRef = React.useRef<HTMLInputElement | null>(null);
+  const passwordRef = React.useRef<HTMLInputElement | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
 
@@ -20,17 +20,13 @@ export default function Page() {
     }
 
     try {
-      const result = await signIn("credentials", {
-        redirect: false,
-        email,
-        password,
-      });
-
-      if (result?.error) {
-        setErrorMessage(result.error);
-      }
-    } catch (error) {
-      setErrorMessage("An error occurred while signing in.");
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const { data, isLoading, error } = useMediaData(
+        "loginUser",
+        "/api/user"
+      );
+    } catch (err) {
+      setErrorMessage("Invalid email or password: " + err);
     }
   };
 
@@ -52,7 +48,7 @@ export default function Page() {
               id="email"
               name="email"
               placeholder="Enter your Email"
-              className="rounded-full bg-slate-900 px-4"
+              className="py-3 rounded-full bg-slate-900 px-4"
               required
             />
           </div>
@@ -66,11 +62,11 @@ export default function Page() {
               name="password"
               placeholder="Enter your Password"
               id="password"
-              className="rounded-full bg-slate-900 px-4"
+              className="py-3 rounded-full bg-slate-900 px-4"
               required
             />
           </div>
-          {errorMessage && <p>{errorMessage}</p>}
+          <div>{errorMessage && <p>{errorMessage}</p>}</div>
           <div className="w-full flex justify-end gap-4">
             <Link
               href={"/"}
@@ -82,14 +78,12 @@ export default function Page() {
               Sign Up
             </button>
           </div>
-          {!session && (
-            <div className="text-sm flex gap-2 justify-center mt-4">
-              <p>Don&apos;t have an account?</p>
-              <Link href="/singup" className="text-accent">
-                Sign-Up here
-              </Link>
-            </div>
-          )}
+          <div className="text-sm flex gap-2 justify-center mt-4">
+            <p>Don&apos;t have an account?</p>
+            <Link href="/signup" className="text-accent">
+              Sign-Up here
+            </Link>
+          </div>
         </form>
       </div>
     </div>
