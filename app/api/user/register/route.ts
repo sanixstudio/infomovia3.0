@@ -2,6 +2,7 @@ import { hashPassword, main } from "@/app/lib/helper";
 import prisma from "@/prisma";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import { signIn } from "next-auth/react";
 
 // Create new user
 export const POST = async (req: Request, res: NextResponse) => {
@@ -22,18 +23,24 @@ export const POST = async (req: Request, res: NextResponse) => {
       );
     }
 
-    const payload = {
-      user: {
-        id: user.id,
-      },
-    };
+    // const payload = {
+    //   user: {
+    //     id: user.id,
+    //   },
+    // };
 
-    const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
-      expiresIn: "1h",
+    // const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
+    //   expiresIn: "1h",
+    // });
+
+    const result = await signIn("credentials", {
+      redirect: false,
+      email: "user@example.com",
+      password: "password",
     });
 
     return NextResponse.json(
-      { message: "Success: ", token, user },
+      { message: "Success: ", result, user },
       { status: 200 }
     );
   } catch (err) {

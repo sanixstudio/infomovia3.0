@@ -1,18 +1,21 @@
 "use client";
-import React, { FormEventHandler, useState } from "react";
+import React, { FormEventHandler, useState, useRef } from "react";
 import Link from "next/link";
-import useMediaData from "@/hooks/useFetchMovies";
+import { useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 
 export default function Page() {
-  const emailRef = React.useRef<HTMLInputElement | null>(null);
-  const passwordRef = React.useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter();
+  const session = useSession();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
-    const email = emailRef.current?.value;
-    const password = passwordRef.current?.value;
+    const email = emailRef.current?.value.trim();
+    const password = passwordRef.current?.value.trim();
 
     if (!email || !password) {
       setErrorMessage("Please enter both email and password.");
@@ -20,15 +23,24 @@ export default function Page() {
     }
 
     try {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const { data, isLoading, error } = useMediaData(
-        "loginUser",
-        "/api/user"
-      );
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (result?.error) {
+        setErrorMessage(result.error);
+      } else {
+        // Redirect to a protected page after successful login
+        router.push("/filter");
+      }
     } catch (err) {
-      setErrorMessage("Invalid email or password: " + err);
+      setErrorMessage("Check your credentials");
     }
   };
+
+  if (session.status === "authenticated") router.push("/");
 
   return (
     <div className="w-full max-w-[1440px] mx-auto h-screen bg-slate-900">
@@ -38,35 +50,31 @@ export default function Page() {
           onSubmit={handleSubmit}
           className="w-full relative flex flex-col gap-6 max-w-md"
         >
-          <div className="flex flex-col gap-2">
-            <label className="ml-3" htmlFor="email">
-              Email
-            </label>
-            <input
-              ref={emailRef}
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your Email"
-              className="py-3 rounded-full bg-slate-900 px-4"
-              required
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label className="ml-3" htmlFor="password">
-              Password
-            </label>
-            <input
-              ref={passwordRef}
-              type="password"
-              name="password"
-              placeholder="Enter your Password"
-              id="password"
-              className="py-3 rounded-full bg-slate-900 px-4"
-              required
-            />
-          </div>
-          <div>{errorMessage && <p>{errorMessage}</p>}</div>
+          <label className="ml-3" htmlFor="email">
+            Email
+          </label>
+          <input
+            ref={emailRef}
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your Email"
+            className="py-3 rounded-full bg-slate-900 px-4"
+            required
+          />
+          <label className="ml-3" htmlFor="password">
+            Password
+          </label>
+          <input
+            ref={passwordRef}
+            type="password"
+            name="password"
+            placeholder="Enter your Password"
+            id="password"
+            className="py-3 rounded-full bg-slate-900 px-4"
+            required
+          />
+          {errorMessage && <p className="text-red-400">{errorMessage}</p>}
           <div className="w-full flex justify-end gap-4">
             <Link
               href={"/"}
@@ -75,7 +83,7 @@ export default function Page() {
               Cancel
             </Link>
             <button type="submit" className="btn btn-accent rounded-full">
-              Sign Up
+              Sign In
             </button>
           </div>
           <div className="text-sm flex gap-2 justify-center mt-4">

@@ -1,9 +1,13 @@
 "use client";
 import { GENRES } from "@/utils/constants/api_constants";
 import { Button, Checkbox } from "flowbite-react";
+import { useSession } from "next-auth/react";
 import React from "react";
 
-const page = () => {
+const Page = () => {
+  const { data: session } = useSession();
+  console.log(session);
+
   return (
     <div className="w-full max-w-[1440px] mx-auto my-8">
       <div className="flex gap-8">
@@ -43,4 +47,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

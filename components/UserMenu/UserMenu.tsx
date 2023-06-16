@@ -2,20 +2,25 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 const UserMenu = () => {
-  const user = null
+  const session = useSession();
 
   return (
     <>
       <div className="hidden sm:block ease-in duration-300">
-        {user ? (
+        {session.data?.user ? (
           <div className="flex-none">
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-8 h-8 rounded-full bg-slate-500">
                   <Image
-                    src={user?.image ? user?.image : "/images/user.png"}
+                    src={
+                      session.data.user?.image
+                        ? session.data.user?.image
+                        : "/images/user.png"
+                    }
                     width={24}
                     height={24}
                     alt="user"
@@ -27,9 +32,7 @@ const UserMenu = () => {
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-slate-700 border-2 border-accent"
               >
                 <li tabIndex={0.3}>
-                  <button onClick={() => console.log("logging out...")}>
-                    Logout
-                  </button>
+                  <button onClick={() => signOut()}>Logout</button>
                 </li>
               </ul>
             </div>
