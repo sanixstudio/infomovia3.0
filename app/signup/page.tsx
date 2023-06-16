@@ -108,7 +108,7 @@ export default function Page() {
           <div className="text-sm flex gap-2 justify-center mt-4">
             <p>Already have have an account?</p>
             <Link href="/signin" className="text-accent">
-              Sign-Up here
+              Sign-In here
             </Link>
           </div>
         </form>
