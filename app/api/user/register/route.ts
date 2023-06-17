@@ -1,14 +1,20 @@
 import { hashPassword, main } from "@/app/lib/helper";
 import prisma from "@/prisma";
 import { NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
-import { signIn } from "next-auth/react";
 
 // Create new user
 export const POST = async (req: Request, res: NextResponse) => {
   try {
     const { email, password } = await req.json();
     await main();
+
+    const userAlreadyExists = await prisma.user.findUnique({
+      where: { email: email },
+    });
+
+    if (userAlreadyExists) {
+      return NextResponse.json({ message: "Error: User already exists" });
+    }
 
     const encryptedPassword = await hashPassword(password);
 
@@ -23,26 +29,13 @@ export const POST = async (req: Request, res: NextResponse) => {
       );
     }
 
-    // const payload = {
-    //   user: {
-    //     id: user.id,
-    //   },
-    // };
-
-    // const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
-    //   expiresIn: "1h",
+    // const result = await signIn("credentials", {
+    //   redirect: false,
+    //   email,
+    //   password,
     // });
 
-    const result = await signIn("credentials", {
-      redirect: false,
-      email: "user@example.com",
-      password: "password",
-    });
-
-    return NextResponse.json(
-      { message: "Success: ", result, user },
-      { status: 200 }
-    );
+    return NextResponse.json({ message: "Success: ", user }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ message: "Error: ", err }, { status: 500 });
   } finally {

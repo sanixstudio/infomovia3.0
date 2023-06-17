@@ -30,6 +30,20 @@ export default function Page() {
     }
 
     try {
+      const res = await fetch("/api/user/register", {
+        method: "POST",
+        body: JSON.stringify({ email, password, confirmPassword }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const user = await res.json();
+
+      console.log(user);
+
+      if (!user) {
+        setErrorMessage("Error: Something went wrong");
+      }
+
       const result = await signIn("credentials", {
         redirect: false,
         email,
@@ -39,7 +53,7 @@ export default function Page() {
       if (result?.error) {
         setErrorMessage(result.error);
       } else {
-        // Redirect to a protected page after successful login
+        setErrorMessage("");
         router.push("/filter");
       }
     } catch (err) {

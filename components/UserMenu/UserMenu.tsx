@@ -7,6 +7,8 @@ import { signOut, useSession } from "next-auth/react";
 const UserMenu = () => {
   const session = useSession();
 
+  console.log(session)
+
   return (
     <>
       <div className="hidden sm:block ease-in duration-300">
