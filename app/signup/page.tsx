@@ -3,6 +3,7 @@ import React, { FormEventHandler, useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
+import GoogleButton from "react-google-button";
 
 export default function Page() {
   const emailRef = useRef<HTMLInputElement | null>(null);
@@ -71,7 +72,7 @@ export default function Page() {
           onSubmit={handleSubmit}
           className="w-full relative flex flex-col gap-6 max-w-md"
         >
-          <label className="ml-3" htmlFor="email">
+          <label className="ml-3 -mb-4" htmlFor="email">
             Email
           </label>
           <input
@@ -83,7 +84,7 @@ export default function Page() {
             className="py-3 rounded-full bg-slate-900 px-4"
             required
           />
-          <label className="ml-3" htmlFor="password">
+          <label className="ml-3 -mb-4" htmlFor="password">
             Password
           </label>
           <input
@@ -95,7 +96,7 @@ export default function Page() {
             className="py-3 rounded-full bg-slate-900 px-4"
             required
           />
-          <label className="ml-3" htmlFor="confirm-password">
+          <label className="ml-3 -mb-4" htmlFor="confirm-password">
             Confirm Password
           </label>
           <input
@@ -108,7 +109,7 @@ export default function Page() {
             required
           />
           {errorMessage && <p className="text-red-400">{errorMessage}</p>}
-          <div className="w-full flex justify-end gap-4">
+          <div className="w-full flex justify-end gap-4 mt-4">
             <Link
               href={"/"}
               className="btn btn-accent btn-outline rounded-full"
@@ -124,6 +125,10 @@ export default function Page() {
             <Link href="/signin" className="text-accent">
               Sign-In here
             </Link>
+          </div>
+          <span className="text-center">OR</span>
+          <div className="flex justify-center">
+            <GoogleButton onClick={() => signIn("google")} />
           </div>
         </form>
       </div>
