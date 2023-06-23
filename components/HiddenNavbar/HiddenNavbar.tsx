@@ -1,15 +1,28 @@
-import React from "react";
-import LoginModal from "../LoginModal/LoginModal";
-import RegisterModal from "../RegisterModal/RegisterModal";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import { GENRES } from "@/utils/constants/api_constants";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const HiddenNavbar = () => {
-  const [loginModalIsOpen, setLoginModalIsOPen] = React.useState(false);
-  const [registerModalIsOpen, setRegisterModalIsOpen] = React.useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const closeLoginModal = () => setLoginModalIsOPen(true);
-  const closeRegisterModal = () => setRegisterModalIsOpen(false);
+  const router = useRouter();
+  const { data: session } = useSession();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const query = inputRef.current?.value.trim();
+    query && setSearchQuery(query);
+  };
+
+  useEffect(() => {
+    if (searchQuery !== "") {
+      router.push(`/search/${searchQuery}`);
+    }
+  }, [router, searchQuery]);
 
   return (
     <>
@@ -84,37 +97,35 @@ const HiddenNavbar = () => {
           </li>
           <li>
             <div className="md:hidden form-control">
-              <input
-                type="text"
-                placeholder="Search"
-                className="input input-bordered rounded-full"
-              />
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="search"
+                  ref={inputRef}
+                  placeholder="Search"
+                  className="input input-bordered rounded-full"
+                />
+              </form>
             </div>
           </li>
           <div className="flex gap-2 ml-5 py-2">
-            <button
-              className="btn btn-sm btn-outline btn-accent"
-              onClick={() => setLoginModalIsOPen(true)}
-            >
-              Login
-            </button>
-            <button
-              className="btn btn-sm btn-outline btn-accent"
-              onClick={() => setRegisterModalIsOpen(true)}
-            >
-              Register
-            </button>
+            {session?.user ? (
+              <button
+                className="btn btn-sm btn-outline btn-accent"
+                onClick={() => signOut()}
+              >
+                Logout
+              </button>
+            ) : (
+              <button
+                className="btn btn-sm btn-outline btn-accent"
+                onClick={() => router.push("/signin")}
+              >
+                Login
+              </button>
+            )}
           </div>
         </ul>
       </div>
-      <LoginModal
-        loginModalIsOpen={loginModalIsOpen}
-        closeLoginModal={closeLoginModal}
-      />
-      <RegisterModal
-        registerModalIsOpen={registerModalIsOpen}
-        closeRegisterModal={closeRegisterModal}
-      />
     </>
   );
 };

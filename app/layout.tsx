@@ -17,8 +17,8 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className="bg-slate-900">
-        <SessionProvider>
+      <SessionProvider>
+        <body className="bg-slate-900">
           <QueryClientProvider client={queryClient}>
             <AppContextProvider>
               <div className="flex flex-col h-screen">
@@ -28,8 +28,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
             </AppContextProvider>
           </QueryClientProvider>
-        </SessionProvider>
-      </body>
+        </body>
+      </SessionProvider>
     </html>
   );
 }

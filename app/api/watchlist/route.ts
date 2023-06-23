@@ -16,7 +16,7 @@ export async function POST(req: Request, res: NextApiResponse) {
       },
     });
     if (!watchItem) {
-      return new NextResponse(
+      return new NextResponse( 
         JSON.stringify({ message: "Error: Something went wrong" })
       );
     }

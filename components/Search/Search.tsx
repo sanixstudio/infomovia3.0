@@ -10,9 +10,8 @@ const Search = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (inputRef.current !== null) {
-      setSearchQuery(inputRef.current.value);
-    }
+    const query = inputRef.current?.value.trim();
+    query && setSearchQuery(query);
   };
 
   useEffect(() => {

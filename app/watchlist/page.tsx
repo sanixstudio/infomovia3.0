@@ -3,11 +3,11 @@ import React, { useEffect } from "react";
 import { IMG_URL } from "@/utils/constants/api_constants";
 import Image from "next/image";
 import { BsThreeDots } from "react-icons/bs";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
 import { LoadingDots } from "@/components";
 import useGetUserId from "@/hooks/useGetUserId";
+import { useQuery } from "@tanstack/react-query";
+import { signIn, useSession } from "next-auth/react";
 
 interface User {
   id: string;
@@ -16,21 +16,28 @@ interface User {
   image?: string | null;
 }
 
-const Page = async () => {
+const Page = () => {
   const router = useRouter();
   const { data: session } = useSession();
-  const { id } = session?.user as User;
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      console.log(session);
+      if (session) console.log("session");
+      else router.push("/signin");
+    }, 2000);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [router, session]);
 
   const getWatchItems = async () => {
-    const delay = setTimeout(async () => {
-      console.log(id);
-      const res = await fetch(`/api/watchlist/${id}`);
-      const items = await res.json();
-      return items;
-    }, 2000);
+    const { id } = session?.user?.id;
+    const res = fetch(`/api/watchlist/${id}`);
+    const watchlist = (await res).json;
+    return watchlist;
   };
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data, isLoading, error } = useQuery(["getWatchlist"], getWatchItems);
 
   if (isLoading) return <LoadingDots />;
@@ -39,7 +46,7 @@ const Page = async () => {
 
   console.log(data);
 
-  return session?.user ? (
+  return (
     <>
       <div className="max-w-[1440px] mx-auto my-8 p-4">
         <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
@@ -162,7 +169,7 @@ const Page = async () => {
         </div>
       </div>
     </>
-  ) : null;
+  );
 };
 
 export default Page;
