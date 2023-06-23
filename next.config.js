@@ -25,6 +25,7 @@ const nextConfig = {
   },
   experimental: {
     serverActions: true,
+    serverComponentsExternalPackages: ["mongodb"],
   },
 };
 

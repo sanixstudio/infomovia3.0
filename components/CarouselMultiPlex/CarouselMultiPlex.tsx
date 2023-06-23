@@ -121,7 +121,7 @@ const Carousel = ({ title }: SectionTitleProps) => {
           ref={carousel}
           className="carousel-container relative flex gap-5 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
-          {data.results.map((media: MovieProps, index: number) => {
+          {data.results.map((media: MovieProps) => {
             return <Poster key={media.id} media={media} />;
           })}
         </div>

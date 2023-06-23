@@ -1,35 +1,52 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import { AiFillStar } from "react-icons/ai";
 import { IMG_URL } from "@/utils/constants/api_constants";
 import { PosterProps } from "@/utils/typings/typings";
+import Link from "next/link";
+import useGetUserId from "@/hooks/useGetUserId";
+import { addToWatchList } from "@/utils/serverFn";
 
 const Poster = ({ media }: PosterProps) => {
-  const NO_IMAGE = "/images/No-Image-Placeholder.svg";
-  const posterPath = media.poster_path
-    ? `${IMG_URL}${media.poster_path}`
-    : NO_IMAGE;
+  const { userId } = useGetUserId();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleImageError = (
-    e: React.SyntheticEvent<HTMLImageElement, Event>
-  ) => {
-    e.currentTarget.src = NO_IMAGE;
+  const handleClick = async () => {
+    try {
+      setIsLoading(true);
+      const res = await addToWatchList(userId, media);
+      if (!res) {
+        setError("Something went wrong, try again");
+      }
+      setIsLoading(false);
+    } catch (err: any) {
+      setError(err);
+    }
   };
 
   return (
     <div
       key={media.id}
-      className="carousel-item w-[185px] snap-start flex flex-col rounded-md cursor-pointer border border-transparent hover:outline-top ease-in duration-150"
+      className="carousel-item relative w-[185px] snap-start flex flex-col rounded-md cursor-pointer border border-transparent hover:outline-top ease-in duration-150"
     >
-      <a
+      <div className="absolute w-full top-0 left-0 flex justify-end">
+        <button
+          className="w-[32px] btn btn-sm btn-accent text-xl z-10"
+          onClick={handleClick}
+        >
+          +
+        </button>
+      </div>
+      <Link
         href={`/movie/${media.id}`}
         className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
       >
         <Image
           width={185}
           height={185}
-          src={posterPath}
-          onError={() => handleImageError}
+          src={IMG_URL + media.poster_path}
           alt={media.title}
           className="w-full aspect-square object-cover hidden rounded-t-md bg-slate-800"
         />
@@ -49,7 +66,7 @@ const Poster = ({ media }: PosterProps) => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

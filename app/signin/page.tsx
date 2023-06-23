@@ -33,8 +33,7 @@ export default function Page() {
       if (result?.error) {
         setErrorMessage(result.error);
       } else {
-        // Redirect to a protected page after successful login
-        router.push("/filter");
+        router.back();
       }
     } catch (err) {
       setErrorMessage("Check your credentials");
@@ -95,7 +94,7 @@ export default function Page() {
           </div>
           <span className="text-center">OR</span>
           <div className="flex justify-center">
-            <GoogleButton onClick={()=> signIn('google')} />
+            <GoogleButton onClick={() => signIn("google")} />
           </div>
         </form>
       </div>

@@ -29,8 +29,14 @@ const credentialsProvider = CredentialsProvider({
       throw new Error("Invalid credentials");
     }
 
+    const { id } = await prisma.user.findUnique({
+      where: { email: credentials.email },
+      select: { id: true },
+    });
+
     return {
       email: user.email,
+      id,
     };
   },
 });
@@ -43,6 +49,18 @@ const googleProvider = GoogleProvider({
 const authHandler = NextAuth({
   providers: [credentialsProvider, googleProvider],
   debug: process.env.NODE_ENV === "development",
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.sub;
+      }
+      return session;
+    },
+  },
+  secret: [process.env.JWT_SECRET],
   session: {
     strategy: "jwt",
   },

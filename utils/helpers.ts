@@ -1,3 +1,4 @@
+import { main } from "@/app/lib/helper";
 import {
   BACKDROP_1280_URL,
   IS_PROD_ENV,

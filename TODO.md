@@ -12,13 +12,13 @@
 - [x] Create Header
 - [x] Create Hero with Carousel
 - [x] Create Login/Register Modals
-- [ ] Add Login/Register logic
+- [X] Add Login/Register logic
 - [ ] Utilize React-hook-form to handle form submission
 - [ ] Create setup for Wishlist ContextProvider
 - [ ] CRUD Wishlist functionality - local-storage/database
 - [x] Create Setup to handle API call using Tan-Stack
 - [ ] Create Setup for DarkTheme
-- [ ] Add watch Trailer functionality
+- [X] Add watch Trailer functionality
 - [x] Add logic to handle genre requests
 - [x] Create page to show Movie/TV information - Single
 - [x] Add Search functionality
@@ -44,6 +44,9 @@
 - daisy ui
 - react-loader-spinner
 - Next Auth
+- react-icon
+- moment.js
+- 
 
 # Fixes:
 

@@ -1,6 +1,6 @@
 "use client";
 import { Key, SetStateAction, useCallback, useState } from "react";
-import { LoadingDots } from "@/components";
+import { LoadingDots, Poster } from "@/components";
 import useMediaData from "@/hooks/useFetchMovies";
 import {
   IMG_URL,
@@ -10,6 +10,7 @@ import {
 } from "@/utils/constants/api_constants";
 import Image from "next/image";
 import Link from "next/link";
+import { MovieProps } from "@/utils/typings/typings";
 
 const Page = () => {
   const [selectedPage, setSelectedPage] = useState(PLAYING_NOW_URL);
@@ -70,23 +71,9 @@ const Page = () => {
           </button>
         </div>
         <div className="flex flex-wrap mt-10 gap-10 justify-center">
-          {data.results.map(
-            (movie: {
-              id: number;
-              title: string;
-              poster_path: string;
-              release_date: string;
-            }) => (
-              <Link key={movie.id} href={`/movie/${movie.id}`}>
-                <Image
-                  src={IMG_URL + movie.poster_path}
-                  width={185}
-                  height={200}
-                  alt=""
-                />
-              </Link>
-            )
-          )}
+          {data.results.map((media: MovieProps) => {
+            return <Poster key={media.id} media={media} />;
+          })}
         </div>
       </div>
     </div>
