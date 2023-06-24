@@ -40,7 +40,7 @@ const Page = () => {
 
   if (error) return <h1>Error: </h1>;
 
-  console.log(data[0].movies)
+  console.log(data[0].movies);
 
   return (
     <>
