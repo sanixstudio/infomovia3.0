@@ -15,6 +15,8 @@ const Hero = () => {
 
   if (error) return <h1>Error</h1>;
 
+  console.log(data)
+
   return (
     <div className="bg-gradient-to-t from-black">
       <div className="max-w-[1440px] mx-auto relative">

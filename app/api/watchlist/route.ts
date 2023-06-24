@@ -16,12 +16,14 @@ export async function POST(req: Request, res: NextApiResponse) {
       },
     });
     if (!watchItem) {
-      return new NextResponse( 
+      return new NextResponse(
         JSON.stringify({ message: "Error: Something went wrong" })
       );
     }
     return new NextResponse(JSON.stringify({ message: "Success", watchItem }));
   } catch (err) {
-    return res.status(500).json({ message: "Error", error: err });
+    return new NextResponse(
+      JSON.stringify({ Message: `${(err as Error)?.message}`, status: 500 })
+    );
   }
 }

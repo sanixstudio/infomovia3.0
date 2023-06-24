@@ -1,13 +1,12 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { Key, useEffect } from "react";
 import { IMG_URL } from "@/utils/constants/api_constants";
 import Image from "next/image";
-import { BsThreeDots } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 import { LoadingDots } from "@/components";
-import useGetUserId from "@/hooks/useGetUserId";
 import { useQuery } from "@tanstack/react-query";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 interface User {
   id: string;
@@ -22,20 +21,17 @@ const Page = () => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      console.log(session);
-      if (session) console.log("session");
-      else router.push("/signin");
-    }, 2000);
+      if (!session) router.push("/signin");
+    }, 1000);
     return () => {
       clearTimeout(timeoutId);
     };
   }, [router, session]);
 
   const getWatchItems = async () => {
-    const { id } = session?.user?.id;
-    const res = fetch(`/api/watchlist/${id}`);
-    const watchlist = (await res).json;
-    return watchlist;
+    const { id } = session?.user as User;
+    const res = await (await fetch(`/api/watchlist/${id}`)).json();
+    return res;
   };
 
   const { data, isLoading, error } = useQuery(["getWatchlist"], getWatchItems);
@@ -44,12 +40,12 @@ const Page = () => {
 
   if (error) return <h1>Error: </h1>;
 
-  console.log(data);
+  console.log(data[0].movies)
 
   return (
     <>
       <div className="max-w-[1440px] mx-auto my-8 p-4">
-        <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
+        {/* <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
           <button
             type="button"
             className="text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-gray-900 dark:focus:ring-blue-800"
@@ -80,92 +76,22 @@ const Page = () => {
           >
             Gaming
           </button>
-        </div>
+        </div> */}
+        <h1 className="text-4xl mb-8">Watchlist</h1>
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2F8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2FfiVW06jE7z9YnO4trhaMEdclSiC.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2Fym1dxyOk4jFcSl4Q2zmRrA5BEEN.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2F3IhGkkalwXguTlceGSl8XUJZOVI.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2F8riWcADI1ekEiBguVB9vkilhiQm.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2FwDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2F8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2FfiVW06jE7z9YnO4trhaMEdclSiC.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2Fym1dxyOk4jFcSl4Q2zmRrA5BEEN.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2F3IhGkkalwXguTlceGSl8XUJZOVI.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2F8riWcADI1ekEiBguVB9vkilhiQm.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="max-w-full rounded-lg"
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw185%2F%2FwDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg&w=256&q=75"
-              alt=""
-            />
-          </div>
+          {data?.map((movie: { movies: any; id: Key | null | undefined }) => (
+            <Link href={`/movie/${movie.movies.id}`} key={movie.id}>
+              <div>
+                <Image
+                  width={185}
+                  height={270}
+                  className="max-w-full rounded-lg"
+                  src={IMG_URL + movie.movies.poster_path}
+                  alt={movie.movies.title}
+                />
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </>
