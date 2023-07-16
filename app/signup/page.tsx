@@ -3,7 +3,6 @@ import React, { FormEventHandler, useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
-import GoogleButton from "react-google-button";
 
 export default function Page() {
   const emailRef = useRef<HTMLInputElement | null>(null);
@@ -128,7 +127,6 @@ export default function Page() {
           </div>
           <span className="text-center">OR</span>
           <div className="flex justify-center">
-            <GoogleButton onClick={() => signIn("google")} />
           </div>
         </form>
       </div>

@@ -16,6 +16,10 @@
   --accent: #fdfe00;
 }
 
+body {
+  color: #fff;
+}
+
 .legend {
   width: 100% !important;
   left: 0 !important;
