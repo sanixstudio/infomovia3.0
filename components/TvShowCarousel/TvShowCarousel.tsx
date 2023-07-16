@@ -10,7 +10,7 @@ const TvShowCarousel = () => {
           <Image
             width={1280}
             height={720}
-            alt=""
+            alt="carousel image"
             src="https://image.tmdb.org/t/p/w1280/7bWxAsNPv9CXHOhZbJVlj2KxgfP.jpg"
             className="object-cover"
           />
@@ -27,7 +27,7 @@ const TvShowCarousel = () => {
           <Image
             width={1280}
             height={720}
-            alt=""
+            alt="carousel image"
             src="https://image.tmdb.org/t/p/w1280/eTvN54pd83TrSEOz6wbsXEJktCV.jpg"
             className="object-cover"
           />
@@ -44,7 +44,7 @@ const TvShowCarousel = () => {
           <Image
             width={1280}
             height={720}
-            alt=""
+            alt="carousel image"
             src="https://picsum.photos/id/7/1280/720"
             className="object-cover"
           />
@@ -61,7 +61,7 @@ const TvShowCarousel = () => {
           <Image
             width={1280}
             height={720}
-            alt=""
+            alt="carousel image"
             src="https://picsum.photos/id/267/1280/720"
             className="object-cover"
           />

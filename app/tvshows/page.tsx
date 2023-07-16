@@ -84,7 +84,7 @@ const Page = () => {
                   src={IMG_URL + movie.poster_path}
                   width={185}
                   height={200}
-                  alt=""
+                  alt={movie.title}
                 />
               </Link>
             )

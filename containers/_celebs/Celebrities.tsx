@@ -40,7 +40,7 @@ const Celebrities = () => {
                     width={200}
                     height={200}
                     src={IMG_URL + celebrity.profile_path}
-                    alt=""
+                    alt={celebrity.name}
                     className="rounded-full w-[200px] h-[200px] object-cover"
                   />
                   <p className="text-xl font-semibold absolute bottom-0 bg-gradient-to-t from-black to-transparent bg-opacity-20 w-full rounded-b-full h-1/2 flex-row-center pt-4">

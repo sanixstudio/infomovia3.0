@@ -39,9 +39,8 @@ const MoviesReviews = ({ movieId }: MoviesReviewsProps) => {
                 width={40}
                 height={40}
                 className="w-10 h-10 rounded-full"
-                // src={review.author_details.avatar_path.split("/").join("")}
                 src={"https://picsum.photos/id/237/200/300"}
-                alt=""
+                alt={review.author}
               />
               <div className="space-y-1 font-medium dark:text-white">
                 <p>{review.author}</p>

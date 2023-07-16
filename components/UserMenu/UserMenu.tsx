@@ -38,11 +38,6 @@ const UserMenu = () => {
           </div>
         ) : (
           <div className="flex gap-2 ml-5">
-            {/* <button
-              className="btn btn-sm btn-outline btn-accent"
-              onClick={() => router.push('/signin')}            >
-              Login
-            </button> */}
             <Link
               href={"/signin"}
               className="btn btn-accent btn-outline btn-sm"

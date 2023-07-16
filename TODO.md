@@ -41,7 +41,6 @@
 
 - Timeago.js
 - flowbite
-- daisy ui
 - react-loader-spinner
 - Next Auth
 - react-icon

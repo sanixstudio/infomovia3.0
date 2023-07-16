@@ -11,7 +11,11 @@ const WishListBtn = () => {
   const { data: session } = useSession();
 
   const getWatchItems = async () => {
-    const { id } = session?.user as User;
+    const user = session?.user as User;
+    const id = user?.id;
+
+    if (id === undefined) return null;
+
     const res = await (await fetch(`/api/watchlist/${id}`)).json();
     return res;
   };
@@ -34,7 +38,7 @@ const WishListBtn = () => {
           <div className="indicator">
             <BiMessageSquareAdd size={24} />
             <span className="badge badge-sm indicator-item bg-accent text-neutral">
-              {data?.length}
+              {data?.length || 0}
             </span>
           </div>
         </label>
