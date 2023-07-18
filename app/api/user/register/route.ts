@@ -29,12 +29,6 @@ export const POST = async (req: Request, res: NextResponse) => {
       );
     }
 
-    // const result = await signIn("credentials", {
-    //   redirect: false,
-    //   email,
-    //   password,
-    // });
-
     return NextResponse.json({ message: "Success: ", user }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ message: "Error: ", err }, { status: 500 });

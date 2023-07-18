@@ -22,24 +22,19 @@ const WishListBtn = () => {
 
   const { data, isLoading, error } = useQuery(["getWatchlist"], getWatchItems);
 
-  if (isLoading)
-    return (
-      <div className="max-w-[46px] max-h-[20px] overflow-hidden border border-white">
-        <LoadingDots />
-      </div>
-    );
-
   if (error) return <h1>Error: </h1>;
 
   return (
     <div className="dropdown dropdown-end hidden sm:flex w-[200px] justify-center">
       <Link href="/watchlist">
         <label tabIndex={0} className="btn btn-ghost btn-circle">
-          <div className="indicator">
-            <BiMessageSquareAdd size={24} />
-            <span className="badge badge-sm indicator-item bg-accent text-neutral">
+          <div className="flex items-center justify-center h-full relative">
+            <span className="absolute top-0 -right-2 badge badge-sm indicator-item bg-accent text-neutral">
               {data?.length || 0}
             </span>
+            <button>
+              <BiMessageSquareAdd color="turquoise" size={24} />
+            </button>
           </div>
         </label>
       </Link>

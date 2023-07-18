@@ -21,7 +21,7 @@ const Search = () => {
   }, [router, searchQuery]);
 
   return (
-    <div className="w-full hidden md:flex form-control">
+    <div className="w-full hidden lg:flex form-control">
       <form
         onSubmit={handleSubmit}
         className="flex relative w-fit items-center"
@@ -30,7 +30,7 @@ const Search = () => {
           type="text"
           placeholder="Search"
           ref={inputRef}
-          className=" text-slate-300
+          className="pl-5 bg-slate-500 focus:bg-slate-600 text-slate-300 placeholder-slate-400
           input input-bordered w-[250px] lg:w-[300px] rounded-full focus:border-3 focus:border-accent"
         />
         <button type="submit" className="absolute right-3">

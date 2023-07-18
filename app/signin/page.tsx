@@ -3,6 +3,7 @@ import React, { FormEventHandler, useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
+import { Button } from "flowbite-react";
 
 export default function Page() {
   const emailRef = useRef<HTMLInputElement | null>(null);
@@ -75,24 +76,28 @@ export default function Page() {
           />
           {errorMessage && <p className="text-red-400">{errorMessage}</p>}
           <div className="w-full flex justify-end gap-4 mt-4">
-            <Link
-              href={"/"}
-              className="btn btn-accent btn-outline rounded-full"
+            <Button
+              onClick={() => router.push("/")}
+              gradientMonochrome="teal"
+              pill
+              outline
+              className="bg-cyan-600"
+            >Cancel</Button>
+            <Button
+              type="submit"
+              gradientMonochrome="teal"
+              pill
+              className="bg-cyan-600"
             >
-              Cancel
-            </Link>
-            <button type="submit" className="btn btn-accent rounded-full">
-              Sign In
-            </button>
+              Login
+            </Button>
           </div>
           <div className="text-sm flex gap-2 justify-center mt-4">
             <p>Don&apos;t have an account?</p>
-            <Link href="/signup" className="text-accent">
+            <Link href="/signup" className="text-accent underline">
               Sign-Up here
             </Link>
           </div>
-          <span className="text-center">OR</span>
-          <div className="flex justify-center"></div>
         </form>
       </div>
     </div>

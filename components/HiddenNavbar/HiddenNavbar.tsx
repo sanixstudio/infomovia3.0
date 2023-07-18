@@ -5,7 +5,7 @@ import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-const HiddenNavbar = () => {
+const HiddenNavbar = ({ isOpen }: { isOpen: boolean }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -26,8 +26,8 @@ const HiddenNavbar = () => {
 
   return (
     <>
-      <div className="mr-2 dropdown">
-        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+      <div className={`${isOpen ? "block" : "hidden"} mr-2`}>
+        <label tabIndex={0} className="lg:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"

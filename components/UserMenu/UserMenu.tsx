@@ -3,16 +3,17 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import { Button } from "flowbite-react";
 
 const UserMenu = () => {
   const session = useSession();
   return (
     <>
-      <div className="hidden sm:block ease-in duration-300">
+      <div className="hidden sm:block md:flex relative items-center ease-in duration-300">
         {session.data?.user ? (
           <div className="flex-none">
-            <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <div className="">
+              <label tabIndex={0} className="">
                 <div className="w-8 h-8 rounded-full bg-slate-500">
                   <Image
                     src={
@@ -28,22 +29,21 @@ const UserMenu = () => {
               </label>
               <ul
                 tabIndex={7}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-slate-700 border-2 border-accent"
+                className="mt-3 p-2 shadow rounded-box bg-slate-700 border-2 border-accent absolute z-10 right-0"
               >
                 <li tabIndex={0.3}>
-                  <button onClick={() => signOut()}>Logout</button>
+                  <Button gradientMonochrome="cyan" onClick={() => signOut()}>
+                    Logout
+                  </Button>
                 </li>
               </ul>
             </div>
           </div>
         ) : (
           <div className="flex gap-2 ml-5">
-            <Link
-              href={"/signin"}
-              className="btn btn-accent btn-outline btn-sm"
-            >
-              Login
-            </Link>
+            <Button gradientMonochrome="teal" className="bg-cyan-600">
+              <Link href={"/signin"}>Login</Link>
+            </Button>
           </div>
         )}
       </div>

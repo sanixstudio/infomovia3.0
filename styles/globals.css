@@ -25,7 +25,6 @@ body {
   left: 0 !important;
   padding: 2em !important;
   margin: 0 !important;
-  /* border: 1px solid #fff; */
   bottom: 0 !important;
   border-radius: 0 !important;
   background: none !important;
@@ -67,4 +66,11 @@ body {
 .tab-active {
   border: 1px solid #20b1a5 !important;
   color: #20b1a5 !important;
+}
+
+[data-testid="flowbite-navbar-collapse"] > ul {
+  display: flex;
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
 }
