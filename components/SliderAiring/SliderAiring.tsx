@@ -9,10 +9,10 @@ import { getDeploymentEnv } from "@/utils/helpers";
 
 type CarouselProps = {};
 
-const TvCarousel: React.FC<CarouselProps> = () => {
+const SliderAiring: React.FC<CarouselProps> = () => {
   const upComing = useMediaData(
     "upComingForHero",
-    `${getDeploymentEnv()}/api/movies/playingnow`
+    `${getDeploymentEnv()}/api/tv/airing`
   );
   const { data, isLoading, error } = upComing;
 
@@ -20,22 +20,21 @@ const TvCarousel: React.FC<CarouselProps> = () => {
 
   if (error) return <h1 className="text-4xl">Error:</h1>;
 
+  console.log(data);
+
   return (
-    <Carousel autoPlay>
+    <Carousel autoPlay className="max-w-md">
       {data.results.map(
         (tvShow: { id: Key; name: string; poster_path: string }) => (
-          <div
-            key={tvShow.id}
-            className="max-w-[1280px] max-h-[500px] mx-auto px-4"
-          >
+          <div key={tvShow.id}>
             <Image
-              height={1280}
+              height={600}
               width={720}
               alt={tvShow.name}
               src={BACKDROP_1280_URL + tvShow.poster_path}
-              className=""
+              className="max-h-[700px] object-contain"
             />
-            <p className="legend">{tvShow.name}</p>
+            <p className="bg-black">{tvShow.name}</p>
           </div>
         )
       )}
@@ -43,4 +42,4 @@ const TvCarousel: React.FC<CarouselProps> = () => {
   );
 };
 
-export default TvCarousel;
+export default SliderAiring;

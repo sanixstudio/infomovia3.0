@@ -1,20 +1,11 @@
 "use client";
 import { Search } from "@/components";
 import { GENRES } from "@/utils/constants/api_constants";
-import type { CustomFlowbiteTheme } from "flowbite-react";
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-const customTheme: CustomFlowbiteTheme = {
-  button: {
-    color: {
-      primary: "bg-red-500 hover:bg-red-600",
-    },
-  },
-};
 
 export default function NavbarWithDropdown() {
   const router = useRouter();

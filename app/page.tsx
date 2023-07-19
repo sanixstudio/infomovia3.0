@@ -1,5 +1,4 @@
-import { Stats, Carousel } from "@/components";
-import FetchTest from "@/components/FetchTest";
+import { Stats, TVCarousel } from "@/components";
 import { Celebrities, Hero } from "@/containers";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
@@ -19,11 +18,10 @@ export default function Home() {
   return (
     <div className="bg-slate-900">
       <Hero />
-      <FetchTest />
       <TheCarousel title={"Upcoming Movies"} />
       <Celebrities />
       <Stats title="Trending Now" />
-      <Carousel />
+      <TVCarousel />
     </div>
   );
 }

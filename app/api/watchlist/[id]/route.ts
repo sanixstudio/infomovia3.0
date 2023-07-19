@@ -1,7 +1,7 @@
 import prisma from "@/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiResponse } from "next";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: Request, res: NextApiResponse) {
   const params = req.url;
   const userId = params?.split("/").at(-1);
 
