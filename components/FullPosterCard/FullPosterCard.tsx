@@ -12,6 +12,7 @@ import {
   HiOutlineCheckCircle,
 } from "react-icons/hi";
 import { BACKDROP_1280_URL } from "@/utils/constants/api_constants";
+import { Badge, Button } from "flowbite-react";
 
 type movieDetailsProps = {
   movie: {
@@ -61,14 +62,6 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
               </div>
               <div className="flex gap-3">
                 <div className="flex items-center mb-2">
-                  <AiFillStar className="mr-2" />
-                  {/* //TODO: get IMDB ratings */}
-                  <p className="min-w-[150px]">IMDB Ratings</p>
-                </div>
-                <span>{movie.ratings}</span>
-              </div>
-              <div className="flex gap-3">
-                <div className="flex items-center mb-2">
                   <HiClock className="mr-2" />
                   <p className="min-w-[150px]">Popularity</p>
                 </div>
@@ -93,9 +86,9 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
               <h2 className="text-lg font-semibold mb-1">Genres</h2>
               <div className="flex gap-1 flex-wrap">
                 {movie.genres?.map((genre: { id: number; name: string }) => (
-                  <button key={genre.id} className="btn btn-sm">
+                  <Badge className="bg-slate-500 text-white px-2" key={genre.id}>
                     {genre.name}
-                  </button>
+                  </Badge>
                 ))}
               </div>
             </div>
@@ -105,18 +98,11 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
                 {movie.overview}
               </p>
             </div>
-            {/* <button
-              className="sm:w-full py-2 btn btn-accent rounded-lg flex items-center justify-center"
-              onClick={() => openModal()}
-            >
-              <BiMoviePlay size={22} className="mr-2" />
-              Watch Trailer
-            </button> */}
             <Trailer key={movie.id} id={movie.id} />
-            <button className="sm:w-full py-2 btn btn-accent rounded-lg flex items-center justify-center">
+            <Button className="sm:w-full py-2 rounded-lg flex items-center justify-center">
               <BsPlusCircleFill size={22} className="mr-2" />
               ADD TO WISHLIST
-            </button>
+            </Button>
           </div>
         </div>
         {!movie.first_air_date ? (

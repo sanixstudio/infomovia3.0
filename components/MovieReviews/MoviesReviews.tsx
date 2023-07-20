@@ -32,7 +32,7 @@ const MoviesReviews = ({ movieId }: MoviesReviewsProps) => {
         }) => (
           <article
             key={movieId}
-            className="p-8 bg-[#343b49] rounded-md shadow-lg"
+            className="p-8 rounded-md shadow-lg bg-slate-700"
           >
             <div className="flex items-center mb-4 space-x-4">
               <Image
@@ -59,15 +59,13 @@ const MoviesReviews = ({ movieId }: MoviesReviewsProps) => {
               </svg>
               {review.author_details.rating}
             </div>
-            <footer className="mb-5 text-sm text-gray-500 dark:text-gray-400">
+            <footer className="mb-5 text-sm text-gray-400 ">
               <p>
                 <time dateTime="2017-03-03 19:00">{review.created_at}</time>
               </p>
             </footer>
-            <p className="mb-2 text-gray-500 dark:text-gray-400 line-clamp-3">
-              {review.content}
-            </p>
-            <p className="mb-3 text-gray-500 dark:text-gray-400">
+            <p className="mb-2 text-gray-300  line-clamp-3">{review.content}</p>
+            <p className="mb-3 text-gray-300 ">
               It is obviously not the same build quality as those very expensive
               watches. But that is like comparing a Citroën to a Ferrari. This
               watch was well under £100! An absolute bargain.

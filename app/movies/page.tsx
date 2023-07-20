@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { MovieProps } from "@/utils/typings/typings";
+import { Button } from "flowbite-react";
 
 const Page = () => {
   const [selectedPage, setSelectedPage] = useState(PLAYING_NOW_URL);
@@ -44,32 +45,31 @@ const Page = () => {
   return (
     <div className="max-w-[1440px] w-full mx-auto p-4">
       <div className="my-5">
-        <div className="tabs tabs-boxed py-2 max-w-fit">
-          <button
-            onClick={() => handleTabClick(PLAYING_NOW_URL)}
-            className={`tab ${
+        <Button.Group>
+          <Button
+            className={`${
               selectedPage === PLAYING_NOW_URL ? "tab-active" : ""
             }`}
+            color="gray"
+            onClick={() => handleTabClick(PLAYING_NOW_URL)}
           >
-            Currently Playing
-          </button>
-          <button
+            Playing Now
+          </Button>
+          <Button
+            className={`${selectedPage === UP_COMING_URL ? "tab-active" : ""}`}
+            color="gray"
             onClick={() => handleTabClick(UP_COMING_URL)}
-            className={`tab ${
-              selectedPage === UP_COMING_URL ? "tab-active" : ""
-            }`}
           >
             Upcoming
-          </button>
-          <button
+          </Button>
+          <Button
+            className={`${selectedPage === TOP_RATED_URL ? "tab-active" : ""}`}
+            color="gray"
             onClick={() => handleTabClick(TOP_RATED_URL)}
-            className={`tab ${
-              selectedPage === TOP_RATED_URL ? "tab-active" : ""
-            }`}
           >
-            Top Movies
-          </button>
-        </div>
+            Top Rated
+          </Button>
+        </Button.Group>
         <div className="flex flex-wrap mt-10 gap-10 justify-center">
           {data.results.map((media: MovieProps) => {
             return <Poster key={media.id} media={media} />;

@@ -29,7 +29,7 @@ const Poster = ({ media }: PosterProps) => {
   return (
     <div
       key={media.id}
-      className="carousel-item relative w-[185px] snap-start flex flex-col rounded-md cursor-pointer border border-transparent hover:outline-top ease-in duration-150"
+      className="flex-grow carousel-item overflow-hidden relative w-[185px] snap-start flex flex-col rounded-md cursor-pointer hover:outline-top ease-in duration-150"
     >
       <div className="absolute w-full top-0 left-0 flex justify-end">
         <button

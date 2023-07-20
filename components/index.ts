@@ -23,8 +23,5 @@ export { default as TvShowCarousel } from "./TvShowCarousel/TvShowCarousel";
 export { default as UserMenu } from "./UserMenu/UserMenu";
 export { default as WarningToast } from "./WarningToast/WarningToast";
 export { default as SuccessToast } from "./SuccessToast/SuccessToast";
-export { default as SliderAiring } from "./SliderAiring/SliderAiring";
-export { default as SliderTrending } from "./SliderTrending/SliderTrending";
-export { default as SliderTopRated } from "./SliderTopRated/SliderTopRated";
 export { default as ErrorToast } from "./ErrorToast/ErrorToast";
 export { default as WishListBtn } from "./WishListBtn/WishListBtn";

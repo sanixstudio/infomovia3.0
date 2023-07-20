@@ -5,9 +5,8 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 import { BiMessageSquareAdd } from "react-icons/bi";
-import LoadingDots from "../LoadingDots/LoadingDots";
 
-const WishListBtn = () => {
+const WishListBtn = () => {``
   const { data: session } = useSession();
 
   const getWatchItems = async () => {
@@ -20,7 +19,7 @@ const WishListBtn = () => {
     return res;
   };
 
-  const { data, isLoading, error } = useQuery(["getWatchlist"], getWatchItems);
+  const { data, error } = useQuery(["getWatchlist"], getWatchItems);
 
   if (error) return <h1>Error: </h1>;
 

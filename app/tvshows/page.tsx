@@ -10,6 +10,7 @@ import {
 } from "@/utils/constants/api_constants";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "flowbite-react";
 
 const Page = () => {
   const [selectedPage, setSelectedPage] = useState(AIRING_TODAY_TV_URL);
@@ -40,37 +41,38 @@ const Page = () => {
     return <h1 className="text-4xl">Error:</h1>;
   }
 
-  console.log(data.results);
-
   return (
     <div className="max-w-[1440px] w-full mx-auto p-4">
       <div className="my-5">
-        <div className="tabs tabs-boxed py-2 max-w-fit">
-          <button
-            onClick={() => handleTabClick(AIRING_TODAY_TV_URL)}
-            className={`tab ${
+        <Button.Group>
+          <Button
+            className={`${
               selectedPage === AIRING_TODAY_TV_URL ? "tab-active" : ""
             }`}
+            color="gray"
+            onClick={() => handleTabClick(AIRING_TODAY_TV_URL)}
           >
-            Airing Today
-          </button>
-          <button
-            onClick={() => handleTabClick(TOP_RATED_TV_URL)}
-            className={`tab ${
-              selectedPage === TOP_RATED_TV_URL ? "tab-active" : ""
-            }`}
-          >
-            Trending TV Shows
-          </button>
-          <button
-            onClick={() => handleTabClick(TRENDING_TV_URL)}
-            className={`tab ${
+            Airing Now
+          </Button>
+          <Button
+            className={`${
               selectedPage === TRENDING_TV_URL ? "tab-active" : ""
             }`}
+            color="gray"
+            onClick={() => handleTabClick(TRENDING_TV_URL)}
           >
-            Top TV Shows
-          </button>
-        </div>
+            Trending
+          </Button>
+          <Button
+            className={`${
+              selectedPage === TOP_RATED_TV_URL ? "tab-active" : ""
+            }`}
+            color="gray"
+            onClick={() => handleTabClick(TOP_RATED_TV_URL)}
+          >
+            Top Rated
+          </Button>
+        </Button.Group>
         <div className="flex flex-wrap mt-10 gap-10 justify-center">
           {data.results.map(
             (movie: {

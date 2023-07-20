@@ -36,16 +36,12 @@ body {
   ) !important;
 }
 
-.main-carousel .carousel img {
+.main-carousel img {
   object-fit: cover !important;
 }
 
 .thumbs-wrapper {
   display: none;
-}
-
-.carousel-slider {
-  object-fit: cover;
 }
 
 .flex-row-center {

@@ -8,8 +8,8 @@ export const PROD_URL = "https://infomovia3-0.vercel.app/";
 export const IS_PROD_ENV = process.env.NODE_ENV === "production";
 export const IS_DEV_ENV = process.env.NODE_ENV === "development";
 export const BASE_URL = "https://api.themoviedb.org/3/";
-export const IMG_URL = "https://image.tmdb.org/t/p/w185";
-export const BACKDROP_1280_URL = "https://image.tmdb.org/t/p/w1280/";
+export const IMG_URL = "https://image.tmdb.org/t/p/w500";
+export const BACKDROP_1280_URL = "https://image.tmdb.org/t/p/original/";
 
 // General Categories
 export const PLAYING_NOW_URL = `${BASE_URL}movie/now_playing?language=en-US&api_key=${API_KEY}`;

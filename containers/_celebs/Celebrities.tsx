@@ -21,7 +21,7 @@ const Celebrities = () => {
 
   return (
     <div className="my-24 max-w-[1440px] rounded-xl bg-slate-900 p-4 mx-auto">
-      <h1 className="text-4xl mb-10">Famous Celebrities</h1>
+      <h1 className="text-4xl mb-20 border-b border-slate-600 pb-2">Famous Celebrities</h1>
       <div className=" grid grid-cols-1 sm:grid-cols-2 place-items-center	lg:grid-cols-4 gap-4">
         {data.results
           .slice(0, 8)

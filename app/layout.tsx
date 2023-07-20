@@ -21,7 +21,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body className="bg-slate-900">
           <QueryClientProvider client={queryClient}>
             <AppContextProvider>
-              <div className="flex flex-col h-screen">
+              <div className="flex flex-col min-h-screen">
                 <Header />
                 {children && <>{children}</>}
                 <Footer />

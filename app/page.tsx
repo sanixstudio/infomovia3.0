@@ -1,4 +1,4 @@
-import { Stats, TVCarousel } from "@/components";
+import { TVCarousel } from "@/components";
 import { Celebrities, Hero } from "@/containers";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
@@ -20,7 +20,6 @@ export default function Home() {
       <Hero />
       <TheCarousel title={"Upcoming Movies"} />
       <Celebrities />
-      <Stats title="Trending Now" />
       <TVCarousel />
     </div>
   );

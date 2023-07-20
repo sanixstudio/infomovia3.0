@@ -31,10 +31,10 @@ export default function CarouselSlider({
             className="object-cover"
           />
           <div className="legend h-1/2 absolute flex flex-col gap-5 justify-end">
-            <h2 className="text-4xl px-4 pt-4 text-left font-bold">
+            <h2 className="text-xl md:text-4xl px-4 pt-4 text-left font-bold">
               {el.title} - {new Date(el.release_date).getFullYear()}
             </h2>
-            <p className="text-xl text-left px-4">{el.release_date}</p>
+            <p className="text-md md:text-xl text-left px-4">{el.release_date}</p>
             <p className="max-w-2xl text-left text-lg px-4 line-clamp-3">{el.overview}</p>
           </div>
         </div>
