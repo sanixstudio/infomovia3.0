@@ -1,48 +1,51 @@
 "use client";
-import React, { Key, useEffect } from "react";
+import React, { Key, useCallback, useEffect, useState } from "react";
 import { IMG_URL } from "@/utils/constants/api_constants";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { LoadingDots } from "@/components";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { User } from "@/utils/typings/typings";
 
 const Page = () => {
-  // const router = useRouter();
-  // const session = useSession();
-  // const path = usePathname();
-  // const splitterPath = path.split("/");
-  // const id = splitterPath[splitterPath.length - 1];
+  const router = useRouter();
+  const { data: session } = useSession();
+  const user = session?.user;
 
-  // useEffect(() => {
-  //   const timeoutId = setTimeout(() => {
-  //     if (!session) router.push("/signin");
-  //   }, 1000); 
-  //   return () => {
-  //     clearTimeout(timeoutId);
-  //   };
-  // }, [router, session]);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [data, setData] = useState([]);
 
-  // const getWatchItems = async () => {
-  //   const res = await (await fetch(`/api/watchlist/${id}`)).json();
-  //   return res;
-  // };
+  useEffect(() => {
+    if (!session) router.push("/signin"); // If no session exists, redirect to login
+  }, [session, router]);
 
-  // const { data, isLoading, error } = useQuery(["getWatchlist"], getWatchItems);
-  // console.log(data);
+  useEffect(() => {
+    if (user) {
+      const { id } = user as User;
+      setUserId(id);
+    }
+  }, [user]);
 
-  // if (isLoading) return <LoadingDots />;
+  const fetchWatchList = useCallback(async () => {
+    if (userId) {
+      const res = await fetch(`api/watchlist/${userId}`);
+      const data = await res.json();
+      setData(data);
+    }
+  }, [userId]);
 
-  // if (error) return <h1>Error: </h1>;
+  useEffect(() => {
+    fetchWatchList();
+  }, [fetchWatchList]);
 
   return (
     <>
       <div className="max-w-[1440px] mx-auto my-8 p-4">
         <h1 className="text-4xl mb-8">Watchlist</h1>
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-          <h1 className="text-4xl">Construction in progress:</h1>
-          {/* {data?.map((movie: { movies: any; id: Key | null | undefined }) => (
+          {data?.map((movie: { movies: any; id: Key | null | undefined }) => (
             <Link href={`/movie/${movie.movies.id}`} key={movie.id}>
               <div>
                 <Image
@@ -54,7 +57,7 @@ const Page = () => {
                 />
               </div>
             </Link>
-          ))} */}
+          ))}
         </div>
       </div>
     </>
