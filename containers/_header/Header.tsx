@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 export default function NavbarWithDropdown() {
   const router = useRouter();
   const session = useSession();
-  const user = session.data?.user;
+  const user = session?.data?.user;
 
   return (
     <div className="w-full flex justify-between bg-slate-800">
@@ -38,10 +38,12 @@ export default function NavbarWithDropdown() {
             >
               <Dropdown.Header>
                 <span className="block truncate text-sm font-medium">
-                  name@flowbite.com
+                  {user.name || user.email}
                 </span>
               </Dropdown.Header>
-              <Dropdown.Item>Watchlist</Dropdown.Item>
+              <Dropdown.Item className="hover:bg-transparent cursor-default">
+                <Link href={`/watchlist`}>Watchlist</Link>
+              </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={() => signOut()}>Sign out</Dropdown.Item>
             </Dropdown>
@@ -63,7 +65,7 @@ export default function NavbarWithDropdown() {
               href="/"
               className="text-white hover:bg-slate-500 border-0 pl-0"
             >
-              <p>Home</p>
+              <span>Home</span>
             </Link>
             <div className="my-5 md:my-0">
               <Dropdown

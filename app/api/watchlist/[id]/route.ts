@@ -3,7 +3,7 @@ import { NextApiResponse } from "next";
 
 export async function GET(req: Request, res: NextApiResponse) {
   const params = req.url;
-  const userId = params?.split("/").at(-1);
+  const userId = params?.split("/").at(-1); 
 
   try {
     const watchlist = await prisma.watchItem.findMany({

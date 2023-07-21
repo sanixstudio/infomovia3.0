@@ -1,5 +1,3 @@
-import { Key } from "react";
-
 export type MovieProps = {
   id: number;
   backdrop_path: string;
@@ -43,4 +41,11 @@ export type PosterProps = {
     popularity: number;
     overview: string;
   };
+};
+
+export type User = {
+  id: string;
+  name?: string | null;
+  email: string;
+  image?: string | null;
 };

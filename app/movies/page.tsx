@@ -1,15 +1,12 @@
 "use client";
-import { Key, SetStateAction, useCallback, useState } from "react";
+import { SetStateAction, useCallback, useState } from "react";
 import { LoadingDots, Poster } from "@/components";
 import useMediaData from "@/hooks/useFetchMovies";
 import {
-  IMG_URL,
   PLAYING_NOW_URL,
   TOP_RATED_URL,
   UP_COMING_URL,
 } from "@/utils/constants/api_constants";
-import Image from "next/image";
-import Link from "next/link";
 import { MovieProps } from "@/utils/typings/typings";
 import { Button } from "flowbite-react";
 
@@ -43,7 +40,7 @@ const Page = () => {
   }
 
   return (
-    <div className="max-w-[1440px] w-full mx-auto p-4">
+    <div className="carousel max-w-[1440px] w-full mx-auto p-4">
       <div className="my-5">
         <Button.Group>
           <Button
