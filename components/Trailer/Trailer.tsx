@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   API_KEY,
   BASE_URL,
@@ -8,38 +8,77 @@ import {
 import useMediaData from "@/hooks/useFetchMovies";
 import LoadingDots from "../LoadingDots/LoadingDots";
 import { useParams } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import Image from "next/image";
 
 type TrailerProps = {
   id: number;
 };
 
-const Trailer = ({ id }: TrailerProps) => {
-  const VIDEOS_MOVIES_URL = `${BASE_URL}movie/${id}/videos?language=en-US&api_key=${API_KEY}`;
-  const VIDEOS_TV_URL = `${BASE_URL}tv/${id}/videos?language=en-US&api_key=${API_KEY}`;
+interface TrailerData {
+  results: {
+    key: string;
+  }[];
+}
 
+const Trailer = ({ id }: TrailerProps) => {
+  const [data, setData] = useState<TrailerData | null>(null);
+  const [thumbnail, setThumbnail] = useState<string | null>(null);
   const urlParams = Object.keys(useParams() ?? {});
   const requestIsTv = urlParams[0] !== "movieId";
+  const handledUrlParams = requestIsTv ? "tv" : "movie";
 
-  const handledUrlParams = requestIsTv ? VIDEOS_TV_URL : VIDEOS_MOVIES_URL;
+  const getTrailer = async () => {
+    try {
+      const response = await fetch("/api/trailer", {
+        method: "POST",
+        body: JSON.stringify({
+          requestMediaType: handledUrlParams,
+          movieId: id,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-  console.log(handledUrlParams);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-  const { data, isLoading, error } = useMediaData("getVideo", handledUrlParams);
+      const trailerData: TrailerData = await response.json();
+      setData(trailerData);
 
-  if (isLoading) return <LoadingDots />;
+      // Set the thumbnail using the first video's key, if available
+      if (trailerData.results.length > 0) {
+        setThumbnail(trailerData.results[0].key);
+      }
+    } catch (err) {
+      console.log("Error: ", err);
+    }
+  };
 
-  if (error) return <h1 className="text-4xl">Error:</h1>;
-
-  const trailerLink = data?.results[0]?.key || data?.results[1]?.key;
+  useEffect(() => {
+    getTrailer();
+  }, []);
 
   return (
     <div className="aspect-video">
-      <iframe
-        className="w-full h-full"
-        src={`${YT_VIDEO_URL}/${trailerLink}`}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+      {thumbnail ? (
+        <iframe
+          className="w-full h-full"
+          src={`${YT_VIDEO_URL}/${thumbnail}`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <Image
+          width={450}
+          height={250}
+          className="w-full object-contain"
+          src="/images/no-video.jpg" // Replace with the path to your default thumbnail image
+          alt="Video not available"
+        />
+      )}
     </div>
   );
 };

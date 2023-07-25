@@ -10,8 +10,8 @@ import { addToWatchList } from "@/utils/serverFn";
 
 const Poster = ({ media }: PosterProps) => {
   const { userId } = useGetUserId();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [, setIsLoading] = useState(false);
+  const [, setError] = useState("");
 
   const handleClick = async () => {
     try {

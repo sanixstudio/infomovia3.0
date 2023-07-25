@@ -49,3 +49,21 @@ export type User = {
   email: string;
   image?: string | null;
 };
+
+export type movieDetailsProps = {
+  movie: {
+    id: number;
+    first_air_date?: string;
+    title: string;
+    original_name?: string;
+    release_date: string;
+    ratings: number;
+    popularity: number;
+    vote_count: number;
+    totalVotes: number;
+    runtime: number;
+    poster_path: string;
+    overview: string;
+    genres: [];
+  };
+};

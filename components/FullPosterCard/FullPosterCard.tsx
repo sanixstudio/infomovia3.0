@@ -2,9 +2,8 @@
 import React from "react";
 import { handleImageError } from "@/utils/helpers";
 import Image from "next/image";
-import { AiFillStar, AiOutlineCalendar } from "react-icons/ai";
+import { AiOutlineCalendar } from "react-icons/ai";
 import { BsPlusCircleFill } from "react-icons/bs";
-import { BiMoviePlay } from "react-icons/bi";
 import { MoviesReviews, Trailer } from "@/components";
 import {
   HiClock,
@@ -13,24 +12,7 @@ import {
 } from "react-icons/hi";
 import { BACKDROP_1280_URL } from "@/utils/constants/api_constants";
 import { Badge, Button } from "flowbite-react";
-
-type movieDetailsProps = {
-  movie: {
-    id: number;
-    first_air_date?: string;
-    title: string;
-    original_name?: string;
-    release_date: string;
-    ratings: number;
-    popularity: number;
-    vote_count: number;
-    totalVotes: number;
-    runtime: number;
-    poster_path: string;
-    overview: string;
-    genres: [];
-  };
-};
+import { movieDetailsProps } from "@/utils/typings/typings";
 
 const FullPosterCard = ({ movie }: movieDetailsProps) => {
   return (
@@ -86,7 +68,10 @@ const FullPosterCard = ({ movie }: movieDetailsProps) => {
               <h2 className="text-lg font-semibold mb-1">Genres</h2>
               <div className="flex gap-1 flex-wrap">
                 {movie.genres?.map((genre: { id: number; name: string }) => (
-                  <Badge className="bg-slate-500 text-white px-2" key={genre.id}>
+                  <Badge
+                    className="bg-slate-500 text-white px-2"
+                    key={genre.id}
+                  >
                     {genre.name}
                   </Badge>
                 ))}

@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const useGetUserId = () => {
   const { data: session } = useSession();
@@ -17,7 +17,7 @@ const useGetUserId = () => {
 
   useEffect(() => {
     getSessionUserId(session);
-  }, []);
+  }, [session]);
 
   return { userId };
 };

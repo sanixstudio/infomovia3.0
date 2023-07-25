@@ -10,16 +10,11 @@ import Link from "next/link";
 import { User } from "@/utils/typings/typings";
 
 const Page = () => {
-  const router = useRouter();
   const { data: session } = useSession();
   const user = session?.user;
 
   const [userId, setUserId] = useState<string | null>(null);
   const [data, setData] = useState([]);
-
-  useEffect(() => {
-    if (!session) router.push("/signin"); // If no session exists, redirect to login
-  }, [session, router]);
 
   useEffect(() => {
     if (user) {
