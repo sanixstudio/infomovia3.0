@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# INFOMOVIA Movie Database
 
-## Getting Started
+Welcome to the documentation for the Next.js Movie Database application. This application is built using Next.js, React, Tailwind CSS, Auth0 for authentication, and NextAuth.js for handling authentication flows. It provides users with the ability to explore information about movies, TV shows, and celebrities in a user-friendly interface.
 
-First, run the development server:
+## 1. Getting Started
+
+### 1.1 Installation
+
+Before running the application, make sure you have Node.js installed on your system. If not, you can download it from [nodejs.org](https://nodejs.org/).
+
+To install the necessary dependencies, navigate to the root directory of your project and run:
 
 ```bash
-npm run dev
+npm install
 # or
-yarn dev
+yarn install
 # or
-pnpm dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Dependencies
+The Next.js Movie Database application is built using the following technologies and libraries:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js
+- React
+- Tailwind CSS
+- Auth0
+- NextAuth.js
+- Tanstack
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 3 Configuration
+You will need to set up some configuration variables before running the application. Create a .env.local file in the root of your project and add the following variables:
+```bash
+# Auth0 Configuration
+AUTH0_DOMAIN=<Your Auth0 Domain>
+AUTH0_CLIENT_ID=<Your Auth0 Client ID>
+AUTH0_CLIENT_SECRET=<Your Auth0 Client Secret>
+AUTH0_REDIRECT_URI=http://localhost:3000/api/auth/callback
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# The Movie Database (TMDb) API
+TMDB_API_KEY=<Your TMDb API Key>
+```
