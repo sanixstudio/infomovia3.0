@@ -45,14 +45,6 @@ Infomovia comes packed with an array of exciting features:
 - **Recommendations:** Get personalized recommendations based on your preferences.
 - **Responsive Design:** Enjoy a seamless experience on both desktop and mobile devices.
 
-## How to run the app
-```
-cd clone https://github.com/sanixstudio/infomovia3.0.git
-cd infomovia3.0
-
-npm install
-```
-
 ## Environment Variables `.env` or `.env.local`
 ```
 NEXT_PUBLIC_TMDB_ACCESS_TOKEN=your_tmdb_access_token
@@ -64,6 +56,15 @@ NEXT_PUBLIC_GOOGLE_SECRET=your google_secret
 NEXT_PUBLIC_AUTH_SECRET=your_auth_secret
 
 NEXT_PUBLIC_MONGODB_URI=your DONGODB_URI
+```
+
+## How to run the app
+```
+cd clone https://github.com/sanixstudio/infomovia3.0.git
+cd infomovia3.0
+
+npm install
+npm run dev
 ```
 
 ## Conclusion
