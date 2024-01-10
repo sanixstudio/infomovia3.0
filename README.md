@@ -1,4 +1,4 @@
-# Introduction
+# Infomovia
 
 Infomovia is a web application that allows users to access a vast database of information about movies, TV shows, and celebrities. Whether you're looking for details about your favorite films, television series, or want to learn more about your favorite actors and actresses, Infomovia has you covered.
 
